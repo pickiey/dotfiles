@@ -1,0 +1,103 @@
+"-------------------------------------------------------------------------------
+" 拡張管理 Plugin
+"-------------------------------------------------------------------------------
+"vunlde.vimで管理してるpluginを読み込む
+filetype off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
+
+
+" 以下が導入するプラグイン
+
+
+
+
+" Completion {{{
+  " 補完
+  NeoBundle 'Shougo/neocomplete'
+  " neocomplcacheのsinpet補完
+  NeoBundle 'Shougo/neosnippet'
+" }}}
+
+
+
+" Searching/Moving {{{
+  " smooth_scroll.vim : スクロールを賢く
+  " NeoBundle 'Smooth-Scroll'
+  NeoBundle 'yuroyoro/smooth_scroll.vim'
+  " vim-smartword : 単語移動がスマートな感じで
+  NeoBundle 'smartword'
+  " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
+  NeoBundle 'matchit.zip'
+" }}}
+
+
+
+" Programming {{{
+  " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
+  NeoBundle 'thinca/vim-quickrun'
+  " emmet(zen-codeing)の導入
+  NeoBundle 'mattn/emmet-vim'
+" }}}
+
+
+
+" Syntax {{{
+  " rcmdnk/vim-markdown : markdownのハイライト
+  NeoBundle 'rcmdnk/vim-markdown'
+" }}}
+
+
+
+" Utility {{{
+  " vimshell : vimのshell
+  NeoBundle 'Shougo/vimshell'
+  " vimproc : vimから非同期実行。vimshelleで必要
+  " なければ自動で導入
+  NeoBundle 'Shougo/vimproc', {
+    \ 'build' : {
+    \   'mac' : 'make -f make_mac.mak',
+    \   'unix' : 'make -f make_unix.mak',
+    \   'cygwin' : 'make -f make_cygwin.mak'
+    \ }
+    \ }
+  " ステータスラインをカッコよくする
+  NeoBundle 'itchyny/lightline.vim'
+" }}}
+
+
+
+" ColorSchema{{{
+  " color schema 256
+  NeoBundle 'tomasr/molokai'
+  NeoBundle 'vim-scripts/Zenburn'
+  NeoBundle 'vim-scripts/jammy.vim'
+  NeoBundle 'w0ng/vim-hybrid'
+  NeoBundle 'altercation/vim-colors-solarized'
+  NeoBundle 'larssmit/vim-getafe'
+" }}}
+
+
+" Unite {{{{
+  " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'tsukkee/unite-help'
+  NeoBundle 'h1mesuke/unite-outline'
+"  NeoBundle 'Sixeight/unite-grep'
+  NeoBundle 'basyura/unite-rails'
+  NeoBundle 'thinca/vim-unite-history'
+  NeoBundle 'tsukkee/unite-tag'
+  NeoBundle 'choplin/unite-vim_hacks'
+  NeoBundle 'nanotech/jellybeans.vim'
+"  NeoBundle 'spolu/dwm.vim'
+" }}}
+
+
+
+" NeoBundle 'gmarik/vundle'
+
+filetype plugin indent on

@@ -1,0 +1,66 @@
+# プロンプトに日時を表示(zshをもっとかわいくしたので無効化)
+# PROMPT="%F{cyan}[%n@%m %D{%m/%d %T} %~]
+# %(!.#.$)%f "
+
+# 補完時に大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# グロブ機能を拡張する
+setopt extended_glob
+
+# ファイルグロブで大文字小文字を区別しない
+unsetopt caseglob
+
+# ターミナルのタイトルをuser@hostnameに変更する
+case "${TERM}" in
+kterm*|xterm*|)
+  precmd() {
+    echo -ne "\033]0;${USER}@${HOST%%.*}\007"
+  }
+  ;;
+esac
+
+# solarizedを適用
+#source /mintty-colors-solarized/sol.dark
+
+# peepのパス通し
+alias peep='~/peep/peep'
+
+# peepで開くブラウザをw3mに
+#export BROWSER=w3m
+# バグるので無効に
+
+# 色設定
+autoload -U colors; colors
+
+# Zshをもっとかわいくする{{{
+
+# もしかして機能
+setopt correct
+# PCRE 互換の正規表現を使う
+setopt re_match_pcre
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+# プロンプト指定
+PROMPT="
+%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %{$fg[yellow]%}%~%{${reset_color}%}
+%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{${reset_color}%} "
+# プロンプト指定(コマンドの続き)
+PROMPT2="[%n]> "
+# もしかして時のプロンプト指定
+SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
+
+# はちゅねミク
+#PROMPT="
+#%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %{$fg[yellow]%}%~
+#%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(＠ﾟ□ﾟ)ノ  <!ZzZz(＠￣￢￣%)ノ <)%{${reset_color}%} "
+#PROMPT2='[%n]> '
+#SPROMPT="%{$fg[red]%}%{$suggest%}(＠ﾟ△ﾟ%)ノ < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
+
+# Haskellのcabalのパス
+#PATH=${HOME}/.cabal/bin:$PATH
+
+# PATHをbinと名のつくもの全てに
+typeset -U path
+path=($HOME/bin(N-/) $path)
+path=($HOME/*/bin(N-/) $path)

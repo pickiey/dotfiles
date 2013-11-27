@@ -1,0 +1,21 @@
+alias v=vim
+alias cdd='cd ~/Downloads'
+alias cdcd='cd ~/code'
+alias cdot='cd ~/dotfiles'
+alias aa=exit
+alias ZZ=exit
+alias ZQ=exit
+
+alias tm=tmux
+alias tma='tmux attach'
+alias tmd='tmux detach'
+alias tml='tmux list-window'
+alias tmk='tmux kill-server'
+
+# cdと同時にls -G
+#function cdls() {
+#  # cdがaliasでループするので\をつける
+#  \cd $1;
+#  ls;
+#}
+#alias cd=cdls

@@ -1,0 +1,15 @@
+# vim
+export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+
+# tmux
+alias tm='$HOME/dotfiles/bin/tmuxx.sh'
+
+# QuickLook
+alias ql='qlmanage -p "$@" >& /dev/null'
+
+# To show size of picture
+alias imgsize="mdls -name kMDItemPixelWidth -name kMDItemPixelHeight"
+
+# To delete .DS_Store in current directory
+alias delmacfile="find . -name \".DS_Store\" -exec rm -f {} \;"
