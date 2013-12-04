@@ -12,4 +12,3 @@ sudo defaults write com.apple.loginwindow LogoutHook /Library/Scripts/mute-on.sh
 sudo defaults write com.apple.loginwindow LoginHook /Library/Scripts/mute-off.sh
 
 chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace
-chmod u+x $HOME/dotfiles/bin/tmuxx.sh

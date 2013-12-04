@@ -49,6 +49,8 @@ endif
 " Syntax {{{
   " rcmdnk/vim-markdown : markdownのハイライト
   NeoBundle 'rcmdnk/vim-markdown'
+  " groenewege/vim-less : lessのハイライト
+  NeoBundle 'groenewege/vim-less'
 " }}}
 
 
