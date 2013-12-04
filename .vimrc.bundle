@@ -21,18 +21,24 @@ endif
   NeoBundle 'Shougo/neocomplete'
   " neocomplcacheのsinpet補完
   NeoBundle 'Shougo/neosnippet'
+  " Haskellの補完強化
+  "NeoBundle 'ujihisa/neco-ghc'
 " }}}
 
 
 
 " Searching/Moving {{{
   " smooth_scroll.vim : スクロールを賢く
-  " NeoBundle 'Smooth-Scroll'
   NeoBundle 'yuroyoro/smooth_scroll.vim'
   " vim-smartword : 単語移動がスマートな感じで
   NeoBundle 'smartword'
   " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
   NeoBundle 'matchit.zip'
+  " Haskellでインデント
+  NeoBundle 'kana/vim-filetype-haskell'
+  " vim上でghc-mod
+  " 調べたい単語をカーソルして :GhcModType
+  "NeoBundle 'eagletmt/ghcmod-vim'
 " }}}
 
 
@@ -81,6 +87,7 @@ endif
   NeoBundle 'w0ng/vim-hybrid'
   NeoBundle 'altercation/vim-colors-solarized'
   NeoBundle 'larssmit/vim-getafe'
+  NeoBundle 'nanotech/jellybeans.vim'
 " }}}
 
 
@@ -89,12 +96,11 @@ endif
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'tsukkee/unite-help'
   NeoBundle 'h1mesuke/unite-outline'
-"  NeoBundle 'Sixeight/unite-grep'
-  NeoBundle 'basyura/unite-rails'
+  "NeoBundle 'Sixeight/unite-grep'
+  "NeoBundle 'basyura/unite-rails'
   NeoBundle 'thinca/vim-unite-history'
   NeoBundle 'tsukkee/unite-tag'
   NeoBundle 'choplin/unite-vim_hacks'
-  NeoBundle 'nanotech/jellybeans.vim'
 "  NeoBundle 'spolu/dwm.vim'
 " }}}
 

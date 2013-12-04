@@ -11,6 +11,7 @@ colorscheme molokai
 "colorscheme hybrid
 "colorscheme solarized
 "colorscheme getafe
+"colorscheme jellybeans
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"

@@ -23,13 +23,6 @@ esac
 # solarizedを適用
 #source /mintty-colors-solarized/sol.dark
 
-# peepのパス通し
-alias peep='~/peep/peep'
-
-# peepで開くブラウザをw3mに
-#export BROWSER=w3m
-# バグるので無効に
-
 # 色設定
 autoload -U colors; colors
 
@@ -64,6 +57,3 @@ SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}�
 typeset -U path
 path=($HOME/bin(N-/) $path)
 path=($HOME/*/bin(N-/) $path)
-
-# haskell用のパス
-path=($HOME/.cabal/bin $path)
