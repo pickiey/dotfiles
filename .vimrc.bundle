@@ -22,7 +22,7 @@ endif
   " neocomplcacheのsinpet補完
   NeoBundle 'Shougo/neosnippet'
   " Haskellの補完強化
-  "NeoBundle 'ujihisa/neco-ghc'
+  NeoBundle 'ujihisa/neco-ghc'
 " }}}
 
 
@@ -38,7 +38,7 @@ endif
   NeoBundle 'kana/vim-filetype-haskell'
   " vim上でghc-mod
   " 調べたい単語をカーソルして :GhcModType
-  "NeoBundle 'eagletmt/ghcmod-vim'
+  NeoBundle 'eagletmt/ghcmod-vim'
 " }}}
 
 
