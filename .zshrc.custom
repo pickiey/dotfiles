@@ -39,9 +39,24 @@ setopt correct
 setopt re_match_pcre
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
+# VCSの情報を取得するzshの便利関数 vcs_infoを使う
+autoload -Uz vcs_info
+# 表示フォーマットの指定
+# %b ブランチ情報
+# %a アクション名(mergeなど)
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
+zstyle ':vcs_info:git:*' unstagedstr "-"
+zstyle ':vcs_info:*' formats '[%s %b %c%u]'
+zstyle ':vcs_info:*' actionformats '[%s %b %a %c%u]'
+precmd () {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
 # プロンプト指定
 PROMPT="
-%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %{$fg[yellow]%}%~%{${reset_color}%}
+%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{${reset_color}%}
 %(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{${reset_color}%} "
 # プロンプト指定(コマンドの続き)
 PROMPT2="[%n]> "
@@ -54,6 +69,9 @@ SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}�
 #%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(＠ﾟ□ﾟ)ノ  <!ZzZz(＠￣￢￣%)ノ <)%{${reset_color}%} "
 #PROMPT2='[%n]> '
 #SPROMPT="%{$fg[red]%}%{$suggest%}(＠ﾟ△ﾟ%)ノ < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
+
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+#RPROMPT="%1(v|%F{green}%1v%f|)"
 
 # PATHをbinと名のつくもの全てに
 typeset -U path
