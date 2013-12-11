@@ -1,4 +1,4 @@
-# Be careful to use setup.sh cuz this remove .vimrc, .zshrc, .tmux.conf
+# Be careful to use setup.sh cuz it replaces .vimrc, .zshrc, .tmux.conf
 
 ## At first
 ``` sh
