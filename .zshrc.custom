@@ -25,9 +25,6 @@ kterm*|xterm*|)
   ;;
 esac
 
-# solarizedを適用
-#source /mintty-colors-solarized/sol.dark
-
 # 色設定
 autoload -U colors; colors
 
