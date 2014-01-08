@@ -88,6 +88,7 @@ endif
   NeoBundle 'altercation/vim-colors-solarized'
   NeoBundle 'larssmit/vim-getafe'
   NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'mopp/mopkai.vim'
 " }}}
 
 

@@ -16,6 +16,3 @@ chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 
 brew install tmux
-
-mkdir -p $HOME/.vim/bundle
-git clone http://github.com/Shougo/neobundle.vim ~/.vim/neobundle.vim

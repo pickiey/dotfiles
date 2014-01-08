@@ -1,7 +1,7 @@
 alias v=vim
 alias cdd='cd ~/Downloads'
 alias cdcd='cd ~/code'
-alias cdot='cd ~/dotfiles'
+alias cdt='cd ~/dotfiles'
 alias aa=exit
 alias ZZ=exit
 alias ZQ=exit
