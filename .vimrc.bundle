@@ -21,6 +21,8 @@ endif
   NeoBundle 'Shougo/neocomplete'
   " neocomplcacheのsinpet補完
   NeoBundle 'Shougo/neosnippet'
+  " neosnippetのデフォルトのスニペット追加
+  NeoBundle "Shougo/neosnippet-snippets"
   " Haskellの補完強化
   NeoBundle 'ujihisa/neco-ghc'
 " }}}

@@ -5,14 +5,14 @@
 set background=dark
 
 " カラースキーマ（以下から選ぶ
-"colorscheme molokai
+colorscheme molokai
 "colorscheme Zenburn
 "colorscheme jammy
 "colorscheme hybrid
 "colorscheme solarized
 "colorscheme getafe
 "colorscheme jellybeans
-colorscheme mopkai
+"colorscheme mopkai
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
