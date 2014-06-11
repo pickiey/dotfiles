@@ -34,8 +34,14 @@ endif
   NeoBundle 'yuroyoro/smooth_scroll.vim'
   " vim-smartword : 単語移動がスマートな感じで
   NeoBundle 'smartword'
+  " Vimで隣接した括弧の開き記号を消すと同時に閉じ記号も削除する
+  NeoBundle 'jiangmiao/auto-pairs'
   " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
   NeoBundle 'matchit.zip'
+  " 整列
+  NeoBundle 'junegunn/vim-easy-align'
+  " インデント表示
+  NeoBundle 'Yggdroot/indentLine'
   " Haskellでインデント
   NeoBundle 'kana/vim-filetype-haskell'
   " vim上でghc-mod
@@ -77,6 +83,10 @@ endif
     \ }
   " ステータスラインをカッコよくする
   NeoBundle 'itchyny/lightline.vim'
+  " precious.vimで必要
+  NeoBundle 'Shougo/context_filetype.vim'
+  " 現在のカーソル位置のコンテキストによって filetype を切り換える
+  NeoBundle 'osyo-manga/vim-precious'
 " }}}
 
 

@@ -8,7 +8,18 @@ if [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/n
   # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
   tweaked_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
 
-  tmux attach || (tmux -f <(echo "$tweaked_config") new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 10 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 20 \; select-pane -R \; clock-mode \; select-pane -R )
+  # 5分割
+  tmux attach || (tmux -f <(echo "$tweaked_config") new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 10 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 20 \; select-pane -R \; clock-mode \; select-pane -L \; select-pane -U \; select-pane -L \; select-pane -L)
+
+  # 3分割
+  #tmux attach || (tmux -f <(echo "$tweaked_config") new-session \; split-window -h \; split-window \; clock-mode \; select-pane -U \; select-pane -L)
+
 else
-  tmux attach || (tmux new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 10 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 20 \; select-pane -R \; clock-mode \; select-pane -R )
+
+  # 5分割
+  tmux attach || (tmux new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 10 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 20 \; select-pane -R \; clock-mode  \; select-pane -L \; select-pane -U \; select-pane -L \; select-pane -L)
+
+  # 3分割
+  #tmux attach || (tmux new-session \; split-window -h \; split-window \; clock-mode \; select-pane -U \; select-pane -L)
+
 fi
