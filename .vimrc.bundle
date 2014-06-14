@@ -24,7 +24,7 @@ endif
   " neosnippetのデフォルトのスニペット追加
   NeoBundle "Shougo/neosnippet-snippets"
   " Haskellの補完強化
-  NeoBundle 'ujihisa/neco-ghc'
+  "NeoBundle 'ujihisa/neco-ghc'
 " }}}
 
 
@@ -41,12 +41,13 @@ endif
   " 整列
   NeoBundle 'junegunn/vim-easy-align'
   " インデント表示
-  NeoBundle 'Yggdroot/indentLine'
+  "NeoBundle 'Yggdroot/indentLine' "こっちは使わない
+  NeoBundle 'nathanaelkane/vim-indent-guides'
   " Haskellでインデント
-  NeoBundle 'kana/vim-filetype-haskell'
+  "NeoBundle 'kana/vim-filetype-haskell'
   " vim上でghc-mod
   " 調べたい単語をカーソルして :GhcModType
-  NeoBundle 'eagletmt/ghcmod-vim'
+  "NeoBundle 'eagletmt/ghcmod-vim'
 " }}}
 
 
