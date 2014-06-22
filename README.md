@@ -10,7 +10,7 @@ git clone https://github.com/pickiey/dotfiles.git ~/dotfiles
 ./setup.sh
 ```
 
-## Next, when you use OSX
+## When you use OSX
 ``` sh
 ./setup_osx.sh
 ```
