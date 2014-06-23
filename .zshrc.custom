@@ -58,14 +58,7 @@ PROMPT="
 # プロンプト指定(コマンドの続き)
 PROMPT2="[%n]> "
 # もしかして時のプロンプト指定
-SPROMPT="%{$fg[red]%}%{$suggest%}(*'~'%)? < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
-
-# はちゅねミク
-#PROMPT="
-#%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %{$fg[yellow]%}%~
-#%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(＠ﾟ□ﾟ)ノ  <!ZzZz(＠￣￢￣%)ノ <)%{${reset_color}%} "
-#PROMPT2='[%n]> '
-#SPROMPT="%{$fg[red]%}%{$suggest%}(＠ﾟ△ﾟ%)ノ < もしかして %B%r%b %{$fg[red]%}かな? [そう!(y), 違う!(n),a,e]:${reset_color} "
+SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{${reset_color}%} かな? [そう!(y), 違う!(n),a,e]: "
 
 # 時刻更新 いまいち良くない気がする。。。
 TRAPALRM () { zle reset-prompt }
@@ -74,6 +67,7 @@ TMOUT=1
 # 右プロンプト
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
 #RPROMPT="%1(v|%F{green}%1v%f|)"
+function memo() { RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }
 
 # PATHをbinと名のつくもの全てに
 typeset -U path

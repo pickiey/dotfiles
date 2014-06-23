@@ -18,16 +18,15 @@ install git
 install tmux
 install tree
 install unrar
-install vim
 install w3m
 install wget
-install zsh
 
 # Packages for brew-cask
 install brew-cask
 
 # .dmg from brew-cask
 cask install bettertouchtool
+cask install boot2docker
 cask install iterm2
 cask install keyremap4macbook
 cask install macvim
