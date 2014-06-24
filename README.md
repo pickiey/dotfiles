@@ -1,5 +1,3 @@
-# Be careful to use setup.sh cuz it replaces .vimrc, .zshrc, .tmux.conf
-
 ## At first
 ``` sh
 git clone https://github.com/pickiey/dotfiles.git ~/dotfiles

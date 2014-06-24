@@ -30,6 +30,7 @@ cask install boot2docker
 cask install iterm2
 cask install keyremap4macbook
 cask install macvim
+cask install ghc
 cask install google-chrome
 cask install google-japanese-ime
 cask install vagrant

@@ -1,4 +1,11 @@
+# to add path
 path=($HOME/Library/*/bin(N-/) $path)
+
+# Add GHC 7.8.2 to the PATH, via http://ghcformacosx.github.io/
+export GHC_DOT_APP="/usr/local/Caskroom/ghc/7.8.2-r6/ghc-7.8.2.app"
+if [ -d "$GHC_DOT_APP" ]; then
+    export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+fi
 
 # brew_cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
@@ -15,3 +22,6 @@ alias imgsize="mdls -name kMDItemPixelWidth -name kMDItemPixelHeight"
 
 # To delete .DS_Store in current directory
 alias delmacfile="find . -name \".DS_Store\" -exec rm -f {} \;"
+
+# boot2docker
+alias bock=boot2docker
