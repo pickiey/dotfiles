@@ -25,4 +25,5 @@ sudo apt-get install unity-tweak-tool
 sudo apt-get install vagrant
 sudo apt-get install vim-gnome
 sudo apt-get install virtualbox
+sudo apt-get install w3m
 sudo apt-get install wget
