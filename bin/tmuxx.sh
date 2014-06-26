@@ -17,7 +17,7 @@ if [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/n
 else
 
   # 5分割
-  tmux attach || (tmux new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 10 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 20 \; select-pane -R \; clock-mode \; select-pane -L \; select-pane -U \; select-pane -L \; select-pane -L)
+  tmux attach || (tmux new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 10 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 20 \; select-pane -R \; clock-mode \; select-pane -L \; select-pane -U \; select-pane -L)
 
   # 3分割
   #tmux attach || (tmux new-session \; split-window -h \; split-window \; clock-mode \; select-pane -U \; select-pane -L)
