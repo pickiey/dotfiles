@@ -27,3 +27,8 @@ sudo apt-get install vim-gnome
 sudo apt-get install virtualbox
 sudo apt-get install w3m
 sudo apt-get install wget
+sudo apt-get install zsh
+
+# change shell
+chsh -s /bin/zsh
+#sudo chsh -s /bin/zsh

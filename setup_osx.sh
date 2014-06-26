@@ -12,6 +12,10 @@ done
 sudo defaults write com.apple.loginwindow LogoutHook /Library/Scripts/mute-on.sh
 sudo defaults write com.apple.loginwindow LoginHook /Library/Scripts/mute-off.sh
 
+# change shell
+chsh -s /bin/zsh
+#sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+#chsh -s /usr/local/bin/zsh
 
 # for copy&paste
 chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace

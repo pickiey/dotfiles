@@ -19,6 +19,7 @@ install tmux
 install tree
 install unrar
 install wget
+install zsh
 
 # Packages for brew-cask
 install brew-cask
