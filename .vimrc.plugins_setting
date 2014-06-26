@@ -8,7 +8,7 @@
 " w3m.vim
 "------------------------------------
 " 起動がだるいので楽にする
-nnoremap <leader>w :W3m google
+nnoremap <leader>w :W3m google<SPACE>
 " :W3mShowExternalBrowser したときに開くブラウザをChromeに
 let g:w3m#external_browser = 'goole-chrome'
 

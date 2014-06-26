@@ -23,5 +23,8 @@ cp $HOME/dotfiles/private.xml $HOME/Library/Application\ Support/KeyRemap4MacBoo
 # to install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 
+# to install Fonts
+#cp MyFontFile-Powerline.otf ~/Library/Fonts
+
 # to install some packages
 #brew bundle

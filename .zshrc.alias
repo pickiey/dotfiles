@@ -1,4 +1,5 @@
 alias v=vim
+
 alias cdd='cd ~/Downloads'
 alias cdcd='cd ~/code'
 alias cdt='cd ~/dotfiles'
@@ -20,16 +21,5 @@ alias tmk='tmux kill-server'
 #}
 #alias cd=cdls
 
-# w3mでgoogle検索
-function google() {
-local str opt
-if [ $ != 0 ]; then
-   for i in $*; do
-     str="$str+$i"
-   done
-    str=`echo $str | sed 's/^\+//'`
- opt='search?num=50&hl=ja&lr=lang_ja'
-    opt="${opt}&q=${str}"
-fi
-w3m www.google.co.jp/$opt
-}
+# w3m.vimでgoogle検索(aliasの関係でうまくいかないのでオフ
+#alias ggl='vim -c 'W3m google $@''
