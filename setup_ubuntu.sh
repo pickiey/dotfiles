@@ -9,7 +9,8 @@ sudo sh -c 'printf "[SeatDefaults]\nallow-guest=false\n" >/usr/share/lightdm/lig
 #sudo rm /usr/share/lightdm/lightdm.conf.d/50-no-guest.conf
 
 # to install Fonts
-#cp MyFontFile-Powerline.otf ~/local/share/fonts
+#mkdir -p ~/.fonts
+#cp MyFontFile-Powerline.otf ~/.fonts
 
 # Packages for development
 #sudo apt-get install chromium
