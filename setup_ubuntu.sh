@@ -30,5 +30,5 @@ sudo apt-get install wget
 sudo apt-get install zsh
 
 # change shell
-chsh -s /bin/zsh
+chsh -s /usr/bin/zsh
 #sudo chsh -s /bin/zsh
