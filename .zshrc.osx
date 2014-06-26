@@ -1,4 +1,4 @@
-# to add path
+# add path
 path=($HOME/Library/*/bin(N-/) $path)
 
 # Add GHC 7.8.2 to the PATH, via http://ghcformacosx.github.io/
@@ -18,10 +18,10 @@ alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"
 # QuickLook
 alias ql='qlmanage -p "$@" >& /dev/null'
 
-# To show size of picture
+# show size of picture
 alias imgsize="mdls -name kMDItemPixelWidth -name kMDItemPixelHeight"
 
-# To delete .DS_Store in current directory
+# delete .DS_Store in current directory
 alias delmacfile="find . -name \".DS_Store\" -exec rm -f {} \;"
 
 # boot2docker

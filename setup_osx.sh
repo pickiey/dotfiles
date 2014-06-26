@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# to make silent on startup
+# make silent on startup
 MUTE_FILES=( mute-off.sh mute-on.sh)
 
 for file in ${MUTE_FILES[@]}
@@ -20,11 +20,11 @@ chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace
 mkdir -p $HOME/Library/Application\ Support/KeyRemap4MacBook
 cp $HOME/dotfiles/private.xml $HOME/Library/Application\ Support/KeyRemap4MacBook/private.xml
 
-# to install homebrew
+# install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 
-# to install Fonts
+# install Fonts
 #cp MyFontFile-Powerline.otf ~/Library/Fonts
 
-# to install some packages
+# install some packages
 #brew bundle
