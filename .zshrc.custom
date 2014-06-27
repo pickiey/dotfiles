@@ -73,3 +73,6 @@ function memo() { RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }
 typeset -U path
 path=($HOME/bin(N-/) $path)
 path=($HOME/*/bin(N-/) $path)
+
+# tmux-powerline用の設定
+PROMPT+='$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'

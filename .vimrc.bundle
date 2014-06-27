@@ -41,7 +41,6 @@ endif
   " 整列
   NeoBundle 'junegunn/vim-easy-align'
   " インデント表示
-  "NeoBundle 'Yggdroot/indentLine' "こっちは使わない
   NeoBundle 'nathanaelkane/vim-indent-guides'
   " Haskellでインデント
   "NeoBundle 'kana/vim-filetype-haskell'
@@ -90,6 +89,10 @@ endif
   NeoBundle 'osyo-manga/vim-precious'
   " vimでw3m
   NeoBundle 'yuratomo/w3m.vim'
+  " vimでgit操作
+  NeoBundle 'tpope/vim-fugitive'
+  " gitの差分を視覚化
+  NeoBundle 'airblade/vim-gitgutter'
 " }}}
 
 

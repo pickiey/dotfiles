@@ -14,4 +14,5 @@ chmod u+x $HOME/dotfiles/bin/getMemUsage.sh
 chmod u+x $HOME/dotfiles/bin/tmuxx.sh
 
 mkdir -p $HOME/.vim/bundle
-git clone http://github.com/Shougo/neobundle.vim ~/.vim/neobundle.vim
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/neobundle.vim
+#git clone https://github.com/erikw/tmux-powerline.git ~/.tmux-powerline
