@@ -13,8 +13,12 @@ upgrade
 tap homebrew/binary
 tap phinze/homebrew-cask
 
+tap homebrew/dupes
+
+
 # Packages for development
 install git
+install homebrew/dupes/grep
 install tmux
 install tree
 install unrar

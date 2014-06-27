@@ -15,4 +15,6 @@ chmod u+x $HOME/dotfiles/bin/tmuxx.sh
 
 mkdir -p $HOME/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/neobundle.vim
-#git clone https://github.com/erikw/tmux-powerline.git ~/.tmux-powerline
+git clone https://github.com/erikw/tmux-powerline.git ~/.tmux/tmux-powerline
+
+cp ~/dotfiles/bin/default.sh ~/.tmux/tmux-powerline/themes/default.sh
