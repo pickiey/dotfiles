@@ -11,7 +11,7 @@ upgrade
 
 # Add Repository
 tap homebrew/binary
-tap phinze/homebrew-cask
+tap caskroom/cask
 
 tap homebrew/dupes
 

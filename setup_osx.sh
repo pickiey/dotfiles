@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# disable filename localize
+sudo mv /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/SystemFolderLocalizations.strings /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/SystemFolderLocalizations.strings.disable
+sudo cp /System/Library/CoreServices/SystemFolderLocalizations/en.lproj/SystemFolderLocalizations.strings /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/
+
+# show Library
+chflags nohidden ~/Library
+
+# on mouseover, focus window
+defaults write com.apple.Terminal FocusFollowsMouse -boolean true
+#defaults delete com.apple.Terminal FocusFollowsMouse
+
+
+# in QuickLook, enable text selection
+defaults write com.apple.Finder QLEnableTextSelection -bool YES
+#defaults delete com.apple.Finder QLEnableTextSelection
+
 # make silent on startup
 MUTE_FILES=( mute-off.sh mute-on.sh)
 
