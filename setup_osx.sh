@@ -48,3 +48,6 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 
 # install some packages
 #brew bundle
+
+# after install tor
+#mkdir -p $HOME/Library/LaunchAgents && cp /usr/local/Cellar/tor/0.2.4.23/homebrew.mxcl.tor.plist $HOME/Library/LaunchAgents/ && launchctl load -w $HOME/Library/LaunchAgents/homebrew.mxcl.tor.plist

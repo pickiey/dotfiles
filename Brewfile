@@ -2,7 +2,7 @@
 # 実行方法
 # Brewfileのあるディレクトリで`brew bundle`
 #====================================
-
+ls /usr/local/Cellar/tor/
 # Make sure using latest Homebrew
 update
 
@@ -20,6 +20,7 @@ tap homebrew/dupes
 install git
 install homebrew/dupes/grep
 install tmux
+install tor
 install tree
 install unrar
 install wget
@@ -32,7 +33,7 @@ install brew-cask
 cask install bettertouchtool
 cask install boot2docker
 cask install iterm2
-cask install keyremap4macbook
+cask install karabiner
 cask install macvim
 cask install ghc
 cask install google-chrome
@@ -44,3 +45,4 @@ cask install xtrafinder
 
 # Remove outdated versions
 cleanup
+cask cleanup
