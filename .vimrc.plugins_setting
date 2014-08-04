@@ -7,8 +7,10 @@
 "------------------------------------
 " w3m.vim
 "------------------------------------
+" DuckDuckGoの検索を日本語で
+let g:w3m#search_engine = 'https://duckduckgo.com/?q=%s region:jp'
 " 起動がだるいので楽にする
-nnoremap <leader>w :W3m google<SPACE>
+nnoremap <leader>w :W3m<SPACE>
 " :W3mShowExternalBrowser したときに開くブラウザをChromeに
 let g:w3m#external_browser = 'goole-chrome'
 
