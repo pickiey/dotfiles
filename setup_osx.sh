@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # disable filename localize
-sudo mv /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/SystemFolderLocalizations.strings /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/SystemFolderLocalizations.strings.disable
-sudo cp /System/Library/CoreServices/SystemFolderLocalizations/en.lproj/SystemFolderLocalizations.strings /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/
+sudo mv /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/SystemFolderLocalizations.strings /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/SystemFolderLocalizations.strings.disable && sudo cp /System/Library/CoreServices/SystemFolderLocalizations/en.lproj/SystemFolderLocalizations.strings /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/
 
 # show Library
 chflags nohidden ~/Library
@@ -37,8 +36,7 @@ chsh -s /bin/zsh
 chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace
 
 # for KeyRemap4MacBook
-mkdir -p $HOME/Library/Application\ Support/KeyRemap4MacBook
-cp $HOME/dotfiles/private.xml $HOME/Library/Application\ Support/KeyRemap4MacBook/private.xml
+mkdir -p $HOME/Library/Application\ Support/KeyRemap4MacBook && cp $HOME/dotfiles/private.xml $HOME/Library/Application\ Support/KeyRemap4MacBook/private.xml
 
 # install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
@@ -51,3 +49,6 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 
 # after install tor
 #mkdir -p $HOME/Library/LaunchAgents && cp /usr/local/Cellar/tor/0.2.4.23/homebrew.mxcl.tor.plist $HOME/Library/LaunchAgents/ && launchctl load -w $HOME/Library/LaunchAgents/homebrew.mxcl.tor.plist
+
+# not startup tor
+#launchctl unload $HOME/Library/LaunchAgents/homebrew.mxcl.tor.plist && rm $HOME/Library/LaunchAgents/homebrew.mxcl.tor.plist
