@@ -2,7 +2,6 @@
 # 実行方法
 # Brewfileのあるディレクトリで`brew bundle`
 #====================================
-ls /usr/local/Cellar/tor/
 # Make sure using latest Homebrew
 update
 
