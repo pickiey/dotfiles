@@ -35,17 +35,17 @@ chsh -s /bin/zsh
 # for copy&paste
 chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace
 
-# for Karabiner
-mkdir -p $HOME/Library/Application\ Support/Karabiner && cp $HOME/dotfiles/private.xml $HOME/Library/Application\ Support/Karabiner/private.xml
+# install Fonts
+cp MyFontFile-Powerline.otf ~/Library/Fonts
 
 # install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 
-# install Fonts
-#cp MyFontFile-Powerline.otf ~/Library/Fonts
-
 # install some packages
 #brew bundle
+
+# for Karabiner
+#mkdir -p $HOME/Library/Application\ Support/Karabiner && cp $HOME/dotfiles/private.xml $HOME/Library/Application\ Support/Karabiner/private.xml
 
 # after install tor
 #mkdir -p $HOME/Library/LaunchAgents && cp /usr/local/Cellar/tor/0.2.4.23/homebrew.mxcl.tor.plist $HOME/Library/LaunchAgents/ && launchctl load -w $HOME/Library/LaunchAgents/homebrew.mxcl.tor.plist
