@@ -36,7 +36,7 @@ chsh -s /bin/zsh
 chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace
 
 # install Fonts
-cp MyFontFile-Powerline.otf ~/Library/Fonts
+#cp MyFontFile-Powerline.otf ~/Library/Fonts
 
 # install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
