@@ -20,6 +20,3 @@ alias tmk='tmux kill-server'
 #  ls;
 #}
 #alias cd=cdls
-
-# w3m.vimでgoogle検索(aliasの関係でosxでうまくいかないのでオフ
-#alias ggl='vim -c 'W3m google $@''
