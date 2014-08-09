@@ -26,3 +26,14 @@ alias delmacfile="find . -name \".DS_Store\" -exec rm -f {} \;"
 
 # boot2docker
 alias bock=boot2docker
+
+# toggle wifi on/off
+function wifi(){
+  if networksetup -getairportnetwork en0 | grep off; then
+    echo on
+    networksetup -setairportpower en0 on
+  else
+    echo off
+    networksetup -setairportpower en0 off
+  fi
+}

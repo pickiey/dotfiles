@@ -60,7 +60,7 @@ PROMPT2="[%n]> "
 # もしかして時のプロンプト指定
 SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{${reset_color}%} かな? [そう!(y), 違う!(n),a,e]: "
 
-# 時刻更新 いまいち良くない気がする。。。
+# 時刻更新
 TRAPALRM () { zle reset-prompt }
 TMOUT=1
 
