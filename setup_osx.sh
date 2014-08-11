@@ -55,9 +55,6 @@ ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 # Happy Hacking OSX!
 # http://tukaikta.blog135.fc2.com/blog-entry-251.html
 
-defaults write com.apple.finder AppleShowAllFiles -bool true
-#defaults delete com.apple.finder AppleShowAllFiles
-
 chflags nohidden ~/Library
 #chflags hidden ~/Library
 
