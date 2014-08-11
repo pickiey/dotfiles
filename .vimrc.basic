@@ -19,6 +19,13 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0                  " モードラインは無効
 set noundofile                   " ゴミファイルを作らせない
 
+" 折り返ししてかつインデントする
+set wrap                         " the longer line is wrapped
+if (v:version == 704 && has("patch338")) || v:version >= 705
+  set breakindent    " indent even for wrapped lines
+  set breakindentopt=min:0,shift:0
+endif
+
 " OSのクリップボードを使用する
 set clipboard+=unnamed
 
@@ -36,8 +43,13 @@ command! Rv source $MYVIMRC
 
 set helpfile=$VIMRUNTIME/doc/help.txt
 
-" ファイルタイプ判定をon
+" Enable plugin
 filetype plugin on
+" Load Man command even for other file types than man.
+runtime ftplugin/man.vim
+" Close immediately by q, set non-modifiable settings
+autocmd FileType man nn <buffer> q :q!<CR>
+autocmd FileType man setlocal nospell ts=8 nolist ro nomod noma
 
 " escキーの反応を良くする
 set timeout timeoutlen=1000 ttimeoutlen=10

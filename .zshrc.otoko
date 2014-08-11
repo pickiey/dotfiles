@@ -130,6 +130,7 @@ alias la="ls -a"
 alias lsa="ls -a"
 alias lf="ls -F"
 alias ll="ls -l"
+alias lla="ls -al"
 
 alias du="du -h"
 alias df="df -h"
