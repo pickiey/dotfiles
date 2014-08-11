@@ -7,20 +7,13 @@ sudo mv /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj/SystemFo
 defaults write com.apple.Terminal FocusFollowsMouse -boolean true
 #defaults delete com.apple.Terminal FocusFollowsMouse
 
-
-# in QuickLook, enable text selection
-defaults write com.apple.Finder QLEnableTextSelection -bool YES
-#defaults delete com.apple.Finder QLEnableTextSelection
-
 # make silent on startup
 MUTE_FILES=( mute-off.sh mute-on.sh)
-
 for file in ${MUTE_FILES[@]}
 do
   sudo cp $HOME/dotfiles/bin/$file /Library/Scripts/$file
   sudo chmod u+x /Library/Scripts/$file
 done
-
 sudo defaults write com.apple.loginwindow LogoutHook /Library/Scripts/mute-on.sh
 sudo defaults write com.apple.loginwindow LoginHook /Library/Scripts/mute-off.sh
 

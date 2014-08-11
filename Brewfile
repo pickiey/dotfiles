@@ -37,7 +37,6 @@ cask install macvim
 cask install ghc
 cask install google-chrome
 cask install google-japanese-ime
-cask install tinkertool
 cask install vagrant
 cask install virtualbox
 cask install xtrafinder
