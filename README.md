@@ -1,17 +1,17 @@
 # The setup script (setup.sh) is for OSX at present
 
-## 0. At first
+## 1. At first
 ``` sh
-git clone https://github.com/pickiey/dotfiles.git ~/dotfiles
+git clone https://github.com/pickiey/dotfiles.git $HOME/dotfiles
 ```
 
-## 1. Prepare for something beforehand
+## 2. Prepare for something beforehand
 Link some dotfiles, change shell, install git, and so on...
 ``` sh
-./setup.sh
+$HOME/dotfiles/setup.sh
 ```
 
-## 2. Configure the system
+## 3. Configure the system
 ``` sh
-./setup_after.sh
+$HOME/dotfiles/setup_after.sh
 ```
