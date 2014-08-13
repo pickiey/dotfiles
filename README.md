@@ -1,4 +1,4 @@
-### The setup script (setup.sh) is for OSX at present
+# The setup script (setup.sh) is for OSX at present
 
 ## At first
 ``` sh
