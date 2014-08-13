@@ -25,11 +25,12 @@ install unrar
 install wget
 install zsh
 
+# install --HEAD https://raw.github.com/neovim/neovim/master/neovim.rb
+
 # Packages for brew-cask
 install brew-cask
 
 # .dmg from brew-cask
-cask install bettertouchtool
 cask install boot2docker
 cask install iterm2
 cask install karabiner
@@ -37,6 +38,8 @@ cask install macvim
 cask install ghc
 cask install google-chrome
 cask install google-japanese-ime
+cask install slate
+cask install smoothmouse
 cask install vagrant
 cask install virtualbox
 cask install xtrafinder

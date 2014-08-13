@@ -26,6 +26,7 @@ alias delmacfile="find . -name \".DS_Store\" -exec rm -f {} \;"
 
 # boot2docker
 alias bock=boot2docker
+export DOCKER_HOST=tcp://192.168.59.103:2375
 
 # toggle wifi on/off
 function wifi(){

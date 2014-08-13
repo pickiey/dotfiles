@@ -32,4 +32,3 @@ sudo apt-get install zsh
 
 # change shell
 chsh -s /usr/bin/zsh
-#sudo chsh -s /bin/zsh
