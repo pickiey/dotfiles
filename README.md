@@ -1,6 +1,6 @@
 # The setup script (setup.sh) is for OSX at present
 
-## At first
+## 0. At first
 ``` sh
 git clone https://github.com/pickiey/dotfiles.git ~/dotfiles
 ```
