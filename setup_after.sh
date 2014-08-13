@@ -64,6 +64,8 @@ if [ `uname` = "Darwin" ]; then
   defaults write com.apple.screencapture location ~/Pictures
   #defaults delete com.apple.screencapture location
 
+
+
 elif [ `uname` = "Linux" ]; then
   # Linux
 fi

@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# 日本語フォルダー名を英語表記にする
-env LANGUAGE=C LC_MESSAGES=C xdg-user-dirs-gtk-update
-
-# ゲストセッションを無効化する
-sudo sh -c 'printf "[SeatDefaults]\nallow-guest=false\n" >/usr/share/lightdm/lightdm.conf.d/50-no-guest.conf'
-# 元に戻すときは
-#sudo rm /usr/share/lightdm/lightdm.conf.d/50-no-guest.conf
-
-# to install Fonts
-#mkdir -p ~/.fonts
-#cp MyFontFile-Powerline.otf ~/.fonts
-
 # Packages for development
 #sudo apt-get install chromium
 sudo apt-get install docker.io
