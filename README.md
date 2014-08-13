@@ -1,3 +1,5 @@
+### The setup script (setup.sh) is for OSX at present
+
 ## At first
 ``` sh
 git clone https://github.com/pickiey/dotfiles.git ~/dotfiles
@@ -11,5 +13,5 @@ Link some dotfiles, change shell, install git, and so on...
 
 ## 2 Configure the system
 ``` sh
-./setup_osx.sh
+./setup_after.sh
 ```
