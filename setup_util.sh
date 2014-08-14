@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ `uname` = "Darwin" ]; then
-  # OS X
+# ==============================================================================
+# Setting for OS X
+# ==============================================================================
+
+if [ `uname` == "Darwin" ]; then
 
   # install Fonts
   #cp MyFontFile-Powerline.otf $HOME/Library/Fonts
@@ -69,14 +72,37 @@ if [ `uname` = "Darwin" ]; then
   defaults write com.apple.screencapture location ~/Pictures
   #defaults delete com.apple.screencapture location
 
+  echo "Configuration for OS X was done!"
+
+fi
 
 
 
 
-elif [ `uname` = "Linux" ]; then
+
+# ==============================================================================
+# Setting for Ubuntu
+# ==============================================================================
+
+if [ `uname` == "Linux" ]; then
   # Ubuntu
 
   # install Fonts
   #mkdir -p ~/.fonts && cp MyFontFile-Powerline.otf $HOME/.fonts
 
+  echo "Configuration for Ubuntu was done!"
+
 fi
+
+
+
+
+
+# ==============================================================================
+# Show exit message
+# ==============================================================================
+
+echo ""
+echo "All actions completed successfully. Exiting script now."
+
+exit
