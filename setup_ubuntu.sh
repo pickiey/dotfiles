@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Packages for development
+
 #sudo apt-get install chromium
 sudo apt-get install docker.io
 sudo apt-get install git
@@ -17,6 +18,3 @@ sudo apt-get install virtualbox
 sudo apt-get install w3m
 sudo apt-get install wget
 sudo apt-get install zsh
-
-# change shell
-chsh -s /usr/bin/zsh

@@ -1,17 +1,30 @@
 # The setup script (setup.sh) is for OSX at present
 
 ## 1. At first
+if you use OS X
 ``` sh
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+brew update
+brew upgrade
+brew install git
+git clone https://github.com/pickiey/dotfiles.git $HOME/dotfiles
+```
+
+if you use Ubuntu (require git)
+``` sh
+ruby -e "$(wget -O- https://raw.github.com/Homebrew/linuxbrew/go/install)"
+brew update
+brew upgrade
 git clone https://github.com/pickiey/dotfiles.git $HOME/dotfiles
 ```
 
 ## 2. Prepare for something beforehand
-Link some dotfiles, change shell, install git, and so on...
+Link some dotfiles, change shell, install some packages, and so on...
 ``` sh
 $HOME/dotfiles/setup.sh
 ```
 
 ## 3. Configure the system
 ``` sh
-$HOME/dotfiles/setup_after.sh
+$HOME/dotfiles/setup_util.sh
 ```

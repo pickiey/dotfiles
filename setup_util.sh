@@ -3,6 +3,11 @@
 if [ `uname` = "Darwin" ]; then
   # OS X
 
+  # install Fonts
+  #cp MyFontFile-Powerline.otf $HOME/Library/Fonts
+
+
+
   # Happy Hacking OSX!
   # http://tukaikta.blog135.fc2.com/blog-entry-251.html
 
@@ -66,6 +71,12 @@ if [ `uname` = "Darwin" ]; then
 
 
 
+
+
 elif [ `uname` = "Linux" ]; then
-  # Linux
+  # Ubuntu
+
+  # install Fonts
+  #mkdir -p ~/.fonts && cp MyFontFile-Powerline.otf $HOME/.fonts
+
 fi

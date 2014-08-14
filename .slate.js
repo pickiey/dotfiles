@@ -218,7 +218,7 @@ slate.bind(util.key('j', 'shift'), function(win) {
   win.doOperation('move', rect);
 });
 
-// m          .. 最大化
+// m+shift    .. 最大化
 slate.bind(util.key('m', 'shift'), function(win) {
   if (!win) return;
   var bounds = win.screen().visibleRect();
