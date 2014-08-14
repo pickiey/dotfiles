@@ -40,6 +40,23 @@ vagrant
 virtualbox
 xtrafinder)
 
+PACKAGES_UBUNTU=(
+docker.io
+git
+ghc
+ibus-mozc
+nautilus-open-terminal
+tmux
+tree
+unrar
+unity-tweak-tool
+vagrant
+vim-gnome
+virtualbox
+w3m
+wget
+zsh)
+
 
 
 
