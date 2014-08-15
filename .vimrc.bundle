@@ -86,7 +86,7 @@ endif
   " precious.vimで必要
   NeoBundle 'Shougo/context_filetype.vim'
   " 現在のカーソル位置のコンテキストによって filetype を切り換える
-  NeoBundle 'osyo-manga/vim-precious'
+  "NeoBundle 'osyo-manga/vim-precious'
   " vimでw3m
   NeoBundle 'yuratomo/w3m.vim'
   " vimでgit操作

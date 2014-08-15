@@ -1,8 +1,9 @@
 # The setup script (setup.sh) is for OSX at present
 
 ## 1. At first
-if you use OS X
+if you use OS X (require xcode)
 ``` sh
+xcode-select --install
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 brew update
 brew upgrade

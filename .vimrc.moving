@@ -104,11 +104,11 @@ endfunction
 inoremap jj <Esc>
 
 " insert mode でddでescしてdd
-inoremap dd <Esc>dd
+"inoremap dd <Esc>dd
 
 " insert mode でyyでescしてyy
-inoremap yy <Esc>yy
+"inoremap yy <Esc>yy
 
 " insert mode でもZZやZQで終了
-inoremap ZZ <Esc>ZZ
-inoremap ZQ <Esc>ZQ
+"inoremap ZZ <Esc>ZZ
+"inoremap ZQ <Esc>ZQ
