@@ -51,15 +51,6 @@ endif
 
 
 
-" Programming {{{
-  " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
-  NeoBundle 'thinca/vim-quickrun'
-  " emmet(zen-codeing)の導入
-  NeoBundle 'mattn/emmet-vim'
-" }}}
-
-
-
 " Syntax {{{
   " rcmdnk/vim-markdown : markdownのハイライト
   NeoBundle 'rcmdnk/vim-markdown'
@@ -70,6 +61,11 @@ endif
 
 
 " Utility {{{
+
+  " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
+  NeoBundle 'thinca/vim-quickrun'
+  " emmet(zen-codeing)の導入
+  NeoBundle 'mattn/emmet-vim'
   " vimshell : vimのshell
   NeoBundle 'Shougo/vimshell'
   " vimproc : vimから非同期実行。vimshelleで必要

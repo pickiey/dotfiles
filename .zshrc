@@ -1,22 +1,30 @@
-# Customize to your needs...
-[ -f ~/dotfiles/.zshrc.otoko ] && source ~/dotfiles/.zshrc.otoko
-[ -f ~/dotfiles/.zshrc.custom ] && source ~/dotfiles/.zshrc.custom
+# ==============================================================================
+# Basic configuration
+# ==============================================================================
 
-## alias設定
-[ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
+[ -f ~/dotfiles/.zshrc.basic ] && source ~/dotfiles/.zshrc.basic
+
+
+
+# ==============================================================================
+# Configureraton for each OS
+# ==============================================================================
 
 case "${OSTYPE}" in
 # MacOSX
 darwin*)
-  # ここに設定
   [ -f ~/dotfiles/.zshrc.osx ] && source ~/dotfiles/.zshrc.osx
   ;;
 # Linux
 linux*)
-  # ここに設定
   [ -f ~/dotfiles/.zshrc.linux ] && source ~/dotfiles/.zshrc.linux
   ;;
 esac
 
-## local固有設定
+
+
+# ==============================================================================
+# Configureraton for local
+# ==============================================================================
+
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
