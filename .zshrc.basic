@@ -63,7 +63,7 @@ path=($HOME/bin(N-/) $path)
 path=($HOME/*/bin(N-/) $path)
 
 # Prediction configuration
-autoload predict-on
+#autoload predict-on
 
 
 
