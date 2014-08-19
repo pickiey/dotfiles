@@ -82,11 +82,6 @@
                 <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_KANA,</autogen>
             </item>
             <item>
-                <name>Command_L x2 to KANA</name>
-                <identifier>remap___command_l_command_l___kana</identifier>
-                <autogen>__DoublePressModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::JIS_KANA</autogen>
-            </item>
-            <item>
                 <name>Command_L x2 to KANA/EISUU (toggle)</name>
                 <identifier>remap___command_l_command_l___toggle_eisuu_kana</identifier>
                 <autogen>__DoublePressModifier__ KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::COMMAND_L, KeyCode::VK_JIS_TOGGLE_EISUU_KANA</autogen>
@@ -110,11 +105,6 @@
                 <appendix>(+ When you type Command_R only, send KANA)</appendix>
                 <identifier>remap___command_r___kana___prefer_command</identifier>
                 <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA,</autogen>
-            </item>
-            <item>
-                <name>Command_R x2 to KANA</name>
-                <identifier>remap___command_r_command_r___kana</identifier>
-                <autogen>__DoublePressModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::JIS_KANA</autogen>
             </item>
             <item>
                 <name>Command_R x2 to KANA/EISUU (toggle)</name>
