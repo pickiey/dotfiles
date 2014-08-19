@@ -1,7 +1,7 @@
 Synopsis
 ========
 
-The setup script (setup.sh) is for OSX at present
+The setup script (setup.sh) is for OSX at present.
 
 If you use OS X (require xcode)
 -------------------------------
