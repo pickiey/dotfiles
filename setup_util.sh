@@ -1,9 +1,25 @@
 #!/bin/bash
 
+# Confirmation
+echo ""
+echo -n "Setup OS configuration finely? (y/n) [y] : "
+read YN
+
+if [ "${YN}" != "y" ] && [ "${YN}" != "" ]; then
+
+  echo ""
+  echo "Canceled."
+  exit
+
+fi
+
+
+
+
+
 # ==============================================================================
 # Setting for OS X
 # ==============================================================================
-
 if [ `uname` == "Darwin" ]; then
 
   # install Fonts
@@ -13,6 +29,8 @@ if [ `uname` == "Darwin" ]; then
 
   # Happy Hacking OSX!
   # http://tukaikta.blog135.fc2.com/blog-entry-251.html
+
+
 
   # on mouseover, focus window
   defaults write com.apple.Terminal FocusFollowsMouse -boolean true
@@ -72,6 +90,7 @@ if [ `uname` == "Darwin" ]; then
   defaults write com.apple.screencapture location ~/Pictures
   #defaults delete com.apple.screencapture location
 
+  echo ""
   echo "Configuration for OS X was done!"
 
 fi
@@ -83,13 +102,13 @@ fi
 # ==============================================================================
 # Setting for Ubuntu
 # ==============================================================================
-
 if [ `uname` == "Linux" ]; then
   # Ubuntu
 
   # install Fonts
   #mkdir -p ~/.fonts && cp MyFontFile-Powerline.otf $HOME/.fonts
 
+  echo ""
   echo "Configuration for Ubuntu was done!"
 
 fi
@@ -101,7 +120,6 @@ fi
 # ==============================================================================
 # Show exit message
 # ==============================================================================
-
 echo ""
 echo "All actions completed successfully. Exiting script now."
 

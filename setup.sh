@@ -15,9 +15,8 @@ fi
 # ==============================================================================
 # Setup neobundle.vim
 # ==============================================================================
-
 echo ""
-echo -n "Setup neobundle.vim? (y/n) [y] "
+echo -n "Setup neobundle.vim? (y/n) [y] : "
 read YN
 
 if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -34,11 +33,10 @@ fi
 # ==============================================================================
 # Setup tmux-powerline
 # ==============================================================================
-
 UTIL_FILES=( getCpuUsage.sh getMemUsage.sh tmuxx.sh)
 
 echo ""
-echo -n "Setup tmux-powerline? (y/n) [y] "
+echo -n "Setup tmux-powerline? (y/n) [y] : "
 read YN
 
 if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -61,11 +59,10 @@ fi
 # ==============================================================================
 # Link dotfiles
 # ==============================================================================
-
 DOT_FILES=(.zshrc .vimrc .tmux.conf)
 
 echo ""
-echo -n "Link .zshrc, .vimrc, .tmux.conf to \$HOME? (y/n) [y] "
+echo -n "Link .zshrc, .vimrc, .tmux.conf to \$HOME? (y/n) [y] : "
 read YN
 
 if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -84,7 +81,6 @@ fi
 # ==============================================================================
 # Setting for OS X
 # ==============================================================================
-
 if [ `uname` == "Darwin" ]; then
 
   #
@@ -92,7 +88,7 @@ if [ `uname` == "Darwin" ]; then
   #
 
   echo ""
-  echo -n "Disable filename localize? (y/n) [y] "
+  echo -n "Disable filename localize? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -108,7 +104,7 @@ if [ `uname` == "Darwin" ]; then
   MUTE_FILES=( mute-off.sh mute-on.sh)
 
   echo ""
-  echo -n "Make silent on startup? (y/n) [y] "
+  echo -n "Make silent on startup? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -129,7 +125,7 @@ if [ `uname` == "Darwin" ]; then
   #
 
   echo ""
-  echo -n "Chmod reattach-to-user-namespace (for copy&paste)? (y/n) [y] "
+  echo -n "Chmod reattach-to-user-namespace (for copy&paste)? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -143,7 +139,7 @@ if [ `uname` == "Darwin" ]; then
   #
 
   echo ""
-  echo -n "Use zsh? (y/n) [y] "
+  echo -n "Use zsh? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -157,7 +153,7 @@ if [ `uname` == "Darwin" ]; then
   #
 
   echo ""
-  echo -n "Link .slate.js to \$HOME? (y/n) [y] "
+  echo -n "Link .slate.js to \$HOME? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -171,7 +167,7 @@ if [ `uname` == "Darwin" ]; then
   #
 
   echo ""
-  echo -n "Install some packages? (y/n) [y] "
+  echo -n "Install some packages? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -186,7 +182,7 @@ if [ `uname` == "Darwin" ]; then
 
   if [ -e /usr/local/bin/zsh ]; then
     echo ""
-    echo -n "Use zsh installed with homebrew? (y/n) [y] "
+    echo -n "Use zsh installed with homebrew? (y/n) [y] : "
     read YN
 
     if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -194,6 +190,21 @@ if [ `uname` == "Darwin" ]; then
       chsh -s /usr/local/bin/zsh
 
     fi
+
+  fi
+
+  #
+  # Karabiner (key remapper)
+  #
+
+  echo ""
+  echo -n "Setup Karabiner? (y/n) [y] : "
+  read YN
+
+  if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
+
+    mkdir -p $HOME/Library/Application\ Support/Karabiner
+    cp $HOME/dotfiles/private.xml $HOME/Library/Application\ Support/Karabiner
 
   fi
 
@@ -206,7 +217,6 @@ fi
 # ==============================================================================
 # Setting for Ubuntu
 # ==============================================================================
-
 if [ `uname` == "Linux" ]; then
 
   #
@@ -214,7 +224,7 @@ if [ `uname` == "Linux" ]; then
   #
 
   echo ""
-  echo -n "Disable filename localiz? (y/n) [y] "
+  echo -n "Disable filename localiz? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -228,7 +238,7 @@ if [ `uname` == "Linux" ]; then
   #
 
   echo ""
-  echo -n "Disable guest session? (y/n) [y] "
+  echo -n "Disable guest session? (y/n) [y] : "
   read YN
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
@@ -243,7 +253,7 @@ if [ `uname` == "Linux" ]; then
 
   if [ -e /usr/bin/zsh ]; then
     echo ""
-    echo -n "Use zsh installed with linuxbrew? (y/n) [y] "
+    echo -n "Use zsh installed with linuxbrew? (y/n) [y] : "
     read YN
 
     if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then

@@ -6,7 +6,7 @@ The setup script (setup.sh) is for OSX at present.
 If you use OS X (require xcode)
 -------------------------------
 
-``` sh
+```sh
 xcode-select --install
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 brew update
@@ -24,7 +24,7 @@ $HOME/dotfiles/setup_util.sh
 If you use Ubuntu (require git)
 -------------------------------
 
-``` sh
+```sh
 ruby -e "$(wget -O- https://raw.github.com/Homebrew/linuxbrew/go/install)"
 brew update
 brew upgrade
@@ -40,10 +40,5 @@ $HOME/dotfiles/setup_util.sh
 References
 ----------
 
-- [Homebrew]
-- [Linuxbrew]
-
-
-
-[Homebrew]:http://http://brew.sh/
-[Linuxbrew]:https://github.com/Homebrew/linuxbrew
+- [Homebrew](http://http://brew.sh/)
+- [Linuxbrew](https://github.com/Homebrew/linuxbrew)

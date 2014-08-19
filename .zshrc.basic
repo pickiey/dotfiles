@@ -135,9 +135,11 @@ alias su="su -l"
 
 alias v=vim
 
+alias cdt='cd ~/dotfiles'
 alias cdd='cd ~/Downloads'
 alias cdcd='cd ~/code'
-alias cdt='cd ~/dotfiles'
+alias cdm='cd ~/memo'
+
 alias aa=exit
 alias ZZ=exit
 alias ZQ=exit
@@ -259,7 +261,7 @@ esac
   # プロンプト指定(コマンドの続き)
   PROMPT2="[%n]> "
   # もしかして時のプロンプト指定
-  SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{${reset_color}%} かな? [そう!(y), 違う!(n),a,e]: "
+  SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{${reset_color}%} かな? [そう!(y), 違う!(n),a,e] : "
 
   # 時刻更新
   TRAPALRM () { zle reset-prompt }
