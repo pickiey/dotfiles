@@ -39,7 +39,7 @@ NeoBundle 'Shougo/neosnippet'
 " neosnippetのデフォルトのスニペット追加
 NeoBundle "Shougo/neosnippet-snippets"
 " Haskellの補完強化
-"NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'ujihisa/neco-ghc'
 
 
 
@@ -60,7 +60,7 @@ NeoBundle 'matchit.zip'
 NeoBundle 'junegunn/vim-easy-align'
 " vim上でghc-mod
 " 調べたい単語をカーソルして :GhcModType
-"NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/ghcmod-vim'
 
 
 
@@ -120,7 +120,6 @@ NeoBundle 'mopp/mopkai.vim'
 " ------------------------------------------------
 " Unite
 " ------------------------------------------------
-" unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
 "NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'tsukkee/unite-help'
 "NeoBundle 'h1mesuke/unite-outline'

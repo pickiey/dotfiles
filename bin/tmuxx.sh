@@ -13,12 +13,27 @@ if [ -z $TMUX ]; then
       # https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
       tweaked_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
 
-      tmux -f <(echo "$tweaked_config") new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 12 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 18 \; select-pane -R \; clock-mode \; select-pane -L \; select-pane -U \; select-pane -L \; select-pane -L
+      if [ `tput cols` -gt 200 ]; then
+        #tmux -f <(echo "$tweaked_config") new-session \; split-window -h \; split-window \; split-window -h \; clock-mode \; select-pane -L \; resize-pane -R 18 \; select-pane -U \; resize-pane -D 12 \; select-pane -L \; split-window \; split-window -h \; clock-mode \; select-pane -L \; resize-pane -R 18 \; select-pane -U \; resize-pane -D 12
+        tmux -f <(echo "$tweaked_config") new-session \; split-window -h \; split-window \; split-window -h \; clock-mode \; select-pane -L \; resize-pane -R 18 \; select-pane -U \; resize-pane -D 12 \; select-pane -L \; clock-mode \; split-window \; resize-pane -U 12 \; select-pane -U \; split-window -h \; resize-pane -L 18
+
+      else
+        tmux -f <(echo "$tweaked_config") new-session \; clock-mode \; split-window \; resize-pane -U 12 \; select-pane -U \; split-window -h \; resize-pane -L 18
+      fi
 
     else
-      tmux new-session \; split-window -h \; resize-pane -L 30 \; split-window -d \; resize-pane -D 12 \; split-window -h \; select-pane -D \; split-window -h -d \; resize-pane -R 18 \; select-pane -R \; clock-mode \; select-pane -L \; select-pane -U \; select-pane -L
+
+      if [ `tput cols` -gt 200 ]; then
+        #tmux new-session \; split-window -h \; resize-pane -L 30 \; split-window \; split-window -h \; clock-mode \; select-pane -L \; resize-pane -R 18 \; select-pane -U \; resize-pane -D 12 \; split-window -h -d \; select-pane -L
+
+        tmux new-session \; split-window -h \; split-window \; split-window -h \; clock-mode \; select-pane -L \; resize-pane -R 18 \; select-pane -U \; resize-pane -D 12 \; select-pane -L \; split-window \; split-window -h \; clock-mode \; select-pane -L \; resize-pane -R 18 \; select-pane -U \; resize-pane -D 12
+
+      else
+        tmux new-session \; clock-mode \; split-window \; resize-pane -U 12 \; select-pane -U \; split-window -h \; resize-pane -L 18
+      fi
 
     fi
+
   fi
 fi
 

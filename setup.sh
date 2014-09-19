@@ -45,8 +45,7 @@ if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
   cp $HOME/dotfiles/bin/default.sh $HOME/.tmux/tmux-powerline/themes/default.sh
   chmod u+x $HOME/.tmux/tmux-powerline/themes/default.sh
 
-  for file in ${UTIL_FILES[@]}
-  do
+  for file in ${UTIL_FILES[@]}; do
     chmod u+x $HOME/dotfiles/bin/$file
   done
 
@@ -67,8 +66,7 @@ read YN
 
 if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
 
-  for file in ${DOT_FILES[@]}
-  do
+  for file in ${DOT_FILES[@]}; do
     ln -sf $HOME/dotfiles/$file $HOME/$file
   done
 
@@ -109,8 +107,7 @@ if [ `uname` == "Darwin" ]; then
 
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
 
-    for file in ${MUTE_FILES[@]}
-    do
+    for file in ${MUTE_FILES[@]}; do
       sudo cp $HOME/dotfiles/bin/$file /Library/Scripts/$file
       sudo chmod u+x /Library/Scripts/$file
     done

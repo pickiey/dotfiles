@@ -111,7 +111,7 @@ compinit -u
 setopt complete_aliases     # aliased ls needs if file/dir completions work
 
 alias where="command -v"
-alias j="jobs -l"
+#alias j="jobs -l"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
@@ -121,6 +121,8 @@ linux*)
   alias ls="ls --color"
   ;;
 esac
+
+[ `which ggrep` ] && alias grep=ggrep
 
 alias la="ls -a"
 alias lsa="ls -a"
@@ -151,10 +153,10 @@ alias tml='tmux list-window'
 alias tmk='tmux kill-server'
 
 # 右プロンプトでメモ
-function memo() { RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }
+function memo(){ RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }
 
 # VimでManを見る
-#function man {
+#function man(){
 #  local p
 #  local m
 #  if [ "$PAGER" != "" ];then
@@ -181,8 +183,35 @@ function memo() { RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }
 #  return $ret
 #}
 
+# Weblioで単語の用例検索
+function dic(){ w3m "http://ejje.weblio.jp/content/$1" | grep "用例" }
+
+# zで楽に移動
+if which brew > /dev/null; then
+  _Z_CMD=j
+  source $(brew --prefix)/etc/profile.d/z.sh
+fi
+
+# カレントパス以下のディレクトリでGrepマッチしたディレクトリに移動
+function jj(){
+  if [ $1 ]; then
+    JUMPDIR=$(find . -type d -maxdepth 1 | grep $1 | tail -1)
+    if [[ -d $JUMPDIR && -n $JUMPDIR ]]; then
+      cd $JUMPDIR
+    else
+      echo "directory not found"
+    fi
+  fi
+}
+
+# カレントディレクトリ以下にある空ディレクトリを削除
+function cleanup(){
+  find . -type d -maxdepth 2 -empty -exec rmdir -v {} \; 2>/dev/null
+  find . -type d -maxdepth 2 -empty -exec rmdir -v {} \; 2>/dev/null
+}
+
 # cdと同時にls -G
-#function cdls() {
+#function cdls(){
 #  # cdがaliasでループするので\をつける
 #  \cd $1;
 #  ls;

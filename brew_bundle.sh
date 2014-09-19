@@ -4,8 +4,8 @@
 echo "Requesting brew... "
 
 if [ ! `which brew` ]; then
-    echo "ERROR: This script requires brew to run"
-    exit
+  echo "ERROR: This script requires brew to run"
+  exit
 fi
 
 
@@ -24,6 +24,7 @@ tor
 tree
 unrar
 wget
+z
 zsh)
 
 PACKAGES_OSX_CASK=(
@@ -55,6 +56,7 @@ vim-gnome
 virtualbox
 w3m
 wget
+xclip
 zsh)
 
 
