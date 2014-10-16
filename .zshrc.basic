@@ -140,7 +140,7 @@ alias v=vim
 alias cdt='cd ~/dotfiles'
 alias cdd='cd ~/Downloads'
 alias cdcd='cd ~/code'
-alias cdm='cd ~/memo'
+alias cdm='cd ~/Dropbox/Memo'
 
 alias aa=exit
 alias ZZ=exit
@@ -151,6 +151,8 @@ alias tma='tmux attach'
 alias tmd='tmux detach'
 alias tml='tmux list-window'
 alias tmk='tmux kill-server'
+
+alias vg='vagrant'
 
 # 右プロンプトでメモ
 function memo(){ RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }

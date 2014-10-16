@@ -4,13 +4,10 @@
 echo ""
 echo -n "Setup OS configuration finely? (y/n) [y] : "
 read YN
-
 if [ "${YN}" != "y" ] && [ "${YN}" != "" ]; then
-
   echo ""
   echo "Canceled."
   exit
-
 fi
 
 

@@ -19,7 +19,7 @@ endif
 " インデント表示
 NeoBundle 'nathanaelkane/vim-indent-guides'
 " Haskellでインデント
-"NeoBundle 'kana/vim-filetype-haskell'
+NeoBundle 'kana/vim-filetype-haskell'
 " rcmdnk/vim-markdown : markdownのハイライト
 NeoBundle 'rcmdnk/vim-markdown'
 " groenewege/vim-less : lessのハイライト
@@ -97,7 +97,8 @@ NeoBundle 'tpope/vim-fugitive'
 " gitの差分を視覚化
 NeoBundle 'airblade/vim-gitgutter'
 
-
+" latex
+NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
 
 

@@ -18,6 +18,7 @@ fi
 
 PACKAGES_OSX=(
 git
+go
 homebrew/dupes/grep
 tmux
 tor
@@ -29,8 +30,11 @@ zsh)
 
 PACKAGES_OSX_CASK=(
 boot2docker
+dropbox
+evernote
 iterm2
 karabiner
+mactex
 macvim
 ghc
 google-chrome

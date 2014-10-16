@@ -110,8 +110,8 @@ slate.bind(util.key('j'), slate.operation('focus', { direction: 'down' }));
 slate.bind(util.key('k'), slate.operation('focus', { direction: 'up' }));
 slate.bind(util.key('l'), slate.operation('focus', { direction: 'right' }));
 
-// i          .. 下に隠れているウィンドウをフォーカス
-slate.bind(util.key('i'), slate.operation('focus', { direction: 'behind' }));
+// n          .. 下に隠れているウィンドウをフォーカス
+slate.bind(util.key('n'), slate.operation('focus', { direction: 'behind' }));
 
 // p          .. スクリーン間でフォーカスを移動
 slate.bind(util.key('p'), function(win) {
@@ -141,8 +141,8 @@ var corners = slate.bind(util.key('o', 'shift'), slate.operation('chain', {
   })
 }));
 
-// u+shift    .. 左右に飛ばす
-slate.bind(util.key('u', 'shift'), slate.operation('chain', {
+// n+shift    .. 左右に飛ばす
+slate.bind(util.key('n', 'shift'), slate.operation('chain', {
   operations: _.map(['left', 'right'], function(d) {
     return slate.operation('push', {
       direction: d,
@@ -228,7 +228,7 @@ slate.bind(util.key('m', 'shift'), function(win) {
 
 // http://mint.hateblo.jp/category/Slate
 // 同じアプリケーションで別のウィンドウにフォーカスする (Chrome対応版)
-slate.bind(util.key('n'), function() {
+slate.bind(util.key('u'), function() {
   function get_next_win(windows) {
     truth_values_of_is_main = _.map(windows, function(w){ return w.isMain(); })
     next_idx = _.indexOf(truth_values_of_is_main, 1) + 1;
