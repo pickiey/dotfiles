@@ -24,6 +24,7 @@ tmux
 tor
 tree
 unrar
+w3m
 wget
 z
 zsh)

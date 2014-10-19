@@ -7,8 +7,9 @@ If you use OS X (require xcode)
 -------------------------------
 
 ```sh
+sudo xcrun cc
 xcode-select --install
-ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew upgrade
 brew install git
@@ -40,5 +41,5 @@ $HOME/dotfiles/setup_util.sh
 References
 ----------
 
-- [Homebrew](http://http://brew.sh/)
+- [Homebrew](https://http://brew.sh)
 - [Linuxbrew](https://github.com/Homebrew/linuxbrew)
