@@ -126,7 +126,9 @@ if [ `uname` == "Darwin" ]; then
   echo -n "Install some packages? (y/n) [y] : "
   read YN
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
-    $HOME/dotfiles/brew_bundle.sh
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
+    brew install tmux w3m z zsh
+    brew install --HEAD https://raw.github.com/neovim/neovim/master/neovim.rb
   fi
 
   # change shell

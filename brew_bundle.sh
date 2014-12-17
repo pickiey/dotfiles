@@ -19,7 +19,9 @@ fi
 PACKAGES_OSX=(
 git
 go
+lua
 homebrew/dupes/grep
+reattach-to-user-namespace
 tmux
 tor
 tree
@@ -36,10 +38,10 @@ evernote
 iterm2
 karabiner
 mactex
-macvim
 ghc
 google-chrome
 google-japanese-ime
+qlmarkdown
 slate
 smoothmouse
 vagrant
