@@ -1,5 +1,10 @@
 # Basic configuration
-[ -f ~/dotfiles/.zshrc.basic ] && source ~/dotfiles/.zshrc.basic
+[ -f $HOME/dotfiles/.zshrc.basic ] && source $HOME/dotfiles/.zshrc.basic
+
+
+
+# Configuration for plugins
+[ -f $HOME/dotfiles/.zshrc.plugins_setting ] && source $HOME/dotfiles/.zshrc.plugins_setting
 
 
 
@@ -7,15 +12,15 @@
 case "${OSTYPE}" in
 # MacOSX
 darwin*)
-  [ -f ~/dotfiles/.zshrc.osx ] && source ~/dotfiles/.zshrc.osx
+  [ -f $HOME/dotfiles/.zshrc.osx ] && source $HOME/dotfiles/.zshrc.osx
   ;;
 # Linux
 linux*)
-  [ -f ~/dotfiles/.zshrc.linux ] && source ~/dotfiles/.zshrc.linux
+  [ -f $HOME/dotfiles/.zshrc.linux ] && source $HOME/dotfiles/.zshrc.linux
   ;;
 esac
 
 
 
 # Configureraton for local
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local

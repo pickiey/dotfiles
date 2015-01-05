@@ -19,9 +19,10 @@ fi
 PACKAGES_OSX=(
 git
 go
+hugo
 lua
-homebrew/dupes/grep
 reattach-to-user-namespace
+the_silver_searcher
 tmux
 tor
 tree
@@ -29,9 +30,15 @@ unrar
 w3m
 wget
 z
-zsh)
+zsh
+zsh-completions
+zsh-history-substring-search
+zsh-syntax-highlighting
+zshdb
+)
 
 PACKAGES_OSX_CASK=(
+adobe-air
 boot2docker
 dropbox
 evernote
@@ -46,7 +53,8 @@ slate
 smoothmouse
 vagrant
 virtualbox
-xtrafinder)
+xtrafinder
+)
 
 PACKAGES_UBUNTU=(
 docker.io
@@ -64,7 +72,8 @@ virtualbox
 w3m
 wget
 xclip
-zsh)
+zsh
+)
 
 
 
@@ -94,7 +103,6 @@ if [ `uname` == "Darwin" ]; then
   # Add Repository
   brew tap homebrew/binary
   brew tap caskroom/cask
-  brew tap homebrew/dupes
 
   for file in ${PACKAGES_OSX[@]}
   do

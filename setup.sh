@@ -13,6 +13,21 @@ fi
 
 
 # ==============================================================================
+# Setup zsh-syntax-highlighting
+# ==============================================================================
+echo ""
+echo -n "Setup zsh-syntax-highlighting? (y/n) [y] : "
+read YN
+
+if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.zsh/zsh-syntax-highlighting
+fi
+
+
+
+
+
+# ==============================================================================
 # Setup neobundle.vim
 # ==============================================================================
 echo ""
@@ -127,8 +142,7 @@ if [ `uname` == "Darwin" ]; then
   read YN
   if [ "${YN}" == "y" ] || [ "${YN}" == "" ]; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
-    brew install tmux w3m z zsh
-    brew install --HEAD https://raw.github.com/neovim/neovim/master/neovim.rb
+    brew install git tmux w3m z zsh
   fi
 
   # change shell

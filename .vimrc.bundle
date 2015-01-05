@@ -1,7 +1,7 @@
 "-------------------------------------------------------------------------------
 " 拡張管理 Plugin
 "-------------------------------------------------------------------------------
-"vunlde.vimで管理してるpluginを読み込む
+" vunlde.vimで管理してるpluginを読み込む
 filetype off
 
 if has('vim_starting')
@@ -63,7 +63,8 @@ NeoBundle 'junegunn/vim-easy-align'
 " vim上でghc-mod
 " 調べたい単語をカーソルして :GhcModType
 NeoBundle 'eagletmt/ghcmod-vim'
-
+" 高速grep
+NeoBundle 'mileszs/ack.vim'
 
 
 

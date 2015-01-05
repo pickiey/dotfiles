@@ -130,7 +130,7 @@ let g:neocomplete#omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 " autocmd FileType ruby let g:neocomplete#source_disable = {
   " \ 'include_complete' : 1
 " \ }
-"インクルードパスの指定
+" インクルードパスの指定
 let g:neocomplete#include_paths = {
   \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
   \ 'c'    : '.,/usr/include',
@@ -142,7 +142,7 @@ let g:neocomplete#include_patterns = {
   \ 'ruby' : '^\s*require',
   \ 'perl' : '^\s*use',
   \ }
-"インクルード先のファイル名の解析パターン
+" インクルード先のファイル名の解析パターン
 let g:neocomplete#include_exprs = {
   \ 'ruby' : substitute(v:fname,'::','/','g')
   \ }
@@ -168,6 +168,15 @@ let g:neocomplete#omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 " ------------------------------------------------
 map  :call SmoothScroll("d",1, 1)<CR>
 map  :call SmoothScroll("u",1, 1)<CR>
+
+
+
+
+
+" ------------------------------------------------
+" ack.vim
+" ------------------------------------------------
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 
 
