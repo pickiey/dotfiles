@@ -51,5 +51,5 @@ $HOME/dotfiles/setup_util.sh
 References
 ----------
 
-- [Homebrew](brew.sh/index_ja.html)
-- [Linuxbrew](github.com/Homebrew/linuxbrew)
+- [Homebrew](http://brew.sh/index_ja.html)
+- [Linuxbrew](https://github.com/Homebrew/linuxbrew)
