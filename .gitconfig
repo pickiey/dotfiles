@@ -2,17 +2,17 @@
   name = pickiey
   email =
 [color]
-  # color$B$N@_Dj(B($B0J2<$N%3%^%s%I$O<+F0$G?'$D$1$k(B)
+  # colorの設定(以下のコマンドは自動で色つける)
   status = auto
   diff = auto
   branch = auto
   interactive = auto
   grep = auto
 [push]
-  default = upstream # default$B$N(Bpush$B@h$O(Btracking$B$7$F$$$k%j%]%8%H%j(B
+  default = upstream # defaultのpush先はtrackingしているリポジトリ
 [core]
-  excludesfile = ~/.gitignore  # global$B$J(B.gitignore$B$N;XDj(B
-  autocrlf = input                 # CRLF$B$r<+F0JQ49(B
+  excludesfile = ~/.gitignore  # globalな.gitignoreの指定
+  autocrlf = input                 # CRLFを自動変換
   editor = vim
   quotepath = false
 [merge]
