@@ -3,7 +3,7 @@
 # ==============================================================================
 # LANG
 export LANG=ja_JP.UTF-8
-case ${UID} in
+case "$UID" in
 0)
   LANG=C
   ;;
@@ -42,7 +42,7 @@ unsetopt caseglob
 setopt noclobber
 
 # ターミナルのタイトルをuser@hostname:current-directoryに変更する
-case "${TERM}" in
+case "$TERM" in
 xterm|xterm-color|kterm|kterm-color)
   precmd() {
     echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
@@ -67,7 +67,7 @@ path=($HOME/*/bin(N-/) $path)
 
 
 # Completion configuration
-fpath=(${HOME}/.zsh/functions/Completion ${fpath})
+fpath=($HOME/.zsh/functions/Completion $fpath)
 autoload -U compinit
 compinit -u
 
@@ -95,7 +95,7 @@ bindkey "\e[Z" reverse-menu-complete
 
 
 # Command history configuration
-HISTFILE=${HOME}/.zsh_history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 setopt hist_ignore_dups     # ignore duplication command history list
@@ -114,7 +114,7 @@ setopt complete_aliases     # aliased ls needs if file/dir completions work
 alias where="command -v"
 #alias j="jobs -l"
 
-case "${OSTYPE}" in
+case "$OSTYPE" in
 freebsd*|darwin*)
   alias ls="ls -G -w"
   ;;
@@ -138,26 +138,26 @@ alias su="su -l"
 
 alias v=vim
 
-alias cdt='cd $HOME/dotfiles'
-alias cdd='cd $HOME/Downloads'
-alias cdcd='cd $HOME/code'
-alias cdm='cd $HOME/Dropbox/Memo'
-alias cdb='cd $HOME/blog'
+alias cdt="cd $HOME/dotfiles"
+alias cdd="cd $HOME/Downloads"
+alias cdcd="cd $HOME/code"
+alias cdm="cd $HOME/Dropbox/Memo"
+alias cdb="cd $HOME/blog"
 
 alias aa=exit
 alias ZZ=exit
 alias ZQ=exit
 
-alias tm='$HOME/dotfiles/bin/tmuxx.sh'
-alias tma='tmux attach'
-alias tmd='tmux detach'
-alias tml='tmux list-window'
-alias tmk='tmux kill-server'
+alias tm="$HOME/dotfiles/bin/tmuxx.sh"
+alias tma="tmux attach"
+alias tmd="tmux detach"
+alias tml="tmux list-window"
+alias tmk="tmux kill-server"
 
-alias vg='vagrant'
+alias vg=vagrant
 
 # 右プロンプトでメモ
-function memo(){ RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }
+function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
 
 # VimでManを見る
 #function man(){
@@ -188,10 +188,10 @@ function memo(){ RPROMPT="%{$fg[red]%}$1%{${reset_color}%}" }
 #}
 
 # Weblioで単語の用例検索
-function dic(){ w3m "http://ejje.weblio.jp/content/$1" | grep "用例" }
+function dic(){ w3m "https://ejje.weblio.jp/content/$1" | grep "用例" }
 
 # zで楽に移動
-if which brew > /dev/null; then
+if [ `which brew` ]; then
   _Z_CMD=j
   source $(brew --prefix)/etc/profile.d/z.sh
 fi
@@ -200,7 +200,7 @@ fi
 function jj(){
   if [ $1 ]; then
     JUMPDIR=$(find . -type d -maxdepth 1 | grep $1 | tail -1)
-    if [[ -d $JUMPDIR && -n $JUMPDIR ]]; then
+    if [[ -d "$JUMPDIR" && -n "$JUMPDIR" ]]; then
       cd $JUMPDIR
     else
       echo "directory not found"
@@ -214,14 +214,6 @@ function cleanup(){
   find . -type d -maxdepth 2 -empty -exec rmdir -v {} \; 2>/dev/null
 }
 
-# cdと同時にls -G
-#function cdls(){
-#  # cdがaliasでループするので\をつける
-#  \cd $1;
-#  ls;
-#}
-#alias cd=cdls
-
 
 
 
@@ -234,7 +226,7 @@ autoload -U colors; colors
 
 # terminal color configuration
 
-case "${TERM}" in
+case "$TERM" in
 xterm|xterm-color)
   export LSCOLORS=exfxcxdxbxegedabagacad
   export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
@@ -290,11 +282,11 @@ esac
   # 1行目 改行
   # 2行目 ユーザ名@ホスト名 gitステータス カレントディレクトリ
   # 3行目 顔文字
-  PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{${reset_color}%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{${reset_color}%} "
+  PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{$reset_color%} "
   # プロンプト指定(コマンドの続き)
   PROMPT2="[%n]> "
   # もしかして時のプロンプト指定
-  SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{${reset_color}%} かな? [そう!(y), 違う!(n),a,e] : "
+  SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
 
   # 時刻更新
   TRAPALRM () { zle reset-prompt }

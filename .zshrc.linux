@@ -1,5 +1,7 @@
 # ==============================================================================
 # Alias configuration
 # ==============================================================================
-alias pbcopy="xclip -in -sel clip"
-alias pbpaste="xclip -out -sel clip"
+# linuxbrew
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
