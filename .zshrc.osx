@@ -8,9 +8,6 @@ path=(/usr/local/Caskroom/*/bin(N-/) $path)
 # brew_cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
 
-# vim
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-
 # boot2docker
 export DOCKER_HOST=tcp://192.168.59.103:2375
 
