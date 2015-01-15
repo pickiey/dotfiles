@@ -69,10 +69,10 @@ fi
 # ==============================================================================
 # Link dotfiles
 # ==============================================================================
-DOT_FILES=(.zshrc .vimrc .tmux.conf .gitconfig)
+DOT_FILES=(.zshrc .vimrc .tmux.conf .gitconfig .gitignore)
 
 echo ""
-echo -n "Link .zshrc, .vimrc, .tmux.conf .gitconfig to \$HOME? (y/n) [y] : "
+echo -n "Link .zshrc, .vimrc, .tmux.conf .gitconfig .gitignore to \$HOME? (y/n) [y] : "
 read YN
 
 if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
