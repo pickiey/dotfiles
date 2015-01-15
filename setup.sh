@@ -193,6 +193,14 @@ if [ `uname` == "Linux" ]; then
     sudo sh -c 'printf "[SeatDefaults]\nallow-guest=false\n" > /usr/share/lightdm/lightdm.conf.d/50-no-guest.conf'
   fi
 
+  # install some packages
+  echo ""
+  echo -n "Install some packages? (y/n) [y] : "
+  read YN
+  if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
+    brew install git tmux w3m z zsh
+  fi
+
   # change shell
   if [ -e /usr/bin/zsh ]; then
     echo ""
