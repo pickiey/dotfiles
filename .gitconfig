@@ -12,17 +12,17 @@
   default = upstream # defaultのpush先はtrackingしているリポジトリ
 [core]
   excludesfile = ~/.gitignore  # globalな.gitignoreの指定
-  autocrlf = input                 # CRLFを自動変換
+  #autocrlf = input                 # CRLFを自動変換
   editor = vim
-  quotepath = false
+  #quotepath = false
 [merge]
-  tool = vimdiff
-  ff = false
+  #tool = vimdiff
+  #ff = false
 [branch]
   autosetuprebase = always
 [pull]
   rebase = true
 [pager]
-  log = diff-highlight | less
-  show = diff-highlight | less
-  diff = diff-highlight | less
+  #log = diff-highlight | less
+  #show = diff-highlight | less
+  #diff = diff-highlight | less

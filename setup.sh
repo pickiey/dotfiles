@@ -8,6 +8,9 @@ if [ ! `which git` -a `which brew` ]; then
     exit
 fi
 
+chmod u+x $HOME/dotfiles/setup_util.sh
+chmod u+x $HOME/dotfiles/brew_bundle.sh
+
 
 
 
