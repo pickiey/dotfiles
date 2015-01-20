@@ -2,7 +2,7 @@
 # Alias configuration
 # ==============================================================================
 # linuxbrew
-BREWHOME=$HOME/.linux
+BREWHOME=$HOME/.linuxbrew
 export PATH="$BREWHOME/bin:$PATH"
 export MANPATH="$BREWHOME/share/man:$MANPATH"
 export INFOPATH="$BREWHOME/share/info:$INFOPATH"
