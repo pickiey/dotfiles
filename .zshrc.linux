@@ -2,8 +2,8 @@
 # Alias configuration
 # ==============================================================================
 # linuxbrew
-BREW_HOME=$HOME/.linux
-export PATH="$BREW_HOME/bin:$PATH"
-export MANPATH="$BREW_HOME/share/man:$MANPATH"
-export INFOPATH="$BREW_HOME/share/info:$INFOPATH"
-export LD_LIBRARY_PATH="$BREW_HOME/lib:$LD_LIBRARY_PATH"
+BREWHOME=$HOME/.linux
+export PATH="$BREWHOME/bin:$PATH"
+export MANPATH="$BREWHOME/share/man:$MANPATH"
+export INFOPATH="$BREWHOME/share/info:$INFOPATH"
+export LD_LIBRARY_PATH="$BREWHOME/lib:$LD_LIBRARY_PATH"

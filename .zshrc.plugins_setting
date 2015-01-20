@@ -15,7 +15,7 @@ fi
 # zsh-completions
 # ------------------------------------------------
 
-fpath=($(brew --prefix)/share/zsh-completions $fpath)
+fpath=($BREWHOME/share/zsh-completions $fpath)
 
 
 

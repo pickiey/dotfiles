@@ -2,12 +2,12 @@
 # PATH configuration
 # ==============================================================================
 # homebrew
-BREW_HOME=/usr/local
-path=($BREW_HOME/bin(N-/) $path)
+BREWHOME=/usr/local
+path=($BREWHOME/bin(N-/) $path)
 
 # brew_cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
-export CASKROOM=$BREW_HOME/Caskroom
+export CASKROOM=$BREWHOME/Caskroom
 path=($CASKROOM/*/bin(N-/) $path)
 
 # vim
