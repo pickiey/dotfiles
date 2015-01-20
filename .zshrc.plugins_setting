@@ -2,9 +2,9 @@
 # z
 # ------------------------------------------------
 
-if [ -e $(brew --prefix)/etc/profile.d/z.sh ]; then
+if [ -e $BREWHOME/etc/profile.d/z.sh ]; then
   _Z_CMD=j
-  source $(brew --prefix)/etc/profile.d/z.sh
+  source $BREWHOME/etc/profile.d/z.sh
 fi
 
 

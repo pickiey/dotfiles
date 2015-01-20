@@ -3,11 +3,6 @@
 
 
 
-# Configuration for plugins
-[ -f $HOME/dotfiles/.zshrc.plugins_setting ] && source $HOME/dotfiles/.zshrc.plugins_setting
-
-
-
 # Configureraton for each OS
 case "${OSTYPE}" in
 # MacOSX
@@ -19,6 +14,11 @@ linux*)
   [ -f $HOME/dotfiles/.zshrc.linux ] && source $HOME/dotfiles/.zshrc.linux
   ;;
 esac
+
+
+
+# Configuration for plugins
+[ -f $HOME/dotfiles/.zshrc.plugins_setting ] && source $HOME/dotfiles/.zshrc.plugins_setting
 
 
 
