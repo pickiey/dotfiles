@@ -141,7 +141,7 @@ if [ `uname` == "Darwin" ]; then
   echo -n "Install some packages? (y/n) [y] : "
   read YN
   if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-    brew install git tmux w3m z zsh
+    brew install git tmux vim w3m z zsh
   fi
 
   # change shell
@@ -196,7 +196,7 @@ if [ `uname` == "Linux" ]; then
   echo -n "Install some packages? (y/n) [y] : "
   read YN
   if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-    brew install git tmux w3m z zsh
+    brew install git tmux vim w3m z zsh
   fi
 
   # change shell
