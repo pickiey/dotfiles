@@ -1,7 +1,21 @@
 # ------------------------------------------------
-# zhs-completions
+# z
 # ------------------------------------------------
-fpath=(/usr/local/share/zsh-completions $fpath)
+
+if [ -e $(brew --prefix)/etc/profile.d/z.sh ]; then
+  _Z_CMD=j
+  source $(brew --prefix)/etc/profile.d/z.sh
+fi
+
+
+
+
+
+# ------------------------------------------------
+# zsh-completions
+# ------------------------------------------------
+
+fpath=($(brew --prefix)/share/zsh-completions $fpath)
 
 
 
@@ -10,6 +24,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # ------------------------------------------------
 # zsh-syntax-highlighting
 # ------------------------------------------------
+
 if [ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

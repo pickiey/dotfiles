@@ -2,11 +2,12 @@
 # PATH configuration
 # ==============================================================================
 # homebrew
-path=(/usr/local/bin(N-/) $path)
-path=(/usr/local/Caskroom/*/bin(N-/) $path)
+path=($(brew --prefix)/bin(N-/) $path)
 
 # brew_cask
 export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
+export CASKROOM=/usr/local/Caskroom
+path=($CASKROOM/*/bin(N-/) $path)
 
 # vim
 # Macvimは使わないので無効化
@@ -20,7 +21,7 @@ export GEM_HOME=$HOME/.gem/ruby/2.0.0
 export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
 
 # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
-export GHC_DOT_APP="/usr/local/Caskroom/ghc/7.8.3-r1/ghc-7.8.3.app"
+export GHC_DOT_APP="$CASKROOM/ghc/7.8.3-r1/ghc-7.8.3.app"
 if [ -d "$GHC_DOT_APP" ]; then
   export PATH="$HOME/.cabal/bin:$GHC_DOT_APP/Contents/bin:$PATH"
 fi

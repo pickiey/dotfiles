@@ -16,6 +16,59 @@ chmod u+x $HOME/dotfiles/brew_bundle.sh
 
 
 # ==============================================================================
+# install some packages
+# ==============================================================================
+
+echo ""
+echo -n "Install git, tmux, vim, w3m, z, zsh? (y/n) [y] : "
+read YN
+if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
+  brew install git tmux vim w3m z zsh
+fi
+
+
+
+
+
+# ==============================================================================
+# Link dotfiles
+# ==============================================================================
+
+DOT_FILES=(.zshrc .vimrc .tmux.conf .gitconfig .gitignore)
+
+echo ""
+echo -n "Link .zshrc, .vimrc, .tmux.conf .gitconfig .gitignore to \$HOME? (y/n) [y] : "
+read YN
+
+if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
+  for file in ${DOT_FILES[@]}; do
+    ln -sf $HOME/dotfiles/$file $HOME/$file
+  done
+fi
+
+
+
+
+
+# ==============================================================================
+# zsh
+# ==============================================================================
+
+if [ -e /usr/local/bin/zsh ]; then
+  echo ""
+  echo -n "Use zsh installed with homebrew? (y/n) [y] : "
+  read YN
+  if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
+    sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
+    chsh -s /usr/local/bin/zsh
+  fi
+fi
+
+
+
+
+
+# ==============================================================================
 # zsh-syntax-highlighting
 # ==============================================================================
 
@@ -73,26 +126,6 @@ fi
 
 
 # ==============================================================================
-# Link dotfiles
-# ==============================================================================
-
-DOT_FILES=(.zshrc .vimrc .tmux.conf .gitconfig .gitignore)
-
-echo ""
-echo -n "Link .zshrc, .vimrc, .tmux.conf .gitconfig .gitignore to \$HOME? (y/n) [y] : "
-read YN
-
-if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-  for file in ${DOT_FILES[@]}; do
-    ln -sf $HOME/dotfiles/$file $HOME/$file
-  done
-fi
-
-
-
-
-
-# ==============================================================================
 # OS X
 # ==============================================================================
 
@@ -136,24 +169,6 @@ if [ `uname` == "Darwin" ]; then
     ln -sf $HOME/dotfiles/.slate.js $HOME/.slate.js
   fi
 
-  # install some packages
-  echo ""
-  echo -n "Install some packages? (y/n) [y] : "
-  read YN
-  if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-    brew install git tmux vim w3m z zsh
-  fi
-
-  # change shell
-  if [ -e /usr/local/bin/zsh ]; then
-    echo ""
-    echo -n "Use zsh installed with homebrew? (y/n) [y] : "
-    read YN
-    if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-      chsh -s /usr/local/bin/zsh
-    fi
-  fi
-
   # Karabiner (key remapper)
   echo ""
   echo -n "Setup Karabiner? (y/n) [y] : "
@@ -189,24 +204,6 @@ if [ `uname` == "Linux" ]; then
   read YN
   if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     sudo sh -c 'printf "[SeatDefaults]\nallow-guest=false\n" > /usr/share/lightdm/lightdm.conf.d/50-no-guest.conf'
-  fi
-
-  # install some packages
-  echo ""
-  echo -n "Install some packages? (y/n) [y] : "
-  read YN
-  if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-    brew install git tmux vim w3m z zsh
-  fi
-
-  # change shell
-  if [ -e $HOME/.linuxbrew/bin/zsh ]; then
-    echo ""
-    echo -n "Use zsh installed with linuxbrew? (y/n) [y] : "
-    read YN
-    if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-      chsh -s $HOME/.linuxbrew/bin/zsh
-    fi
   fi
 
 fi

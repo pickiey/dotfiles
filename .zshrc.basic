@@ -123,7 +123,7 @@ linux*)
   ;;
 esac
 
-[ `which ag` ] && alias grep=ag
+alias grep=ag
 
 alias la="ls -a"
 alias lsa="ls -a"
@@ -189,12 +189,6 @@ function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
 
 # Weblioで単語の用例検索
 function dic(){ w3m "https://ejje.weblio.jp/content/$1" | grep "用例" }
-
-# zで楽に移動
-if [ `which brew` ]; then
-  _Z_CMD=j
-  source $(brew --prefix)/etc/profile.d/z.sh
-fi
 
 # カレントパス以下のディレクトリでGrepマッチしたディレクトリに移動
 function jj(){
