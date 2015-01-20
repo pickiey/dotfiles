@@ -200,12 +200,12 @@ if [ `uname` == "Linux" ]; then
   fi
 
   # change shell
-  if [ -e /usr/bin/zsh ]; then
+  if [ -e $HOME/.linuxbrew/bin/zsh ]; then
     echo ""
     echo -n "Use zsh installed with linuxbrew? (y/n) [y] : "
     read YN
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-      chsh -s /usr/bin/zsh
+      chsh -s $HOME/.linuxbrew/bin/zsh
     fi
   fi
 
