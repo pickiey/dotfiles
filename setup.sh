@@ -4,8 +4,8 @@
 echo "Requesting git and brew... "
 
 if [ ! `which git` -a `which brew` ]; then
-    echo "ERROR: This script requires git and brew to run"
-    exit
+  echo "ERROR: This script requires git and brew to run"
+  exit
 fi
 
 chmod u+x $HOME/dotfiles/setup_util.sh
@@ -16,8 +16,9 @@ chmod u+x $HOME/dotfiles/brew_bundle.sh
 
 
 # ==============================================================================
-# Setup zsh-syntax-highlighting
+# zsh-syntax-highlighting
 # ==============================================================================
+
 echo ""
 echo -n "Setup zsh-syntax-highlighting? (y/n) [y] : "
 read YN
@@ -31,8 +32,9 @@ fi
 
 
 # ==============================================================================
-# Setup neobundle.vim
+# neobundle.vim
 # ==============================================================================
+
 echo ""
 echo -n "Setup neobundle.vim? (y/n) [y] : "
 read YN
@@ -47,8 +49,9 @@ fi
 
 
 # ==============================================================================
-# Setup tmux-powerline
+# tmux-powerline
 # ==============================================================================
+
 UTIL_FILES=( getCpuUsage.sh getMemUsage.sh tmuxx.sh)
 
 echo ""
@@ -72,6 +75,7 @@ fi
 # ==============================================================================
 # Link dotfiles
 # ==============================================================================
+
 DOT_FILES=(.zshrc .vimrc .tmux.conf .gitconfig .gitignore)
 
 echo ""
@@ -89,8 +93,9 @@ fi
 
 
 # ==============================================================================
-# Setting for OS X
+# OS X
 # ==============================================================================
+
 if [ `uname` == "Darwin" ]; then
 
   # disable filename localize
@@ -115,20 +120,12 @@ if [ `uname` == "Darwin" ]; then
     sudo defaults write com.apple.loginwindow LoginHook /Library/Scripts/mute-off.sh
   fi
 
-  # for copy&paste
+  # copy&paste
   echo ""
   echo -n "Chmod reattach-to-user-namespace (for copy&paste)? (y/n) [y] : "
   read YN
   if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     chmod u+x $HOME/dotfiles/bin/reattach-to-user-namespace
-  fi
-
-  # change shell
-  echo ""
-  echo -n "Use zsh? (y/n) [y] : "
-  read YN
-  if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-    chsh -s /bin/zsh
   fi
 
   # slate (window manager)
@@ -175,6 +172,7 @@ fi
 # ==============================================================================
 # Setting for Ubuntu
 # ==============================================================================
+
 if [ `uname` == "Linux" ]; then
 
   # disable filename localize
@@ -220,6 +218,7 @@ fi
 # ==============================================================================
 # Show exit message
 # ==============================================================================
+
 echo ""
 echo "All actions completed successfully. Exiting script now."
 

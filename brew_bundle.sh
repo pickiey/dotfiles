@@ -13,7 +13,7 @@ fi
 
 
 # ==============================================================================
-# Set variabbles
+# Variables
 # ==============================================================================
 
 PACKAGES_OSX=(
@@ -80,7 +80,7 @@ zsh
 
 
 # ==============================================================================
-# Prepare for something beforehand
+# Renewal
 # ==============================================================================
 
 # Make sure using latest Homebrew
@@ -94,14 +94,12 @@ brew upgrade
 
 
 # ==============================================================================
-# for OS X
+# OS X
 # ==============================================================================
 
 if [ `uname` == "Darwin" ]; then
-  # OS X
 
   # Add Repository
-  brew tap homebrew/binary
   brew tap caskroom/cask
 
   for file in ${PACKAGES_OSX[@]}
@@ -114,6 +112,32 @@ if [ `uname` == "Darwin" ]; then
   for file in ${PACKAGES_OSX_CASK[@]}
   do
     brew cask install $file
+  done
+
+
+
+  # Remove outdated versions
+  brew cleanup
+  brew cask cleanup
+
+fi
+
+
+
+
+
+# ==============================================================================
+# Ubuntu
+# ==============================================================================
+
+if [ `uname` == "Darwin" ]; then
+
+  # Add Repository
+  brew tap caskroom/cask
+
+  for file in ${PACKAGES_UBUNTU[@]}
+  do
+    brew install $file
   done
 
 

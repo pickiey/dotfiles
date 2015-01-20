@@ -20,12 +20,11 @@ git clone https://github.com/pickiey/dotfiles.git $HOME/dotfiles
 chmod u+x $HOME/dotfiles/setup.sh
 
 $HOME/dotfiles/setup.sh
-$HOME/dotfiles/setup_util.sh
 ```
 
 
 
-Ubuntu 11.10 (require xcode)
+Ubuntu 11.10
 -------------------------------
 
 ```sh
@@ -45,7 +44,6 @@ git clone https://github.com/pickiey/dotfiles.git $HOME/dotfiles
 chmod u+x $HOME/dotfiles/setup.sh
 
 $HOME/dotfiles/setup.sh
-$HOME/dotfiles/setup_util.sh
 ```
 
 
