@@ -19,6 +19,7 @@ fi
 PACKAGES_OSX=(
 git
 go
+ghc
 hugo
 lua
 reattach-to-user-namespace
@@ -45,7 +46,6 @@ evernote
 iterm2
 karabiner
 mactex
-ghc
 google-chrome
 google-japanese-ime
 qlmarkdown
@@ -130,7 +130,7 @@ fi
 # Ubuntu
 # ==============================================================================
 
-if [ `uname` == "Darwin" ]; then
+if [ `uname` == "Linux" ]; then
 
   # Add Repository
   brew tap caskroom/cask

@@ -8,8 +8,8 @@ if [ ! `which git` -a `which brew` ]; then
   exit
 fi
 
-chmod u+x $HOME/dotfiles/setup_util.sh
-chmod u+x $HOME/dotfiles/brew_bundle.sh
+chmod u+x $HOME/dotfiles/bin/setup_util.sh
+chmod u+x $HOME/dotfiles/bin/brew_bundle.sh
 
 
 
@@ -105,7 +105,7 @@ fi
 # tmux-powerline
 # ==============================================================================
 
-UTIL_FILES=( getCpuUsage.sh getMemUsage.sh tmuxx.sh)
+UTIL_FILES=(getCpuUsage.sh getMemUsage.sh tmuxx.sh)
 
 echo ""
 echo -n "Setup tmux-powerline? (y/n) [y] : "
@@ -140,7 +140,7 @@ if [ `uname` == "Darwin" ]; then
   fi
 
   # make silent on startup
-  MUTE_FILES=( mute-off.sh mute-on.sh)
+  MUTE_FILES=(mute-off.sh mute-on.sh)
   echo ""
   echo -n "Make silent on startup? (y/n) [y] : "
   read YN

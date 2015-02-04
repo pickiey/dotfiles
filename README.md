@@ -17,9 +17,9 @@ brew upgrade
 
 git clone https://github.com/pickiey/dotfiles.git $HOME/dotfiles
 
-chmod u+x $HOME/dotfiles/setup.sh
+chmod u+x $HOME/dotfiles/bin/setup.sh
 
-$HOME/dotfiles/setup.sh
+$HOME/dotfiles/bin/setup.sh
 ```
 
 
@@ -42,9 +42,9 @@ brew upgrade
 
 git clone https://github.com/pickiey/dotfiles.git $HOME/dotfiles
 
-chmod u+x $HOME/dotfiles/setup.sh
+chmod u+x $HOME/dotfiles/bin/setup.sh
 
-$HOME/dotfiles/setup.sh
+$HOME/dotfiles/bin/setup.sh
 ```
 
 
