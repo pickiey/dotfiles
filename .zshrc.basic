@@ -259,16 +259,18 @@ esac
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
   }
-  # プロンプト指定
-  # https://wiki.archlinux.org/index.php/Zsh_(%E6%97%A5%E6%9C%AC%E8%AA%9E)#.E3.83.97.E3.83.AD.E3.83.B3.E3.83.97.E3.83.88.E5.A4.89.E6.95.B0
-  # 1行目 改行
-  # 2行目 ユーザ名@ホスト名 gitステータス カレントディレクトリ
-  # 3行目 顔文字
-  PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{$reset_color%} "
-  # プロンプト指定(コマンドの続き)
+
+  # PROMPT  -> プロンプト指定
+  # PROMPT2 -> プロンプト指定(コマンドの続き)
+  # SPROMPT -> もしかして時のプロンプト指定
+  #PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{$reset_color%} "
+  #PROMPT2="[%n]> "
+  #SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
+
+  # はちゅねミクVersion
+  PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(@ ﾟ □ ﾟ) <!(@￣￢￣%) <)%{$reset_color%} "
   PROMPT2="[%n]> "
-  # もしかして時のプロンプト指定
-  SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
+  SPROMPT="%{$suggest%}%{$fg[red]%}(@ ﾟ △ ﾟ%) <%{$reset_color%} もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
 
   # 時刻更新
   TRAPALRM () { zle reset-prompt }

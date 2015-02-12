@@ -20,7 +20,6 @@ PACKAGES_OSX=(
 git
 go
 ghc
-hugo
 lua
 reattach-to-user-namespace
 the_silver_searcher
