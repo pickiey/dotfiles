@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Request brew
-echo "Requesting brew... "
+echo "Requesting brew..."
 
 if [ ! `which brew` ]; then
   echo "ERROR: This script requires brew to run"
@@ -16,10 +16,9 @@ fi
 # Renewal
 # ==============================================================================
 
-# Make sure using latest Homebrew
-brew update
+echo ""
 
-# Update already-installed formula
+brew update
 brew upgrade
 
 
@@ -34,12 +33,18 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
   source $HOME/dotfiles/Brew_pkg_list
 
+  # ============================================================================
   # OS X
+  # ============================================================================
 
   if [ `uname` == "Darwin" ]; then
 
+    echo ""
+
     # Add Repository
     brew tap caskroom/cask
+
+    echo ""
 
     for file in ${PACKAGES_OSX[@]}
     do
@@ -48,6 +53,8 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
     brew install brew-cask
 
+    echo ""
+
     for file in ${PACKAGES_OSX_CASK[@]}
     do
       brew cask install $file
@@ -55,12 +62,13 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
   fi
 
+  # ============================================================================
   # Ubuntu
+  # ============================================================================
 
   if [ `uname` == "Linux" ]; then
 
-    # Add Repository
-    brew tap caskroom/cask
+    echo ""
 
     for file in ${PACKAGES_UBUNTU[@]}
     do
@@ -78,6 +86,8 @@ fi
 # ==============================================================================
 # Remove outdated versions
 # ==============================================================================
+
+echo ""
 
 brew cleanup
 brew cask cleanup
