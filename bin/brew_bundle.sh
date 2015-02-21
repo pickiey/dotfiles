@@ -13,72 +13,6 @@ fi
 
 
 # ==============================================================================
-# Variables
-# ==============================================================================
-
-PACKAGES_OSX=(
-git
-go
-ghc
-lua
-reattach-to-user-namespace
-the_silver_searcher
-tmux
-tor
-tree
-unrar
-w3m
-wget
-z
-zsh
-zsh-completions
-zsh-history-substring-search
-zsh-syntax-highlighting
-zshdb
-)
-
-PACKAGES_OSX_CASK=(
-adobe-air
-boot2docker
-dropbox
-evernote
-iterm2
-karabiner
-mactex
-google-chrome
-google-japanese-ime
-qlmarkdown
-slate
-smoothmouse
-vagrant
-virtualbox
-xtrafinder
-)
-
-PACKAGES_UBUNTU=(
-docker.io
-git
-ghc
-ibus-mozc
-nautilus-open-terminal
-tmux
-tree
-unrar
-unity-tweak-tool
-vagrant
-vim-gnome
-virtualbox
-w3m
-wget
-xclip
-zsh
-)
-
-
-
-
-
-# ==============================================================================
 # Renewal
 # ==============================================================================
 
@@ -87,6 +21,16 @@ brew update
 
 # Update already-installed formula
 brew upgrade
+
+
+
+
+
+# ==============================================================================
+# Read variables
+# ==============================================================================
+
+[ -f $HOME/dotfiles/Brew_pkg_list ] && source $HOME/dotfiles/Brew_pkg_list
 
 
 
@@ -113,12 +57,6 @@ if [ `uname` == "Darwin" ]; then
     brew cask install $file
   done
 
-
-
-  # Remove outdated versions
-  brew cleanup
-  brew cask cleanup
-
 fi
 
 
@@ -139,13 +77,16 @@ if [ `uname` == "Linux" ]; then
     brew install $file
   done
 
-
-
-  # Remove outdated versions
-  brew cleanup
-  brew cask cleanup
-
 fi
+
+
+
+# ==============================================================================
+# Remove outdated versions
+# ==============================================================================
+
+brew cleanup
+brew cask cleanup
 
 
 
