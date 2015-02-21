@@ -27,57 +27,51 @@ brew upgrade
 
 
 # ==============================================================================
-# Read variables
+# Read Brew_pkg_list
 # ==============================================================================
 
-[ -f $HOME/dotfiles/Brew_pkg_list ] && source $HOME/dotfiles/Brew_pkg_list
+if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
+  source $HOME/dotfiles/Brew_pkg_list
 
+  # OS X
 
+  if [ `uname` == "Darwin" ]; then
 
+    # Add Repository
+    brew tap caskroom/cask
 
-# ==============================================================================
-# OS X
-# ==============================================================================
+    for file in ${PACKAGES_OSX[@]}
+    do
+      brew install $file
+    done
 
-if [ `uname` == "Darwin" ]; then
+    brew install brew-cask
 
-  # Add Repository
-  brew tap caskroom/cask
+    for file in ${PACKAGES_OSX_CASK[@]}
+    do
+      brew cask install $file
+    done
 
-  for file in ${PACKAGES_OSX[@]}
-  do
-    brew install $file
-  done
+  fi
 
-  brew install brew-cask
+  # Ubuntu
 
-  for file in ${PACKAGES_OSX_CASK[@]}
-  do
-    brew cask install $file
-  done
+  if [ `uname` == "Linux" ]; then
+
+    # Add Repository
+    brew tap caskroom/cask
+
+    for file in ${PACKAGES_UBUNTU[@]}
+    do
+      brew install $file
+    done
+
+  fi
 
 fi
 
 
-
-
-
-# ==============================================================================
-# Ubuntu
-# ==============================================================================
-
-if [ `uname` == "Linux" ]; then
-
-  # Add Repository
-  brew tap caskroom/cask
-
-  for file in ${PACKAGES_UBUNTU[@]}
-  do
-    brew install $file
-  done
-
-fi
 
 
 
