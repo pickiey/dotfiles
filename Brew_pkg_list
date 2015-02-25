@@ -7,7 +7,6 @@ PACKAGES_OSX=(
   go
   ghc
   htop
-  libimobiledevice
   lua
   reattach-to-user-namespace
   the_silver_searcher
@@ -54,7 +53,6 @@ PACKAGES_OSX_CASK=(
 PACKAGES_UBUNTU=(
   git
   htop
-  libimobiledevice
   the_silver_searcher
   tmux
   tree
