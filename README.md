@@ -24,7 +24,7 @@ $HOME/dotfiles/bin/setup.sh
 
 
 
-Ubuntu 11.10
+Ubuntu 14.10
 -------------------------------
 
 ```sh

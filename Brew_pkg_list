@@ -13,6 +13,7 @@ PACKAGES_OSX=(
   tor
   tree
   unrar
+  vim
   w3m
   wget
   z

@@ -1,6 +1,7 @@
 # ==============================================================================
-# Alias configuration
+# PATH configuration
 # ==============================================================================
+
 # linuxbrew
 BREWHOME=$HOME/.linuxbrew
 export PATH="$BREWHOME/bin:$PATH"

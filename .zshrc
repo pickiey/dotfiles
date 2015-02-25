@@ -11,7 +11,7 @@ darwin*)
   ;;
 # Linux
 linux*)
-  [ -f $HOME/dotfiles/.zshrc.linux ] && source $HOME/dotfiles/.zshrc.linux
+[ -f $HOME/dotfiles/.zshrc.ubuntu ] && source $HOME/dotfiles/.zshrc.ubuntu
   ;;
 esac
 
