@@ -2,9 +2,7 @@
 # ag
 # ------------------------------------------------
 
-if [ `which ag` ]; then
-  alias grep=ag
-fi
+[ `which ag` ] && alias grep=ag
 
 
 
@@ -14,9 +12,7 @@ fi
 # htop
 # ------------------------------------------------
 
-if [ `which htop` ]; then
-  alias top=htop
-fi
+[ `which htop` ] && alias top=htop
 
 
 
