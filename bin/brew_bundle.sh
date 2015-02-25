@@ -51,6 +51,8 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
       brew install $file
     done
 
+    echo ""
+
     brew install brew-cask
 
     echo ""
