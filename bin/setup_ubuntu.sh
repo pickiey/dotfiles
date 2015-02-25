@@ -79,7 +79,7 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
   read YN
 
   if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-    brew install z zsh-syntax-highlighting
+    brew install z zsh-completions zsh-history-substring-search zsh-syntax-highlighting zshdb
   fi
 
   # ============================================================================

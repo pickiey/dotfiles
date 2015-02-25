@@ -6,6 +6,7 @@ PACKAGES_OSX=(
   git
   go
   ghc
+  htop
   lua
   reattach-to-user-namespace
   the_silver_searcher
@@ -53,6 +54,7 @@ PACKAGES_UBUNTU=(
   docker.io
   git
   ghc
+  htop
   ibus-mozc
   nautilus-open-terminal
   tmux
