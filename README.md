@@ -67,5 +67,5 @@ cp path/to/MyFontFile-Powerline.otf $HOME/.fonts
 
 ## References
 
-- [Homebrew](http://brew.sh/index_ja.html)
-- [Linuxbrew](https://github.com/Homebrew/linuxbrew)
+- [Homebrew](http://brew.sh)
+- [Linuxbrew](http://brew.sh/linuxbrew/)

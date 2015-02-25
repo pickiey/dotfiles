@@ -41,7 +41,7 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
   echo -n "Install git, tmux, vim-nox, w3m, zsh? (y/n) [y] : "
   read YN
   if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-    brew install git tmux vim-nox w3m zsh
+    brew install git tmux vim w3m zsh
   fi
 
   # ============================================================================
