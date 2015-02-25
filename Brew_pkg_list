@@ -51,21 +51,19 @@ PACKAGES_OSX_CASK=(
 # ==============================================================================
 
 PACKAGES_UBUNTU=(
-  docker.io
   git
-  ghc
   htop
-  ibus-mozc
-  nautilus-open-terminal
+  the_silver_searcher
   tmux
   tree
   unrar
-  unity-tweak-tool
-  vagrant
-  vim-gnome
-  virtualbox
+  vim
   w3m
   wget
-  xclip
+  z
   zsh
+  zsh-completions
+  zsh-history-substring-search
+  zsh-syntax-highlighting
+  zshdb
 )
