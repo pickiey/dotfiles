@@ -71,6 +71,4 @@ fpath=($BREWHOME/share/zsh-completions $fpath)
 # zsh-syntax-highlighting
 # ------------------------------------------------
 
-if [ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$BREWHOME/share/zsh-syntax-highlighting/highlighter
