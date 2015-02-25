@@ -46,7 +46,7 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
     echo ""
 
-    for file in ${PACKAGES_OSX[@]}
+    for file in ${PACKAGES_CUI_OSX[@]}
     do
       brew install $file
     done
@@ -55,7 +55,7 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
     echo ""
 
-    for file in ${PACKAGES_OSX_CASK[@]}
+    for file in ${PACKAGES_GUI_OSX[@]}
     do
       brew cask install $file
     done
@@ -70,7 +70,14 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
     echo ""
 
-    for file in ${PACKAGES_UBUNTU[@]}
+    for file in ${PACKAGES_CUI_UBUNTU[@]}
+    do
+      brew install $file
+    done
+
+    echo ""
+
+    for file in ${PACKAGES_GUI_UBUNTU[@]}
     do
       brew install $file
     done

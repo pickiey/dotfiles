@@ -2,7 +2,7 @@
 # OSX
 # ==============================================================================
 
-PACKAGES_OSX=(
+PACKAGES_CUI_OSX=(
   git
   go
   ghc
@@ -24,7 +24,7 @@ PACKAGES_OSX=(
   zshdb
 )
 
-PACKAGES_OSX_CASK=(
+PACKAGES_GUI_OSX=(
   adobe-air
   boot2docker
   dropbox
@@ -50,7 +50,7 @@ PACKAGES_OSX_CASK=(
 # Ubuntu
 # ==============================================================================
 
-PACKAGES_UBUNTU=(
+PACKAGES_CUI_UBUNTU=(
   git
   htop
   the_silver_searcher
@@ -66,4 +66,7 @@ PACKAGES_UBUNTU=(
   zsh-history-substring-search
   zsh-syntax-highlighting
   zshdb
+)
+
+PACKAGES_GUI_UBUNTU=(
 )
