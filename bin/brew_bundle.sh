@@ -41,11 +41,6 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
     echo ""
 
-    # Add Repository
-    brew tap caskroom/cask
-
-    echo ""
-
     for file in ${PACKAGES_CUI_OSX[@]}
     do
       brew install $file
@@ -53,6 +48,7 @@ if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
 
     echo ""
 
+    brew tap caskroom/cask
     brew install brew-cask
 
     echo ""
@@ -99,7 +95,10 @@ fi
 echo ""
 
 brew cleanup
-brew cask cleanup
+
+if [ `uname` == "Darwin" ]; then
+  brew cask cleanup
+fi
 
 
 
