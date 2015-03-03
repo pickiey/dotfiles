@@ -1,6 +1,7 @@
 "-------------------------------------------------------------------------------
 " 拡張管理 Plugin
 "-------------------------------------------------------------------------------
+
 " vunlde.vimで管理してるpluginを読み込む
 filetype off
 
@@ -18,12 +19,16 @@ endif
 " ------------------------------------------------
 " Syntax
 " ------------------------------------------------
+
 " インデント表示
 NeoBundle 'nathanaelkane/vim-indent-guides'
+
 " Haskellでインデント
 NeoBundle 'kana/vim-filetype-haskell'
+
 " rcmdnk/vim-markdown : markdownのハイライト
 NeoBundle 'rcmdnk/vim-markdown'
+
 " groenewege/vim-less : lessのハイライト
 NeoBundle 'groenewege/vim-less'
 
@@ -34,12 +39,16 @@ NeoBundle 'groenewege/vim-less'
 " ------------------------------------------------
 " Completion
 " ------------------------------------------------
+
 " 補完
 NeoBundle 'Shougo/neocomplete'
+
 " neocomplcacheのsinpet補完
 NeoBundle 'Shougo/neosnippet'
+
 " neosnippetのデフォルトのスニペット追加
 NeoBundle "Shougo/neosnippet-snippets"
+
 " Haskellの補完強化
 NeoBundle 'ujihisa/neco-ghc'
 
@@ -50,19 +59,26 @@ NeoBundle 'ujihisa/neco-ghc'
 " ------------------------------------------------
 " Searching/Moving
 " ------------------------------------------------
+
 " smooth_scroll.vim : スクロールを賢く
 NeoBundle 'yuroyoro/smooth_scroll.vim'
+
 " vim-smartword : 単語移動がスマートな感じで
 NeoBundle 'smartword'
+
 " Vimで隣接した括弧の開き記号を消すと同時に閉じ記号も削除する
 NeoBundle 'jiangmiao/auto-pairs'
+
 " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
 NeoBundle 'matchit.zip'
+
 " 整列
 NeoBundle 'junegunn/vim-easy-align'
+
 " vim上でghc-mod
-" 調べたい単語をカーソルして :GhcModType
+"   調べたい単語をカーソルして :GhcModType
 NeoBundle 'eagletmt/ghcmod-vim'
+
 " 高速grep
 NeoBundle 'mileszs/ack.vim'
 
@@ -72,12 +88,16 @@ NeoBundle 'mileszs/ack.vim'
 " ------------------------------------------------
 " Utility
 " ------------------------------------------------
+
 " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
 NeoBundle 'thinca/vim-quickrun'
+
 " emmet(zen-codeing)の導入
 NeoBundle 'mattn/emmet-vim'
+
 " vimshell : vimのshell
 NeoBundle 'Shougo/vimshell'
+
 " vimproc : vimから非同期実行。vimshelleで必要
 " なければ自動で導入
 NeoBundle 'Shougo/vimproc', {
@@ -87,16 +107,22 @@ NeoBundle 'Shougo/vimproc', {
   \   'cygwin' : 'make -f make_cygwin.mak'
   \ }
   \ }
+
 " ステータスラインをカッコよくする
 NeoBundle 'itchyny/lightline.vim'
+
 " precious.vimで必要
 "NeoBundle 'Shougo/context_filetype.vim'
+
 " 現在のカーソル位置のコンテキストによって filetype を切り換える
 "NeoBundle 'osyo-manga/vim-precious'
+
 " vimでw3m
 NeoBundle 'yuratomo/w3m.vim'
+
 " vimでgit操作
 NeoBundle 'tpope/vim-fugitive'
+
 " gitの差分を視覚化
 NeoBundle 'airblade/vim-gitgutter'
 
@@ -108,6 +134,7 @@ NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 " ------------------------------------------------
 " ColorScheme{{{
 " ------------------------------------------------
+
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/Zenburn'
 NeoBundle 'vim-scripts/jammy.vim'
@@ -124,6 +151,7 @@ NeoBundle 'mopp/mopkai.vim'
 " ------------------------------------------------
 " Unite
 " ------------------------------------------------
+
 "NeoBundle 'Shougo/unite.vim'
 "NeoBundle 'tsukkee/unite-help'
 "NeoBundle 'h1mesuke/unite-outline'

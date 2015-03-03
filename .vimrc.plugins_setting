@@ -29,26 +29,37 @@ let g:vim_markdown_folding_disabled=1
 
 " AutoComplPopを無効にする
 let g:acp_enableAtStartup = 0
+
 " neocompleteを有効にする
 let g:neocomplete#enable_at_startup = 1
+
 " 補完が自動で開始される文字数
 let g:neocomplete#auto_completion_start_length = 3
+
 " smarrt case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
 let g:neocomplete#enable_smart_case = 1
+
 " camle caseを有効化。大文字を区切りとしたワイルドカードのように振る舞う
 let g:neocomplete#enable_camel_case_completion = 1
+
 " _(アンダーバー)区切りの補完を有効化
 let g:neocomplete#enable_underbar_completion = 1
+
 " シンタックスをキャッシュするときの最小文字長を3に
 let g:neocomplete#min_syntax_length = 3
+
 " neocompleteを自動的にロックするバッファ名のパターン
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
 " -入力による候補番号の表示
 let g:neocomplete#enable_quick_match = 1
+
 " 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
 let g:neocomplete#enable_auto_select = 1
+
 "ポップアップメニューで表示される候補の数。初期値は100
 let g:neocomplete#max_list = 20
+
 " Define dictionary.
 let g:neocomplete#dictionary_filetype_lists = {
   \ 'default' : '',
@@ -64,51 +75,70 @@ let g:neocomplete#dictionary_filetype_lists = {
   \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
   \ 'vm' : $HOME.'/.vim/dict/vim.dict'
   \ }
+
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
   let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
 " ユーザー定義スニペット保存ディレクトリ
 let g:neocomplete#snippets_dir = $HOME.'/.vim/snippets'
+
 " スニペット
 imap <C-y> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
+
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
 " snipet template dirs
 let g:neosnippet#snippets_directory = '~/.vim/snipmate-snippets/snippets  ~/dotfiles/.vim/snippets'
+
 " 補完を選択しpopupを閉じる
 " inoremap <expr><C-y> neocomplete#close_popup()
+
 " 補完をキャンセルしpopupを閉じる
 " inoremap <expr><C-e> neocomplete#cancel_popup()
+
 " TABで補完できるようにする
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " undo
 inoremap <expr><C-g>     neocomplete#undo_completion()
+
 " 補完候補の共通部分までを補完する
 inoremap <expr><C-s> neocomplete#complete_common_string()
+
 " C-kを押すと行末まで削除
 " inoremap <C-k> <C-o>D
+
 " C-nでneocomplete補完
 inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+
 " C-pでkeyword補完
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
+
 " 補完候補が出ていたら確定、なければ改行
 inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "<CR>"
+
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-x><C-o> &filetype == 'vim' ? "\<C-x><C-v><C-p>" : neocomplete#manual_omni_complete()
+
 " buffer開いたらneoconでcache
 autocmd BufReadPost,BufEnter,BufWritePost :neocompleteCachingBuffer <buffer>
+
 " FileType毎のOmni補完を設定
 autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -118,6 +148,7 @@ autocmd FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php        setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType c          setlocal omnifunc=ccomplete#Complete
 autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
+
 " Enable heavy omni completion.
 if !exists('g:neocomplete#omni_patterns')
   let g:neocomplete#omni_patterns = {}
@@ -126,6 +157,7 @@ let g:neocomplete#omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 let g:neocomplete#omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplete#omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
 " autocmd FileType ruby let g:neocomplete#source_disable = {
   " \ 'include_complete' : 1,
   " \ 'omni_complete' : 1
@@ -133,27 +165,32 @@ let g:neocomplete#omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 " autocmd FileType ruby let g:neocomplete#source_disable = {
   " \ 'include_complete' : 1
 " \ }
+
 " インクルードパスの指定
 let g:neocomplete#include_paths = {
   \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
   \ 'c'    : '.,/usr/include',
   \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
   \ }
+
 "インクルード文のパターンを指定
 let g:neocomplete#include_patterns = {
   \ 'cpp' : '^\s*#\s*include',
   \ 'ruby' : '^\s*require',
   \ 'perl' : '^\s*use',
   \ }
+
 " インクルード先のファイル名の解析パターン
 let g:neocomplete#include_exprs = {
   \ 'ruby' : substitute(v:fname,'::','/','g')
   \ }
+
 " ファイルを探す際に、この値を末尾に追加したファイルも探す。
 let g:neocomplete#include_suffixes = {
   \ 'ruby' : '.rb',
   \ 'haskell' : '.hs'
   \ }
+
 " for rsense
 if !exists('g:neocomplete#omni_patterns')
   let g:neocomplete#omni_patterns = {}
@@ -253,6 +290,7 @@ let g:user_emmet_settings = {
 "let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 "let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
 "let g:vimshell_enable_smart_case = 1
+
 "if has('win32') || has('win64')
 "  " Display user name on Windows.
 "  let g:vimshell_prompt = $USERNAME."% "
@@ -266,16 +304,20 @@ let g:user_emmet_settings = {
 "  call vimshell#set_execute_file('tgz,gz', 'gzcat')
 "  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
 "endif
+
 "function! g:my_chpwd(args, context)
 "  call vimshell#execute('echo "chpwd"')
 "endfunction
+
 "function! g:my_emptycmd(cmdline, context)
 "  call vimshell#execute('echo "emptycmd"')
 "  return a:cmdline
 "endfunction
+
 "function! g:my_preprompt(args, context)
 "  call vimshell#execute('echo "preprompt"')
 "endfunction
+
 "function! g:my_preexec(cmdline, context)
 "  call vimshell#execute('echo "preexec"')
 "  if a:cmdline =~# '^\s*diff\>'
@@ -283,6 +325,7 @@ let g:user_emmet_settings = {
 "  endif
 "  return a:cmdline
 "endfunction
+
 "autocmd FileType vimshell
 "\ call vimshell#altercmd#define('g', 'git')
 "\| call vimshell#altercmd#define('i', 'iexe')
@@ -292,6 +335,7 @@ let g:user_emmet_settings = {
 "\| call vimshell#hook#set('emptycmd', ['g:my_emptycmd'])
 "\| call vimshell#hook#set('preprompt', ['g:my_preprompt'])
 "\| call vimshell#hook#set('preexec', ['g:my_preexec'])
+
 "command! Vs :VimShell
 
 " unite-plugins
@@ -323,8 +367,10 @@ augroup END
 
 " DuckDuckGoの検索を日本語で
 "let g:w3m#search_engine = 'https://duckduckgo.com/?q=%s region:jp'
+
 " 起動がだるいので楽にする
 nnoremap <leader>w :W3m google<SPACE>
+
 " :W3mShowExternalBrowser したときに開くブラウザをChromeに
 let g:w3m#external_browser = 'goole-chrome'
 
@@ -350,9 +396,10 @@ let g:gitgutter_sign_removed = '✘'
 
 filetype plugin on
 filetype indent on
+
 set grepprg=grep\ -nH\ $*
+
 let g:tex_flavor='latex'
-"自動折りたたみ無効
 let g:TeX_AutoFolding = 0
 let g:Tex_Folding = 0
 let g:Imap_UsePlaceHolders = 1
@@ -371,8 +418,8 @@ let g:Tex_UseEditorSettingInDVIViewer = 1
 let g:Tex_ViewRule_pdf = 'open -a Preview.app'
 let g:Tex_ViewRule_ps = 'open'
 let g:Tex_ViewRule_dvi = 'open'
-
 let g:Tex_IgnoreLevel = 9
+
 let g:Tex_IgnoredWarnings =
   \"Underfull\n".
   \"Overfull\n".

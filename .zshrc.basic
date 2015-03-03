@@ -1,6 +1,7 @@
 # ==============================================================================
 # Environment variable configuration
 # ==============================================================================
+
 # LANG
 export LANG=ja_JP.UTF-8
 case "$UID" in
@@ -78,6 +79,7 @@ compinit -u
 # ==============================================================================
 # Keybind configuration
 # ==============================================================================
+
 # vim like keybind
 bindkey -v
 
@@ -108,11 +110,15 @@ setopt share_history        # share command history data
 # ==============================================================================
 # Alias configuration
 # ==============================================================================
+
 # expand aliases before completing
 setopt complete_aliases     # aliased ls needs if file/dir completions work
 
 alias where="command -v"
-#alias j="jobs -l"        # zと被ってるから無効に
+
+# jでjobs表示
+#   zと被ってるから無効に
+#alias j="jobs -l"
 
 case "$OSTYPE" in
 freebsd*|darwin*)
@@ -203,6 +209,7 @@ function cleanup(){
 # ==============================================================================
 # terminal configuration
 # ==============================================================================
+
 # enable color output
 autoload -U colors; colors
 
@@ -279,5 +286,5 @@ esac
 # }}}
 
 # 右プロンプト
-# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+#   バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
 #RPROMPT="%1(v|%F{green}%1v%f|)"

@@ -1,26 +1,59 @@
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
 "-------------------------------------------------------------------------------
-let mapleader = ","              " キーマップリーダー
-set scrolloff=5                  " スクロール時の余白確保
-set textwidth=0                  " 一行に長い文章を書いていても自動折り返しをしない
-set nobackup                     " バックアップ取らない
-set autoread                     " 他で書き換えられたら自動で読み直す
-set noswapfile                   " スワップファイル作らない
-set hidden                       " 編集中でも他のファイルを開けるようにする
-set backspace=indent,eol,start   " バックスペースでなんでも消せるように
-set formatoptions=lmoq           " テキスト整形オプション，マルチバイト系を追加
-set vb t_vb=                     " ビープをならさない
-set browsedir=buffer             " Exploreの初期ディレクトリ
-set whichwrap=b,s,h,l,<,>,[,]    " カーソルを行頭、行末で止まらないようにする
-set showcmd                      " コマンドをステータス行に表示
-set showmode                     " 現在のモードを表示
-set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
-set modelines=0                  " モードラインは無効
-set noundofile                   " ゴミファイルを作らせない
+" キーマップリーダー
+let mapleader = ","
+
+" スクロール時の余白確保
+set scrolloff=5
+
+" 一行に長い文章を書いていても自動折り返しをしない
+set textwidth=0
+
+" バックアップ取らない
+set nobackup
+
+" 他で書き換えられたら自動で読み直す
+set autoread
+
+" スワップファイル作らない
+set noswapfile
+
+" 編集中でも他のファイルを開けるようにする
+set hidden
+
+" バックスペースでなんでも消せるように
+set backspace=indent,eol,start
+
+" テキスト整形オプション，マルチバイト系を追加
+set formatoptions=lmoq
+
+" ビープをならさない
+set vb t_vb=
+
+" Exploreの初期ディレクトリ
+set browsedir=buffer
+
+" カーソルを行頭、行末で止まらないようにする
+set whichwrap=b,s,h,l,<,>,[,]
+
+" コマンドをステータス行に表示
+set showcmd
+
+" 現在のモードを表示
+set showmode
+
+" viminfoファイルの設定
+set viminfo='50,<1000,s100,\"50
+
+" モードラインは無効
+set modelines=0
+
+" ゴミファイルを作らせない
+set noundofile
 
 " 折り返ししてかつインデントする
-set wrap                         " the longer line is wrapped
+set wrap
 if (v:version == 704 && has("patch338")) || v:version >= 705
   set breakindent    " indent even for wrapped lines
   set breakindentopt=min:0,shift:0
@@ -53,14 +86,17 @@ set helpfile=$VIMRUNTIME/doc/help.txt
 
 " Enable plugin
 filetype plugin on
+
 " Load Man command even for other file types than man.
 runtime ftplugin/man.vim
+
 " Close immediately by q, set non-modifiable settings
 autocmd FileType man nn <buffer> q :q!<CR>
 autocmd FileType man setlocal nospell ts=8 nolist ro nomod noma
 
 " ;でコマンド入力( ;と:を入れ替え)
 noremap ; :
+
 " pluginとかでnmap :call hoge..とかやってるやつがあるので、
 " :でもexコマンドに入れるようにしておく
 " noremap : ;
@@ -72,7 +108,9 @@ noremap ; :
 "-------------------------------------------------------------------------------
 " ステータスライン StatusLine
 "-------------------------------------------------------------------------------
-set laststatus=2 " 常にステータスラインを表示
+
+" 常にステータスラインを表示
+set laststatus=2
 
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
@@ -259,10 +297,18 @@ endfunction
 "-------------------------------------------------------------------------------
 " インデント Indent
 "-------------------------------------------------------------------------------
-set autoindent   " 自動でインデント
-"set paste        " ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
-set smartindent  " 新しい行の開始時、新しい行のインデントを現在行と同じ量にする
-set cindent      " Cプログラムファイルの自動インデントを始める
+
+" 自動でインデント
+set autoindent
+
+" ペースト時にautoindentを無効に(onにするとautocomplpop.vimが動かない)
+"set paste
+
+" 新しい行の開始時、新しい行のインデントを現在行と同じ量にする
+set smartindent
+
+" Cプログラムファイルの自動インデントを始める
+set cindent
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
 set tabstop=2 shiftwidth=2 softtabstop=0
@@ -278,11 +324,21 @@ command! Indent4 :setlocal tabstop=4 shiftwidth=4
 "-------------------------------------------------------------------------------
 " 表示 Apperance
 "-------------------------------------------------------------------------------
-set showmatch         " 括弧の対応をハイライト
-set number            " 行番号表示
-set list              " 不可視文字表示
-set listchars=tab:>.,trail:_,extends:>,precedes:< " 不可視文字の表示形式
-set display=uhex      " 印字不可能文字を16進数で表示
+
+" 括弧の対応をハイライト
+set showmatch
+
+" 行番号表示
+set number
+
+" 不可視文字表示
+set list
+
+" 不可視文字の表示形式
+set listchars=tab:>.,trail:_,extends:>,precedes:<
+
+" 印字不可能文字を16進数で表示
+set display=uhex
 
 " 行末の空白文字をハイライトする
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -309,6 +365,7 @@ highlight CursorLine ctermbg=black guibg=black
 
 " コマンド実行中は再描画しない
 set lazyredraw
+
 " 高速ターミナル接続を行う
 set ttyfast
 
@@ -319,11 +376,21 @@ set ttyfast
 "-------------------------------------------------------------------------------
 " 補完・履歴 Complete
 "-------------------------------------------------------------------------------
-set wildmenu               " コマンド補完を強化
-set wildchar=<tab>         " コマンド補完を開始するキー
-set wildmode=list:full     " リスト表示，最長マッチ
-set history=1000           " コマンド・検索パターンの履歴数
-"set complete+=k            " 補完に辞書ファイル追加
+
+" コマンド補完を強化
+set wildmenu
+
+" コマンド補完を開始するキー
+set wildchar=<tab>
+
+" リスト表示，最長マッチ
+set wildmode=list:full
+
+" コマンド・検索パターンの履歴数
+set history=1000
+
+" 補完に辞書ファイル追加
+"set complete+=k
 
 " Ex-modeでの<C-p><C-n>をzshのヒストリ補完っぽくする
 "cnoremap <C-p> <Up>
@@ -338,6 +405,7 @@ set history=1000           " コマンド・検索パターンの履歴数
 "-------------------------------------------------------------------------------
 " タグ関連 Tags
 "-------------------------------------------------------------------------------
+
 " set tags
 if has("autochdir")
   " 編集しているファイルのディレクトリに自動で移動
@@ -349,8 +417,8 @@ endif
 
 set notagbsearch
 
-" <C-t>はscreentとかぶるので削除
 " tab pagesを使い易くする
+"   <C-t>はscreentとかぶるので削除
 "nnoremap <C-t>  <Nop>
 "nnoremap <C-t>n  ;<C-u>tabnew<CR>
 "nnoremap <C-t>c  ;<C-u>tabclose<CR>
@@ -360,12 +428,16 @@ set notagbsearch
 
 " tags-and-searchesを使い易くする
 nnoremap t  <Nop>
+
 " 「飛ぶ」
 nnoremap tt  <C-]>
+
 " 「進む」
 nnoremap tj  ;<C-u>tag<CR>
+
 " 「戻る」
 nnoremap tk  ;<C-u>pop<CR>
+
 " 履歴一覧
 nnoremap tl  ;<C-u>tags<CR>
 
@@ -376,16 +448,28 @@ nnoremap tl  ;<C-u>tags<CR>
 "-------------------------------------------------------------------------------
 " 検索設定 Search
 "-------------------------------------------------------------------------------
-set wrapscan   " 最後まで検索したら先頭へ戻る
-set ignorecase " 大文字小文字無視
-set smartcase  " 検索文字列に大文字が含まれている場合は区別して検索する
-set incsearch  " インクリメンタルサーチ
-set hlsearch   " 検索文字をハイライト
+
+" 最後まで検索したら先頭へ戻る
+set wrapscan
+
+" 大文字小文字無視
+set ignorecase
+
+" 検索文字列に大文字が含まれている場合は区別して検索する
+set smartcase
+
+" インクリメンタルサーチ
+set incsearch
+
+" 検索文字をハイライト
+set hlsearch
+
 " Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
 " 選択した文字列を検索
 vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
+
 " 選択した文字列を置換
 vnoremap /r "xy;%s/<C-R>=escape(@x, '\\/.*$^~[]')<CR>//gc<Left><Left><Left>
 
@@ -394,16 +478,19 @@ nnoremap <expr> s* ':%substitute/\<' . expand('<cword>') . '\>/'
 
 " Ctrl-iでヘルプ
 nnoremap <C-i>  :<C-u>help<Space>
+
 " カーソル下のキーワードをヘルプでひく
 nnoremap <C-i><C-i> :<C-u>help<Space><C-r><C-w><Enter>
 
 " :Gb <args> でGrepBufferする
 command! -nargs=1 Gb :GrepBuffer <args>
+
 " カーソル下の単語をGrepBufferする
 nnoremap <C-g><C-b> :<C-u>GrepBuffer<Space><C-r><C-w><Enter>
 
 " :Gr <args>でカレントディレクトリ以下を再帰的にgrepする
 command! -nargs=1 Gr :Rgrep <args> *<Enter><CR>
+
 " カーソル下の単語をgrepする
 nnoremap <silent> <C-g><C-r> :<C-u>Rgrep<Space><C-r><C-w> *<Enter><CR>
 
@@ -417,6 +504,7 @@ let Grep_Skip_Files = '*.bak *~'
 "-------------------------------------------------------------------------------
 " 移動設定 Move
 "-------------------------------------------------------------------------------
+
 " カーソルを表示行で移動する。論理行移動は<C-n>,<C-p>
 nnoremap h <Left>
 nnoremap j gj
@@ -433,6 +521,7 @@ nmap 9 $
 " insert mode での移動
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
+
 " インサートモードでもhjklで移動（Ctrl押すけどね）
 "inoremap <C-j> <Down>
 "inoremap <C-k> <Up>
@@ -449,8 +538,10 @@ nmap <BS><BS> ;MBEbp<CR>
 
 " F2で前のバッファ
 map <F2> <ESC>;bp<CR>
+
 " F3で次のバッファ
 map <F3> <ESC>;bn<CR>
+
 " F4でバッファを削除する
 map <F4> <ESC>:bnext \| bdelete #<CR>
 command! Bw :bnext \| bdelete #
@@ -535,6 +626,7 @@ inoremap jj <Esc>
 "-------------------------------------------------------------------------------
 " カラー関連 Colors
 "-------------------------------------------------------------------------------
+
 set background=dark
 
 " カラースキーマ（以下から選ぶ
@@ -585,8 +677,10 @@ hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg
 "-------------------------------------------------------------------------------
 " 編集関連 Edit
 "-------------------------------------------------------------------------------
+
 " yeでそのカーソル位置にある単語をレジスタに追加
 nmap ye ;let @"=expand("<cword>")<CR>
+
 " Visualモードでのpで選択範囲をレジスタの内容に置き換える
 vnoremap p <Esc>;let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
@@ -624,16 +718,20 @@ nnoremap <silent> <C-d> d0
 
 " カーソルから行頭まで削除(インサートモード)
 "inoremap <silent> <C-k> <Esc>lc^
+
 " カーソルから行末まで削除(インサートモード)
 "inoremap <silent> <C-d> <Esc>lc$
+
 " カーソルから行頭までヤンク(インサートモード)
 "inoremap <silent> <C-y>e <Esc>ly0<Insert>
+
 " カーソルから行末までヤンク(インサートモード)
 "inoremap <silent> <C-y>0 <Esc>ly$<Insert>
 
 " 保存時に行末の空白を除去する
 autocmd BufWrite * :%s/\s\+$//ge
 autocmd BufWritePre * :%s/\s\+$//ge
+
 " 保存時にtabをスペースに変換する
 autocmd BufWrite * :%s/\t/  /ge
 autocmd BufWritePre * :%s/\t/  /ge
@@ -677,13 +775,18 @@ nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
 "-------------------------------------------------------------------------------
 " エンコーディング関連 Encoding
 "-------------------------------------------------------------------------------
-set ffs=unix,dos,mac  " 改行文字
-set encoding=utf-8    " デフォルトエンコーディング
+
+" 改行文字
+set ffs=unix,dos,mac
+
+" デフォルトエンコーディング
+set encoding=utf-8
 
 " 文字コード認識はbanyan/recognize_charcode.vimへ
 
 " cvsの時は文字コードをeuc-jpに設定
 autocmd FileType cvs :set fileencoding=euc-jp
+
 " 以下のファイルの時は文字コードをutf-8に設定
 autocmd FileType svn :set fileencoding=utf-8
 autocmd FileType js :set fileencoding=utf-8
