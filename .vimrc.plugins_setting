@@ -366,7 +366,7 @@ let g:user_emmet_settings = {
 " ------------------------------------------------
 
 let g:autoft_config = [
-  \ { 'filetype': 'html' , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)' },
+  \ { 'filetype': 'html' , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5\s*$' },
   \ { 'filetype': 'c'    , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
   \ { 'filetype': 'diff' , 'pattern': '^diff -' },
   \ { 'filetype': 'sh'   , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$' },
