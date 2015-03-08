@@ -351,11 +351,26 @@ let g:user_emmet_settings = {
 " ------------------------------------------------
 
 " indentLineとprecious.vimを組みわせる
-augroup precious-indentline
-  autocmd!
-  " filetype が切り替わるたびに indetLine をリセットする
-  autocmd User PreciousFileType IndentLinesReset
-augroup END
+"augroup precious-indentline
+"  autocmd!
+"  " filetype が切り替わるたびに indetLine をリセットする
+"  autocmd User PreciousFileType IndentLinesReset
+"augroup END
+
+
+
+
+
+" ------------------------------------------------
+" vim-autoft
+" ------------------------------------------------
+
+let g:autoft_config = [
+  \ { 'filetype': 'html' , 'pattern': '<\%(!DOCTYPE\|html\|head\|script\)' },
+  \ { 'filetype': 'c'    , 'pattern': '^\s*#\s*\%(include\|define\)\>' },
+  \ { 'filetype': 'diff' , 'pattern': '^diff -' },
+  \ { 'filetype': 'sh'   , 'pattern': '^#!.*\%(\<sh\>\|\<bash\>\)\s*$' },
+  \ ]
 
 
 

@@ -26,15 +26,15 @@ PACKAGES_CUI_OSX=(
 )
 
 PACKAGES_GUI_OSX=(
-  adobe-air
+  chromium
   boot2docker
   dropbox
   evernote
   iterm2
   karabiner
   mactex
-  google-chrome
   google-japanese-ime
+  qlimagesize
   qlmarkdown
   slate
   smoothmouse
@@ -54,6 +54,7 @@ PACKAGES_GUI_OSX=(
 PACKAGES_CUI_UBUNTU=(
   git
   htop
+  lua
   the_silver_searcher
   tmux
   tree
