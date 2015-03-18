@@ -2,7 +2,7 @@
 # ag
 # ------------------------------------------------
 
-[ `which ag` ] && alias grep=ag
+[ -x `which ag` ] && alias grep=ag
 
 
 
@@ -12,7 +12,7 @@
 # htop
 # ------------------------------------------------
 
-[ `which htop` ] && alias top=htop
+[ -x `which htop` ] && alias top=htop
 
 
 
