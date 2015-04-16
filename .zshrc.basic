@@ -146,12 +146,26 @@ alias cdcd="cd $HOME/code"
 alias cdm="cd $HOME/Dropbox/Memo"
 alias cdb="cd $HOME/blog"
 
+alias mkm="cp $HOME/Dropbox/memo/diary/template.md $HOME/Dropbox/memo/diary/`date +%Y_%m_%d`.md"
+alias memo="vim $HOME/Dropbox/memo/diary/`date +%Y_%m_%d`.md"
+
+function mm(){
+  local d
+  d="`date +%Y_%m_%d`"
+
+  if [ ! -f $HOME/Dropbox/memo/$d.md ];then
+    cp $HOME/Dropbox/memo/template.md $HOME/Dropbox/memo/$d.md
+  fi
+
+  vim $HOME/Dropbox/memo/`date +%Y_%m_%d`.md
+}
+
 alias aa=exit
 alias ZZ=exit
 alias ZQ=exit
 
 # 右プロンプトでメモ
-function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
+#function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
 
 # VimでManを見る
 #function man(){
