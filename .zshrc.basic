@@ -143,21 +143,32 @@ alias su="su -l"
 alias cdt="cd $HOME/dotfiles"
 alias cdd="cd $HOME/Downloads"
 alias cdcd="cd $HOME/code"
-alias cdm="cd $HOME/Dropbox/Memo"
 alias cdb="cd $HOME/blog"
-
-alias mkm="cp $HOME/Dropbox/memo/diary/template.md $HOME/Dropbox/memo/diary/`date +%Y_%m_%d`.md"
-alias memo="vim $HOME/Dropbox/memo/diary/`date +%Y_%m_%d`.md"
+alias cdm="cd $HOME/Dropbox/memo"
+alias cdn="cd $HOME/Dropbox/diary/`date +%Y`/`date +%m`"
 
 function mm(){
   local d
   d="`date +%Y_%m_%d`"
-
-  if [ ! -f $HOME/Dropbox/memo/$d.md ];then
-    cp $HOME/Dropbox/memo/template.md $HOME/Dropbox/memo/$d.md
-  fi
-
   vim $HOME/Dropbox/memo/`date +%Y_%m_%d`.md
+}
+
+function nn(){
+  local p
+  local y
+  local m
+  local d
+  p="$HOME/Dropbox/diary"
+  y="`date +%Y`"
+  m="`date +%m`"
+  d="`date +%d`"
+  if [ ! -f $p/$y/$m/$d.md ];then
+    if [ ! -d $p/$y/$m ];then
+      mkdir -p $p/$y/$m
+    fi
+    cp $p/template.md $p/$y/$m/$d.md
+  fi
+  vim $p/$y/$m/$d.md
 }
 
 alias aa=exit
@@ -165,7 +176,7 @@ alias ZZ=exit
 alias ZQ=exit
 
 # 右プロンプトでメモ
-#function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
+function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
 
 # VimでManを見る
 #function man(){
@@ -212,7 +223,6 @@ function jj(){
 
 # カレントディレクトリ以下にある空ディレクトリを削除
 function cleanup(){
-  find . -type d -maxdepth 2 -empty -exec rmdir -v {} \; 2>/dev/null
   find . -type d -maxdepth 2 -empty -exec rmdir -v {} \; 2>/dev/null
 }
 

@@ -2,7 +2,7 @@
 # OSX
 # ==============================================================================
 
-PACKAGES_CUI_OSX=(
+PACKAGES_OSX=(
   cabal-install
   git
   go
@@ -25,9 +25,8 @@ PACKAGES_CUI_OSX=(
   zshdb
 )
 
-PACKAGES_GUI_OSX=(
+PACKAGES_OSX_CASK=(
   chromium
-  boot2docker
   dropbox
   evernote
   iterm2
@@ -51,7 +50,7 @@ PACKAGES_GUI_OSX=(
 # Ubuntu
 # ==============================================================================
 
-PACKAGES_CUI_UBUNTU=(
+PACKAGES_UBUNTU=(
   git
   htop
   lua
@@ -68,7 +67,4 @@ PACKAGES_CUI_UBUNTU=(
   zsh-history-substring-search
   zsh-syntax-highlighting
   zshdb
-)
-
-PACKAGES_GUI_UBUNTU=(
 )
