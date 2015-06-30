@@ -19,7 +19,7 @@ fi
 echo ""
 
 brew update
-brew upgrade
+brew upgrade --all
 
 
 

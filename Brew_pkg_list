@@ -26,9 +26,9 @@ PACKAGES_OSX=(
 )
 
 PACKAGES_OSX_CASK=(
-  chromium
   dropbox
   evernote
+  google-chrome
   iterm2
   karabiner
   mactex

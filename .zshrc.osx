@@ -3,27 +3,27 @@
 # ==============================================================================
 
 # homebrew
-BREWHOME=/usr/local
+export BREWHOME=/usr/local
 path=($BREWHOME/bin(N-/) $path)
 
 # brew_cask
-HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
-CASKROOM=$BREWHOME/Caskroom
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
+export CASKROOM=$BREWHOME/Caskroom
 path=($CASKROOM/*/bin(N-/) $path)
 
 # boot2docker
-DOCKER_HOST=tcp://192.168.59.103:2375
+export DOCKER_HOST=tcp://192.168.59.103:2375
 
 # haskell
-PATH="$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/.cabal/bin:$PATH"
 
 # go
-GOPATH=$HOME/.go
-PATH="$GOPATH/bin:$PATH"
+export GOPATH=$HOME/.go
+export PATH="$GOPATH/bin:$PATH"
 
 # ruby
-#GEM_HOME=$HOME/.gem/ruby/2.0.0
-#PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
+#export GEM_HOME=$HOME/.gem/ruby/2.0.0
+#export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
 
 
 

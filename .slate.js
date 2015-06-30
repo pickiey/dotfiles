@@ -68,8 +68,8 @@ var launch_and_focus = function (target) {
 slate.bind('f:alt', launch_and_focus('Finder'));
 slate.bind('t:alt', launch_and_focus('iTerm'));
 slate.bind('r:alt', launch_and_focus('Reeder'));
-slate.bind('e:alt', launch_and_focus('Chromium'));
-//slate.bind('e:alt', launch_and_focus('Google Chrome'));
+slate.bind('e:alt', launch_and_focus('Google Chrome'));
+//slate.bind('e:alt', launch_and_focus('Chromium'));
 
 //slate.bind('d:alt', launch_and_focus('Dictionary'));
 //S.bind('p:alt', launch_and_focus('Preview'));

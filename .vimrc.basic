@@ -628,6 +628,7 @@ inoremap jj <Esc>
 "-------------------------------------------------------------------------------
 
 set background=dark
+"set background=light
 
 " カラースキーマ（以下から選ぶ
 "colorscheme molokai

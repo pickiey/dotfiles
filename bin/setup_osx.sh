@@ -266,6 +266,9 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
   defaults write com.apple.screencapture location ~/Pictures
   #defaults delete com.apple.screencapture location
 
+  defaults write com.apple.dock size-immutable -boolean true
+  #defaults delete com.apple.dock size-immutable
+
 
 
 
