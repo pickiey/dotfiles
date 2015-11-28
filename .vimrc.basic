@@ -635,10 +635,11 @@ set background=dark
 "colorscheme Zenburn
 "colorscheme jammy
 "colorscheme hybrid
-colorscheme solarized
+"colorscheme solarized
 "colorscheme getafe
 "colorscheme jellybeans
 "colorscheme mopkai
+colorscheme iceberg
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
