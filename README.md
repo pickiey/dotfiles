@@ -1,12 +1,12 @@
-# Synopsis
+# 内容
 
-The setup script (setup.sh) is for OSX at present.
+dotfilesで端末設定一括でやるスクリプトとその設定
 
 --------------------------------------------------------------------------------
 
-## OS X Yosemite (require xcode)
+## OS X Yosemite (xcode必要)
 
-### Run the setup script
+### 使い方
 
 ```sh
 sudo xcrun cc
@@ -24,7 +24,7 @@ chmod u+x $HOME/dotfiles/bin/setup_osx.sh
 $HOME/dotfiles/bin/setup_osx.sh
 ```
 
-### install font
+### フォントの追加
 
 ```sh
 cp path/to/MyFontFile-Powerline.otf $HOME/Library/Fonts
@@ -34,7 +34,7 @@ cp path/to/MyFontFile-Powerline.otf $HOME/Library/Fonts
 
 ## Ubuntu 14.10
 
-### Run the setup script
+### 使い方
 
 ```sh
 sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
@@ -56,7 +56,7 @@ chmod u+x $HOME/dotfiles/bin/setup_ubuntu.sh
 $HOME/dotfiles/bin/setup_ubuntu.sh
 ```
 
-### install font
+### フォントの追加
 
 ```sh
 mkdir -p ~/.fonts
@@ -65,7 +65,7 @@ cp path/to/MyFontFile-Powerline.otf $HOME/.fonts
 
 --------------------------------------------------------------------------------
 
-## References
+## 参考
 
 - [Homebrew](http://brew.sh)
 - [Linuxbrew](http://brew.sh/linuxbrew/)
