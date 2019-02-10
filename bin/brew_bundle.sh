@@ -18,63 +18,10 @@ fi
 
 echo ""
 
-brew update
-brew upgrade --all
+brew upgrade
 
-
-
-
-
-# ==============================================================================
-# Read Brew_pkg_list
-# ==============================================================================
-
-if [ -e $HOME/dotfiles/Brew_pkg_list ]; then
-
-  source $HOME/dotfiles/Brew_pkg_list
-
-  # ============================================================================
-  # OS X
-  # ============================================================================
-
-  if [ `uname` == "Darwin" ]; then
-
-    echo ""
-
-    for file in ${PACKAGES_OSX[@]}
-    do
-      brew install $file
-    done
-
-    echo ""
-
-    brew tap caskroom/cask
-    brew install brew-cask
-
-    echo ""
-
-    for file in ${PACKAGES_OSX_CASK[@]}
-    do
-      brew cask install $file
-    done
-
-  fi
-
-  # ============================================================================
-  # Ubuntu
-  # ============================================================================
-
-  if [ `uname` == "Linux" ]; then
-
-    echo ""
-
-    for file in ${PACKAGES_UBUNTU[@]}
-    do
-      brew install $file
-    done
-
-  fi
-
+if [ `uname` == "Darwin" ]; then
+  brew cask upgrade
 fi
 
 
@@ -88,10 +35,6 @@ fi
 echo ""
 
 brew cleanup
-
-if [ `uname` == "Darwin" ]; then
-  brew cask cleanup
-fi
 
 
 

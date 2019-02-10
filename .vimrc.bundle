@@ -6,10 +6,10 @@
 filetype off
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle/'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
-  call neobundle#end()
+    set runtimepath+=~/.vim/neobundle.vim
+    call neobundle#begin(expand('~/.vim/bundle/'))
+        NeoBundleFetch 'Shougo/neobundle.vim'
+    call neobundle#end()
 endif
 
 
@@ -101,12 +101,12 @@ NeoBundle 'Shougo/vimshell'
 " vimproc : vimから非同期実行。vimshelleで必要
 " なければ自動で導入
 NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-  \   'mac' : 'make -f make_mac.mak',
-  \   'unix' : 'make -f make_unix.mak',
-  \   'cygwin' : 'make -f make_cygwin.mak'
-  \ }
-  \ }
+    \ 'build' : {
+    \   'mac' : 'make -f make_mac.mak',
+    \   'unix' : 'make -f make_unix.mak',
+    \   'cygwin' : 'make -f make_cygwin.mak'
+    \ }
+    \ }
 
 " ステータスラインをカッコよくする
 NeoBundle 'itchyny/lightline.vim'

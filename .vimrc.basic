@@ -1,105 +1,78 @@
 "-------------------------------------------------------------------------------
 " 基本設定 Basics
 "-------------------------------------------------------------------------------
-" キーマップリーダー
-let mapleader = ","
-
-" スクロール時の余白確保
-set scrolloff=5
-
-" 一行に長い文章を書いていても自動折り返しをしない
-set textwidth=0
-
-" バックアップ取らない
-set nobackup
-
-" 他で書き換えられたら自動で読み直す
-set autoread
-
-" スワップファイル作らない
-set noswapfile
 
 " 編集中でも他のファイルを開けるようにする
 set hidden
+" 他で書き換えられたら自動で読み直す
+set autoread
+
+" バックアップ取らない
+set nobackup
+" スワップファイル作らない
+set noswapfile
+" ゴミファイルを作らせない
+set noundofile
+
+" スクロール時の余白確保
+set scrolloff=5
+" 一行に長い文章を書いていても自動折り返しをしない
+set textwidth=0
+" 折り返ししてかつインデントする
+set wrap
+if (v:version == 704 && has("patch338")) || v:version >= 705
+    set breakindent    " indent even for wrapped lines
+    set breakindentopt=min:0,shift:0
+endif
 
 " バックスペースでなんでも消せるように
 set backspace=indent,eol,start
-
-" テキスト整形オプション，マルチバイト系を追加
-set formatoptions=lmoq
-
-" ビープをならさない
-set vb t_vb=
-
-" Exploreの初期ディレクトリ
-set browsedir=buffer
-
 " カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
 
 " コマンドをステータス行に表示
 set showcmd
-
 " 現在のモードを表示
 set showmode
-
-" viminfoファイルの設定
-set viminfo='50,<1000,s100,\"50
-
 " モードラインは無効
 set modelines=0
 
-" ゴミファイルを作らせない
-set noundofile
+" テキスト整形オプション，マルチバイト系を追加
+set formatoptions=lmoq
 
-" 折り返ししてかつインデントする
-set wrap
-if (v:version == 704 && has("patch338")) || v:version >= 705
-  set breakindent    " indent even for wrapped lines
-  set breakindentopt=min:0,shift:0
-endif
+" viminfoファイルの設定
+set viminfo='50,<1000,s100,\"50
+" Exploreの初期ディレクトリ
+set browsedir=buffer
 
 " OSのクリップボードを使用する
 set clipboard+=unnamed
-
-" 挿入モードでCtrl+pを押すとクリップボードの内容を貼り付けられるようにする
-"imap <C-p>  <ESC>"*pa
-
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
-set ttymouse=xterm2
+"set ttymouse=xterm2
 
+" ビープをならさない
+set vb t_vb=
 " escキーの反応を良くする
 set timeout timeoutlen=1000 ttimeoutlen=10
-
 " "Thanks for flying Vim"を回避
 execute ":set titleold:".fnameescape($TITLE)
 execute ":set titlestring:".fnameescape($TITLE." - %t")
 
-" Ev/Rvでvimrcの編集と反映
-command! Ev edit $MYVIMRC
-command! Rv source $MYVIMRC
 
-" helpの読み込み
-set helpfile=$VIMRUNTIME/doc/help.txt
 
-" Enable plugin
-filetype plugin on
-
-" Load Man command even for other file types than man.
-runtime ftplugin/man.vim
-
-" Close immediately by q, set non-modifiable settings
-autocmd FileType man nn <buffer> q :q!<CR>
-autocmd FileType man setlocal nospell ts=8 nolist ro nomod noma
+" キーマップリーダー
+let mapleader = ","
 
 " ;でコマンド入力( ;と:を入れ替え)
 noremap ; :
-
 " pluginとかでnmap :call hoge..とかやってるやつがあるので、
 " :でもexコマンドに入れるようにしておく
 " noremap : ;
+
+" 挿入モードでCtrl+pを押すとクリップボードの内容を貼り付けられるようにする
+"imap <C-p>  <ESC>"*pa
 
 
 
@@ -117,179 +90,137 @@ set ruler
 
 " lightline.vim
 let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ 'mode_map': {'c': 'NORMAL'},
-  \ 'active': {
-  \   'left': [
-  \     ['mode', 'paste'],
-  \     ['fugitive', 'gitgutter', 'filename'],
-  \   ],
-  \   'right': [
-  \     ['lineinfo', 'syntastic'],
-  \     ['percent'],
-  \     ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-  \   ]
-  \ },
-  \ 'component_function': {
-  \   'modified': 'MyModified',
-  \   'readonly': 'MyReadonly',
-  \   'fugitive': 'MyFugitive',
-  \   'filename': 'MyFilename',
-  \   'fileformat': 'MyFileformat',
-  \   'filetype': 'MyFiletype',
-  \   'fileencoding': 'MyFileencoding',
-  \   'mode': 'MyMode',
-  \   'syntastic': 'SyntasticStatuslineFlag',
-  \   'charcode': 'MyCharCode',
-  \   'gitgutter': 'MyGitGutter',
-  \ },
-  \ 'separator': {'left': '⮀', 'right': '⮂'},
-  \ 'subseparator': {'left': '⮁', 'right': '⮃'}
-  \ }
+    \ 'colorscheme': 'solarized',
+    \ 'mode_map': {'c': 'NORMAL'},
+    \ 'active': {
+    \   'left': [
+    \       ['mode', 'paste'],
+    \       ['fugitive', 'gitgutter', 'filename'],
+    \   ],
+    \   'right': [
+    \       ['lineinfo', 'syntastic'],
+    \       ['percent'],
+    \       ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+    \   ]
+    \ },
+    \ 'component_function': {
+    \     'modified': 'MyModified',
+    \     'readonly': 'MyReadonly',
+    \     'fugitive': 'MyFugitive',
+    \     'filename': 'MyFilename',
+    \     'fileformat': 'MyFileformat',
+    \     'filetype': 'MyFiletype',
+    \     'fileencoding': 'MyFileencoding',
+    \     'mode': 'MyMode',
+    \     'syntastic': 'SyntasticStatuslineFlag',
+    \     'charcode': 'MyCharCode',
+    \     'gitgutter': 'MyGitGutter',
+    \ },
+    \ 'separator': {'left': '⮀', 'right': '⮂'},
+    \ 'subseparator': {'left': '⮁', 'right': '⮃'}
+    \ }
 
 function! MyModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! MyReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
+    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
 endfunction
 
 function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-    \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-    \  &ft == 'unite' ? unite#get_status_string() :
-    \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-    \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-    \ ('' != MyModified() ? ' ' . MyModified() : '')
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-  try
-    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-      let _ = fugitive#head()
-      return strlen(_) ? '⭠ '._ : ''
-    endif
-  catch
-  endtry
-  return ''
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+            let _ = fugitive#head()
+            return strlen(_) ? '⭠ '._ : ''
+        endif
+    catch
+    endtry
+    return ''
 endfunction
 
 function! MyFileformat()
-  return winwidth('.') > 70 ? &fileformat : ''
+    return winwidth('.') > 70 ? &fileformat : ''
 endfunction
 
 function! MyFiletype()
-  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! MyFileencoding()
-  return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
 function! MyMode()
-  return winwidth('.') > 60 ? lightline#mode() : ''
+    return winwidth('.') > 60 ? lightline#mode() : ''
 endfunction
 
 function! MyGitGutter()
-  if ! exists('*GitGutterGetHunkSummary')
-      \ || ! get(g:, 'gitgutter_enabled', 0)
-      \ || winwidth('.') <= 90
-    return ''
-  endif
-  let symbols = [
-    \ g:gitgutter_sign_added . ' ',
-    \ g:gitgutter_sign_modified . ' ',
-    \ g:gitgutter_sign_removed . ' '
-    \ ]
-  let hunks = GitGutterGetHunkSummary()
-  let ret = []
-  for i in [0, 1, 2]
-    if hunks[i] > 0
-      call add(ret, symbols[i] . hunks[i])
+    if ! exists('*GitGutterGetHunkSummary')
+        \ || ! get(g:, 'gitgutter_enabled', 0)
+        \ || winwidth('.') <= 90
+        return ''
     endif
-  endfor
-  return join(ret, ' ')
+    let symbols = [
+        \ g:gitgutter_sign_added . ' ',
+        \ g:gitgutter_sign_modified . ' ',
+        \ g:gitgutter_sign_removed . ' '
+        \ ]
+    let hunks = GitGutterGetHunkSummary()
+    let ret = []
+    for i in [0, 1, 2]
+        if hunks[i] > 0
+            call add(ret, symbols[i] . hunks[i])
+        endif
+    endfor
+    return join(ret, ' ')
 endfunction
 
 " https://github.com/Lokaltog/vim-powerline/blob/develop/autoload/Powerline/Functions.vim
 function! MyCharCode()
-  if winwidth('.') <= 70
-    return ''
-  endif
+    if winwidth('.') <= 70
+        return ''
+    endif
 
-  " Get the output of :ascii
-  redir => ascii
-  silent! ascii
-  redir END
+    " Get the output of :ascii
+    redir => ascii
+    silent! ascii
+    redir END
 
-  if match(ascii, 'NUL') != -1
-    return 'NUL'
-  endif
+    if match(ascii, 'NUL') != -1
+        return 'NUL'
+    endif
 
-  " Zero pad hex values
-  let nrformat = '0x%02x'
+    " Zero pad hex values
+    let nrformat = '0x%02x'
 
-  let encoding = (&fenc == '' ? &enc : &fenc)
+    let encoding = (&fenc == '' ? &enc : &fenc)
 
-  if encoding == 'utf-8'
-    " Zero pad with 4 zeroes in unicode files
-    let nrformat = '0x%04x'
-  endif
+    if encoding == 'utf-8'
+        " Zero pad with 4 zeroes in unicode files
+        let nrformat = '0x%04x'
+    endif
 
-  " Get the character and the numeric value from the return value of :ascii
-  " This matches the two first pieces of the return value, e.g.
-  " "<F>  70" => char: 'F', nr: '70'
-  let [str, char, nr; rest] = matchlist(ascii, '\v\<(.{-1,})\>\s*([0-9]+)')
+    " Get the character and the numeric value from the return value of :ascii
+    " This matches the two first pieces of the return value, e.g.
+    " "<F>  70" => char: 'F', nr: '70'
+    let [str, char, nr; rest] = matchlist(ascii, '\v\<(.{-1,})\>\s*([0-9]+)')
 
-  " Format the numeric value
-  let nr = printf(nrformat, nr)
+    " Format the numeric value
+    let nr = printf(nrformat, nr)
 
-  return "'". char ."' ". nr
+    return "'". char ."' ". nr
 endfunction
 
-
-
-
-" vimとtmuxを連携
-
-"if exists('$TMUX') && !has('gui_running')
-"  autocmd BufEnter * call <SID>set_vim_cwd_to_tmux()
-"  autocmd VimLeave * call <SID>del_vim_cwd_from_tmux()
-"endif
-"
-"function! s:set_vim_cwd_to_tmux()
-"  if !exists('$TMUX') || has('gui_running')
-"    return
-"  endif
-"
-"  let pain_id = system('tmux display -p "#D" | tr -d "%" | tr -d $"\n"')
-"  call system('tmux setenv ' . "TMUX_VIM_CWD_" . pain_id . ' ' . getcwd())
-"
-"  let bt = &buftype
-"  let ft = &filetype
-"  " let bn = bufname('%')
-"  if bt ==# 'nofile'
-"    \ || ft ==# 'gitcommit' || ft ==# 'git-status' || ft ==# 'git-log'
-"    \ || ft ==# 'qf' || ft ==# 'gitcommit' || ft ==# 'quickrun'
-"    \ || ft ==# 'qfreplace' || ft ==# 'ref' || ft ==# 'vcs-commit'
-"    \ || ft ==# 'vcs-status'
-"    let pwd = getcwd()
-"  else
-"    let pwd = expand('%:p:h')
-"  endif
-"
-"  let var_name = system('tmux display -p "TMUXPWD_#D" | tr -d "%" | tr -d $"\n"')
-"  call system('tmux setenv ' . var_name . ' ' . shellescape(pwd))
-"endfunction
-"
-"function! s:del_vim_cwd_from_tmux()
-"  if !exists('$TMUX')
-"    return
-"  endif
-"  let var_name = system('tmux display -p "TMUX_VIM_CWD_#D" | tr -d "%" | tr -d $"\n"')
-"  call system('tmux setenv -u ' . var_name)
-"endfunction
 
 
 
@@ -311,7 +242,7 @@ set smartindent
 set cindent
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
-set tabstop=2 shiftwidth=2 softtabstop=0
+set tabstop=4 shiftwidth=4 softtabstop=4
 
 " インデント量を素早く変更
 command! Indent2 :setlocal tabstop=2 shiftwidth=2
@@ -339,6 +270,9 @@ set listchars=tab:>.,trail:_,extends:>,precedes:<
 
 " 印字不可能文字を16進数で表示
 set display=uhex
+
+" Ambiguousな文字を全角で表示
+set ambiwidth=double
 
 " 行末の空白文字をハイライトする
 highlight WhitespaceEOL ctermbg=red guibg=red
@@ -408,11 +342,11 @@ set history=1000
 
 " set tags
 if has("autochdir")
-  " 編集しているファイルのディレクトリに自動で移動
-  set autochdir
-  set tags=tags;
+    " 編集しているファイルのディレクトリに自動で移動
+    set autochdir
+    set tags=tags;
 else
-  set tags=./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
+    set tags=./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
 endif
 
 set notagbsearch
@@ -592,18 +526,18 @@ nnoremap <expr> <C-w>gf  <SID>do_git_diff_aware_gf('<C-w>gf')
 nnoremap <expr> <C-w>gF  <SID>do_git_diff_aware_gf('<C-w>gF')
 
 function! s:do_git_diff_aware_gf(command)
-  let target_path = expand('<cfile>')
-  if target_path =~# '^[ab]/'  " with a peculiar prefix of git-diff(1)?
-    if filereadable(target_path) || isdirectory(target_path)
-      return a:command
+    let target_path = expand('<cfile>')
+    if target_path =~# '^[ab]/'  " with a peculiar prefix of git-diff(1)?
+        if filereadable(target_path) || isdirectory(target_path)
+            return a:command
+        else
+            " BUGS: Side effect - Cursor position is changed.
+            let [_, c] = searchpos('\f\+', 'cenW')
+            return c . '|' . 'v' . (len(target_path) - 2 - 1) . 'h' . a:command
+        endif
     else
-      " BUGS: Side effect - Cursor position is changed.
-      let [_, c] = searchpos('\f\+', 'cenW')
-      return c . '|' . 'v' . (len(target_path) - 2 - 1) . 'h' . a:command
+        return a:command
     endif
-  else
-    return a:command
-  endif
 endfunction
 
 " insert mode でjjでesc
@@ -633,28 +567,27 @@ set background=dark
 " カラースキーマ（以下から選ぶ
 "colorscheme molokai
 "colorscheme Zenburn
-"colorscheme jammy
 "colorscheme hybrid
 "colorscheme solarized
-"colorscheme getafe
 "colorscheme jellybeans
 "colorscheme mopkai
 colorscheme iceberg
+"colorscheme pencil
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
-  " 256色
-  set t_Co=256
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
+    " 256色
+    set t_Co=256
+    set t_Sf=[3%dm
+    set t_Sb=[4%dm
 elseif &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-  set t_Co=16
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
+    set t_Co=16
+    set t_Sf=[3%dm
+    set t_Sb=[4%dm
 elseif &term =~ "xterm-color"
-  set t_Co=8
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
+    set t_Co=8
+    set t_Sf=[3%dm
+    set t_Sb=[4%dm
 endif
 
 " ポップアップメニューのカラーを設定
@@ -694,8 +627,8 @@ inoremap , ,<Space>
 
 " XMLの閉タグを自動挿入
 augroup MyXML
-  autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+    autocmd!
+    autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
 " Insert mode中で単語単位/行単位の削除をアンドゥ可能にする
@@ -735,24 +668,13 @@ autocmd BufWrite * :%s/\s\+$//ge
 autocmd BufWritePre * :%s/\s\+$//ge
 
 " 保存時にtabをスペースに変換する
-autocmd BufWrite * :%s/\t/  /ge
-autocmd BufWritePre * :%s/\t/  /ge
+"autocmd BufWrite * :%s/\t/  /ge
+"autocmd BufWritePre * :%s/\t/  /ge
 
 " 日時の自動入力
 inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')
 inoremap <expr> ,dd strftime('%Y/%m/%d')
 inoremap <expr> ,dt strftime('%H:%M:%S')
-
-" foldは各FiltTypeにお任せる
-" set foldmethod=syntax
-" 折りたたみは全て展開した状態で開始する
-" set foldlevelstart=99
-" .vimはmarker
-" autocmd FileType vim :set foldmethod=marker
-
-" <leader>j でJSONをformat
-" http://wozozo.hatenablog.com/entry/2012/02/08/121504
-map <Leader>j !python -m json.tool<CR>
 
 " quickfixウィンドウではq/ESCで閉じる
 autocmd FileType qf nnoremap <buffer> q :ccl<CR>
@@ -760,15 +682,20 @@ autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
 
 " cwでquickfixウィンドウの表示をtoggleするようにした
 function! s:toggle_qf_window()
-  for bufnr in range(1,  winnr('$'))
-    if getwinvar(bufnr,  '&buftype') ==# 'quickfix'
-      execute 'ccl'
-      return
-    endif
-  endfor
-  execute 'botright cw'
+    for bufnr in range(1,  winnr('$'))
+        if getwinvar(bufnr,  '&buftype') ==# 'quickfix'
+            execute 'ccl'
+            return
+        endif
+    endfor
+    execute 'botright cw'
 endfunction
 nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
+
+let _curfile=expand("%:r")
+if _curfile == 'makefile'
+    set noexpandtab
+endif
 
 
 

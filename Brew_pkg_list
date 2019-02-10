@@ -1,45 +1,36 @@
 # ==============================================================================
-# OSX
+# Mac
 # ==============================================================================
 
-PACKAGES_OSX=(
-  cabal-install
-  git
-  go
-  ghc
-  htop
-  lua
-  reattach-to-user-namespace
-  the_silver_searcher
-  tmux
-  tree
-  unrar
-  vim
-  w3m
-  wget
-  z
-  zsh
-  zsh-completions
-  zsh-history-substring-search
-  zsh-syntax-highlighting
-  zshdb
+PACKAGES_MAC=(
+    git
+    neovim
+    haskell-stack
+    htop
+    lua
+    reattach-to-user-namespace
+    tmux
+    tree
+    ripgrep
+    unrar
+    wget
+    z
+    zsh
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+    zshdb
 )
 
-PACKAGES_OSX_CASK=(
-  dropbox
-  evernote
-  google-chrome
-  iterm2
-  karabiner
-  mactex
-  google-japanese-ime
-  qlimagesize
-  qlmarkdown
-  slate
-  smoothmouse
-  vagrant
-  virtualbox
-  xtrafinder
+PACKAGES_MAC_CASK=(
+    dropbox
+    google-chrome
+    google-japanese-ime
+    iterm2
+    karabiner-elements
+    qlimagesize
+    qlmarkdown
+    slate
 )
 
 
@@ -47,24 +38,23 @@ PACKAGES_OSX_CASK=(
 
 
 # ==============================================================================
-# Ubuntu
+# Linux
 # ==============================================================================
 
-PACKAGES_UBUNTU=(
-  git
-  htop
-  lua
-  the_silver_searcher
-  tmux
-  tree
-  unrar
-  vim
-  w3m
-  wget
-  z
-  zsh
-  zsh-completions
-  zsh-history-substring-search
-  zsh-syntax-highlighting
-  zshdb
+PACKAGES_LINUX=(
+    git
+    neovim
+    haskell-stack
+    htop
+    lua
+    tmux
+    tree
+    ripgrep
+    unrar
+    z
+    zsh
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+    zshdb
 )

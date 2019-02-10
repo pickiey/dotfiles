@@ -2,7 +2,7 @@
 # ag
 # ------------------------------------------------
 
-[ -x `which ag` ] && alias grep=ag
+[ -x `which rg` ] && alias grep="rg -uu"
 
 
 
@@ -46,10 +46,13 @@ alias vg=vagrant
 
 
 # ------------------------------------------------
-# vim
+# nvim
 # ------------------------------------------------
 
-alias v=vim
+export EDITOR='nvim'
+
+alias v=$EDITOR
+alias vim=$EDITOR
 
 
 
@@ -60,8 +63,8 @@ alias v=vim
 # ------------------------------------------------
 
 if [ -e $BREWHOME/etc/profile.d/z.sh ]; then
-  _Z_CMD=j
-  source $BREWHOME/etc/profile.d/z.sh
+    _Z_CMD=j
+    source $BREWHOME/etc/profile.d/z.sh
 fi
 
 
@@ -82,4 +85,4 @@ fpath=($BREWHOME/share/zsh-completions $fpath)
 # zsh-syntax-highlighting
 # ------------------------------------------------
 
-export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$BREWHOME/share/zsh-syntax-highlighting/highlighter
+ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$BREWHOME/share/zsh-syntax-highlighting/highlighter

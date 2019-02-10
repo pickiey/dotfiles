@@ -3,12 +3,15 @@
 # ==============================================================================
 
 # LANG
-export LANG=en_US.UTF-8
+LANG=en_US.UTF-8
 case "$UID" in
 0)
-  LANG=C
-  ;;
+    LANG=C
+    ;;
 esac
+
+# set editor
+EDITOR='vim'
 
 # auto change directory
 setopt auto_cd
@@ -45,11 +48,14 @@ setopt noclobber
 # ターミナルのタイトルをuser@hostname:current-directoryに変更する
 case "$TERM" in
 xterm|xterm-color|kterm|kterm-color)
-  precmd() {
-    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-  }
-  ;;
+    precmd() {
+        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+    }
+    ;;
 esac
+
+# パスの重複回避
+typeset -U path PATH
 
 # PATHをbinと名のつくもの全てに
 #    パス(...): ...という条件にマッチするパスのみ残す。
@@ -58,7 +64,6 @@ esac
 #               globがマッチしなかったり存在しないパスを無視する。
 #            -: シンボリックリンク先のパスを評価。
 #            /: ディレクトリのみ残す。
-typeset -U path
 path=($HOME/bin(N-/) $path)
 path=($HOME/*/bin(N-/) $path)
 
@@ -122,12 +127,15 @@ alias where="command -v"
 
 case "$OSTYPE" in
 freebsd*|darwin*)
-  alias ls="ls -G -w"
-  ;;
+    alias ls="ls -G -w"
+    ;;
 linux*)
-  alias ls="ls --color"
-  ;;
+    alias ls="ls --color"
+    ;;
 esac
+
+alias v=$EDITOR
+alias vim=$EDITOR
 
 alias la="ls -a"
 alias lsa="ls -a"
@@ -144,33 +152,41 @@ alias cdt="cd $HOME/dotfiles"
 alias cdd="cd $HOME/Downloads"
 alias cdcd="cd $HOME/code"
 alias cdb="cd $HOME/blog"
-alias cdm="cd $HOME/Dropbox/memo"
-alias cdn="cd $HOME/Dropbox/diary/`date +%Y`/`date +%m`"
 
-function mm(){
-  local p
-  local d
-  p="$HOME/Dropbox/memo"
-  d="`date +%Y_%m_%d_%a`"
-  vim $p/$d.md
+alias bb="$HOME/dotfiles/bin/brew_bundle.sh"
+
+alias rb=ruby
+alias py=python3
+alias hs=runhaskell
+
+function cdm(){
+    local p
+    local y
+    local m
+    local d
+    p="$HOME/Dropbox/paper"
+    y="`date +%Y`"
+    m="`date +%m`"
+    d="`date +%d_%a`"
+    if [ ! -f $p/$y/$m/$d ];then
+        mkdir -p $p/$y/$m/$d
+    fi
+    cd $p/$y/$m/$d
 }
 
-function nn(){
-  local p
-  local y
-  local m
-  local d
-  p="$HOME/Dropbox/diary"
-  y="`date +%Y`"
-  m="`date +%m`"
-  d="`date +%d_%a`"
-  if [ ! -f $p/$y/$m/$d.md ];then
-    if [ ! -d $p/$y/$m ];then
-      mkdir -p $p/$y/$m
+function mm(){
+    local p
+    local y
+    local m
+    local d
+    p="$HOME/Dropbox/paper"
+    y="`date +%Y`"
+    m="`date +%m`"
+    d="`date +%d_%a`"
+    if [ ! -d $p/$y/$m/$d ];then
+        mkdir -p $p/$y/$m/$d
     fi
-    cp $p/template.md $p/$y/$m/$d.md
-  fi
-  vim $p/$y/$m/$d.md
+    $EDITOR $p/$y/$m/$d/memo.md
 }
 
 alias aa=exit
@@ -180,52 +196,24 @@ alias ZQ=exit
 # 右プロンプトでメモ
 function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
 
-# VimでManを見る
-#function man(){
-#  local p
-#  local m
-#  if [ "$PAGER" != "" ];then
-#    p="$PAGER"
-#  fi
-#  if [ "$MANPAGER" != "" ];then
-#    m="$MNNPAGER"
-#  fi
-#  unset PAGER
-#  unset MANPAGER
-#  val=$(command man $* 2>&1)
-#  ret=$?
-#  if [ $ret -eq 0 ];then
-#    echo "$val"|col -bx|vim -R -c 'set ft=man' -
-#  else
-#    echo "$val"
-#  fi
-#  if [ "$p" != "" ];then
-#    export PAGER="$p"
-#  fi
-#  if [ "$m" != "" ];then
-#    export MANPAGER="$m"
-#  fi
-#  return $ret
-#}
-
 # Weblioで単語の用例検索
 function dic(){ w3m "https://ejje.weblio.jp/content/$1" | grep "用例" }
 
 # カレントパス以下のディレクトリでGrepマッチしたディレクトリに移動
 function jj(){
-  if [ $1 ]; then
-    JUMPDIR=$(find . -type d -maxdepth 1 | grep $1 | tail -1)
-    if [[ -d "$JUMPDIR" && -n "$JUMPDIR" ]]; then
-      cd $JUMPDIR
-    else
-      echo "directory not found"
+    if [ $1 ]; then
+        JUMPDIR=$(find . -type d -maxdepth 1 | grep $1 | tail -1)
+        if [[ -d "$JUMPDIR" && -n "$JUMPDIR" ]]; then
+            cd $JUMPDIR
+        else
+        echo "directory not found"
+        fi
     fi
-  fi
 }
 
 # カレントディレクトリ以下にある空ディレクトリを削除
 function cleanup(){
-  find . -type d -maxdepth 2 -empty -exec rmdir -v {} \; 2>/dev/null
+    find . -type d -maxdepth 2 -empty -exec rmdir -v {} \; 2>/dev/null
 }
 
 
@@ -243,71 +231,71 @@ autoload -U colors; colors
 
 case "$TERM" in
 xterm|xterm-color)
-  export LSCOLORS=exfxcxdxbxegedabagacad
-  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-  zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-  ;;
+    LSCOLORS=exfxcxdxbxegedabagacad
+    LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+    ;;
 kterm-color)
-  stty erase '^H'
-  export LSCOLORS=exfxcxdxbxegedabagacad
-  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-  zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-  ;;
+    stty erase '^H'
+    LSCOLORS=exfxcxdxbxegedabagacad
+    LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+    ;;
 kterm)
-  stty erase '^H'
-  ;;
+    stty erase '^H'
+    ;;
 cons25)
-  unset LANG
-  export LSCOLORS=ExFxCxdxBxegedabagacad
-  export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-  zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-  ;;
+    unset LANG
+    LSCOLORS=ExFxCxdxBxegedabagacad
+    LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+    ;;
 jfbterm-color)
-  export LSCOLORS=gxFxCxdxBxegedabagacad
-  export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-  zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-  ;;
+    LSCOLORS=gxFxCxdxBxegedabagacad
+    LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
+    ;;
 esac
 
 # Zshをもっとかわいくする{{{
 
-  # もしかして機能
-  setopt correct
-  # PCRE 互換の正規表現を使う
-  setopt re_match_pcre
-  # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-  setopt prompt_subst
-  # VCSの情報を取得するzshの便利関数 vcs_infoを使う
-  autoload -Uz vcs_info
-  # 表示フォーマットの指定
-  # %b ブランチ情報
-  # %a アクション名(mergeなど)
-  zstyle ':vcs_info:git:*' check-for-changes true
-  zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
-  zstyle ':vcs_info:git:*' unstagedstr "-"
-  zstyle ':vcs_info:*' formats '[%s %b%c%u]'
-  zstyle ':vcs_info:*' actionformats '[%s %b %a%c%u]'
-  precmd(){
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-  }
+    # もしかして機能
+    setopt correct
+    # PCRE 互換の正規表現を使う
+    setopt re_match_pcre
+    # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+    setopt prompt_subst
+    # VCSの情報を取得するzshの便利関数 vcs_infoを使う
+    autoload -Uz vcs_info
+    # 表示フォーマットの指定
+    # %b ブランチ情報
+    # %a アクション名(mergeなど)
+    zstyle ':vcs_info:git:*' check-for-changes true
+    zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
+    zstyle ':vcs_info:git:*' unstagedstr "-"
+    zstyle ':vcs_info:*' formats '[%s %b%c%u]'
+    zstyle ':vcs_info:*' actionformats '[%s %b %a%c%u]'
+    precmd(){
+        psvar=()
+        LANG=en_US.UTF-8 vcs_info
+        [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+    }
 
-  # PROMPT  -> プロンプト指定
-  # PROMPT2 -> プロンプト指定(コマンドの続き)
-  # SPROMPT -> もしかして時のプロンプト指定
-  #PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{$reset_color%} "
-  #PROMPT2="[%n]> "
-  #SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
+    # PROMPT  -> プロンプト指定
+    # PROMPT2 -> プロンプト指定(コマンドの続き)
+    # SPROMPT -> もしかして時のプロンプト指定
+    PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*'-') <!(*;-;%) <)%{$reset_color%} "
+    PROMPT2="[%n]> "
+    SPROMPT="%{$suggest%}(*'~'%)? < もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
 
-  # はちゅねミクVersion
-  PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(@ ﾟ □ ﾟ) <!(@￣￢￣%) <)%{$reset_color%} "
-  PROMPT2="[%n]> "
-  SPROMPT="%{$suggest%}%{$fg[red]%}(@ ﾟ △ ﾟ%) <%{$reset_color%} もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
+    # はちゅねミクVersion
+    #PROMPT=$'\n'"%{$fg[cyan]%}[%n@%m %D{%m/%d %T}] %1(v|%F{magenta}%1v%f|) %{$fg[yellow]%}%~%{$reset_color%}"$'\n'"%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(@ ﾟ □ ﾟ) <!(@￣￢￣%) <)%{$reset_color%} "
+    #PROMPT2="[%n]> "
+    #SPROMPT="%{$suggest%}%{$fg[red]%}(@ ﾟ △ ﾟ%) <%{$reset_color%} もしかして %{$fg[red]%}%B%r%b%{$reset_color%} かな? [そう!(y), 違う!(n),a,e] : "
 
-  # 時刻更新
-  TRAPALRM(){ zle reset-prompt }
-  TMOUT=1
+    # 時刻更新
+    TRAPALRM(){ zle reset-prompt }
+    TMOUT=1
 
 # }}}
 

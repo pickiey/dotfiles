@@ -3,27 +3,22 @@
 # ==============================================================================
 
 # homebrew
-export BREWHOME=/usr/local
+BREWHOME=/usr/local/Homebrew
 path=($BREWHOME/bin(N-/) $path)
 
 # brew_cask
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
-export CASKROOM=$BREWHOME/Caskroom
-path=($CASKROOM/*/bin(N-/) $path)
+#CASKROOM=/usr/local/Caskroom
+#path=($CASKROOM/*/bin(N-/) $path)
 
 # boot2docker
-export DOCKER_HOST=tcp://192.168.59.103:2375
+DOCKER_HOST=tcp://192.168.59.103:2375
 
 # haskell
-export PATH="$HOME/.cabal/bin:$PATH"
+path=($HOME/.cabal/bin(N-/) $path)
 
 # go
-export GOPATH=$HOME/.go
-export PATH="$GOPATH/bin:$PATH"
-
-# ruby
-#export GEM_HOME=$HOME/.gem/ruby/2.0.0
-#export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"
+GOPATH=$HOME/.go
+path=($GOPATH/bin(N-/) $path)
 
 
 
@@ -36,18 +31,22 @@ export PATH="$GOPATH/bin:$PATH"
 # boot2docker
 alias bock=boot2docker
 
+# clipboard
+alias pbc=pbcopy
+alias pbp=pbpaste
+
 # open current directory of terminal with finder
 alias f="open ."
 
 # open current directory of finder with terminal
 function cdf(){
-  target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
-  if [ "$target" != "" ]; then
-    cd "$target"
-    pwd
-  else
-    echo 'No Finder window found' >&2
-  fi
+    target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+    if [ "$target" != "" ]; then
+        cd "$target"
+        pwd
+    else
+        echo 'No Finder window found' >&2
+    fi
 }
 
 # QuickLook
@@ -61,11 +60,11 @@ alias delmacfile="find . -name \".DS_Store\" -exec rm -f {} \;"
 
 # toggle wifi on/off
 function wifi(){
-  if networksetup -getairportnetwork en0 | grep off; then
-    echo on
-    networksetup -setairportpower en0 on
-  else
-    echo off
-    networksetup -setairportpower en0 off
-  fi
+    if networksetup -getairportnetwork en0 | grep off; then
+        echo on
+        networksetup -setairportpower en0 on
+    else
+        echo off
+        networksetup -setairportpower en0 off
+    fi
 }
