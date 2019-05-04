@@ -9,13 +9,14 @@ XDG_DATA_DIRS=/usr/local/share/:/usr/share/
 
 
 
-zshrc=$HOME/dotfiles/.zshrc
+dir=$HOME/.dotfiles/zsh
+
 
 
 
 # Basic configuration
-dotfile=$zshrc.basic
-[ -f $dotfile ] && source $dotfile
+file=$dir/base.zsh
+[ -f $file ] && source $file
 
 
 
@@ -23,28 +24,28 @@ dotfile=$zshrc.basic
 case $OSTYPE in
 # Mac
 darwin*)
-    dotfile=$zshrc.mac
+    file=$dir/mac.zsh
     ;;
 # Linux
 linux*)
-    dotfile=$zshrc.linux
+    file=$dir/linux.zsh
     ;;
 esac
-[ -f $dotfile ] && source $dotfile
+[ -f $file ] && source $file
 
 
 
 # Configuration for plugins
-dotfile=$zshrc.plugins_setting
-[ -f $dotfile ] && source $dotfile
+file=$dir/plugins.zsh
+[ -f $file ] && source $file
 
 
 
 # Configureraton for local
-dotfile=$zshrc.local
-[ -f $dotfile ] && source $dotfile
+file=$dir/local.zsh
+[ -f $file ] && source $file
 
 
 
-unset dotfile
-unset zshrc
+unset file
+unset dir

@@ -14,7 +14,7 @@ if [ ! `which git` -a `which brew` ]; then
     exit
 fi
 
-chmod u+x $HOME/dotfiles/bin/brew_bundle.sh
+dir=$HOME/.dotfiles
 
 
 
@@ -41,23 +41,23 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     echo -n "Install git, neovim, tmux, zsh? (y/n) [y] : "
     read YN
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-        brew install git neovim/neovim/neovim tmux zsh
+        brew install git neovim tmux zsh
     fi
 
     # ============================================================================
     # Link dotfiles
     # ============================================================================
 
-    DOT_FILES=(.zshrc .vimrc .tmux.conf .gitconfig .gitignore)
-
     echo ""
     echo -n "Link .zshrc, .vimrc, .tmux.conf .gitconfig .gitignore to \$HOME? (y/n) [y] : "
     read YN
 
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-        for file in ${DOT_FILES[@]}; do
-            ln -sf $HOME/dotfiles/$file $HOME/$file
-        done
+        ln -sf $dir/zsh/init.zsh $HOME/.zshrc
+        ln -sf $dir/nvim/init.vim $HOME/.vimrc
+        ln -sf $dir/tmux/tmux.conf $HOME/.tmux.conf
+        ln -sf $dir/git/gitconfig $HOME/.gitconfig
+        ln -sf $dir/git/gitignore $HOME/.gitignore
     fi
 
     # ============================================================================
@@ -95,9 +95,7 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
         git clone https://github.com/Shougo/dein.vim $HOME/.cache/dein.vim
 
         mkdir -p $HOME/.config/nvim
-        ln -sf $HOME/dotfiles/.vimrc $HOME/.config/nvim/init.vim
-        ln -sf $HOME/dotfiles/dein.toml $HOME/.config/nvim/dein.toml
-        ln -sf $HOME/dotfiles/dein_lazy.toml $HOME/.config/nvim/dein_lazy.toml
+        ln -sf $dir/nvim/init.vim $HOME/.config/nvim/init.vim
     fi
 
     # ============================================================================
@@ -112,10 +110,10 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
 
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
         git clone https://github.com/erikw/tmux-powerline.git $HOME/.tmux/tmux-powerline
-        ln -sf $HOME/dotfiles/bin/default.sh $HOME/.tmux/tmux-powerline/themes/default.sh
+        ln -sf $dir/tmux/default.sh $HOME/.tmux/tmux-powerline/themes/default.sh
 
         for file in ${UTIL_FILES[@]}; do
-            chmod u+x $HOME/dotfiles/bin/$file
+            chmod u+x $dir/tmux/$file
         done
     fi
 
@@ -140,7 +138,7 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     read YN
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
         for file in ${MUTE_FILES[@]}; do
-            sudo cp $HOME/dotfiles/bin/$file /Library/Scripts/$file
+            sudo cp $dir/macos/$file /Library/Scripts/$file
             sudo chmod u+x /Library/Scripts/$file
         done
         sudo defaults write com.apple.loginwindow LogoutHook /Library/Scripts/mute-on.sh
@@ -163,12 +161,12 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     # ============================================================================
 
     echo ""
-    echo -n "Set HostName to MBA? (y/n) [y] : "
+    echo -n "Set HostName to \"Macbook\"? (y/n) [y] : "
     read YN
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-        sudo scutil --set ComputerName MBA
-        sudo scutil --set LocalHostName MBA
-        sudo scutil --set HostName MBA
+        sudo scutil --set ComputerName Macbook
+        sudo scutil --set LocalHostName Macbook
+        sudo scutil --set HostName Macbook
     fi
 
     # ============================================================================
@@ -179,7 +177,7 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     echo -n "Link .slate.js to \$HOME? (y/n) [y] : "
     read YN
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-        ln -sf $HOME/dotfiles/.slate.js $HOME/.slate.js
+        ln -sf $dir/slate/slate.js $HOME/.slate.js
     fi
 
     # ============================================================================
@@ -191,7 +189,7 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     read YN
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
         mkdir -p $HOME/.config/karabiner
-        ln -sf $HOME/dotfiles/karabiner.json $HOME/.config/karabiner/karabiner.json
+        ln -sf $dir/karabiner/karabiner.json $HOME/.config/karabiner/karabiner.json
     fi
 
 
@@ -302,6 +300,8 @@ fi
 # ==============================================================================
 # Show exit message
 # ==============================================================================
+
+unset dir
 
 echo ""
 echo "All actions completed successfully. Exiting script now."

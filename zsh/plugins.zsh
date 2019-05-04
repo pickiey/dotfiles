@@ -22,7 +22,7 @@
 # tmux
 # ------------------------------------------------
 
-alias tm="$HOME/dotfiles/bin/tmuxx.sh"
+alias tm="$HOME/.dotfiles/bin/tmuxx.sh"
 alias tma="tmux attach"
 alias tmd="tmux detach"
 alias tml="tmux list-window"

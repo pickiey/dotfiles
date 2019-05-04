@@ -102,7 +102,7 @@ bindkey "\e[Z" reverse-menu-complete
 
 
 # Command history configuration
-HISTFILE=$HOME/.zsh_history
+HISTFILE=$HOME/.cashe/zsh/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
 setopt hist_ignore_dups     # ignore duplication command history list
@@ -125,15 +125,6 @@ alias where="command -v"
 #   zと被ってるから無効に
 #alias j="jobs -l"
 
-case "$OSTYPE" in
-freebsd*|darwin*)
-    alias ls="ls -G -w"
-    ;;
-linux*)
-    alias ls="ls --color"
-    ;;
-esac
-
 alias v=$EDITOR
 alias vim=$EDITOR
 
@@ -148,16 +139,9 @@ alias df="df -h"
 
 alias su="su -l"
 
-alias cdt="cd $HOME/dotfiles"
+alias cdt="cd $HOME/.dotfiles"
 alias cdd="cd $HOME/Downloads"
-alias cdcd="cd $HOME/code"
-alias cdb="cd $HOME/blog"
-
-alias bb="$HOME/dotfiles/bin/brew_bundle.sh"
-
-alias rb=ruby
-alias py=python3
-alias hs=runhaskell
+alias cdcd="cd $HOME/Code"
 
 function cdm(){
     local p

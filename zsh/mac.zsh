@@ -5,20 +5,27 @@
 # homebrew
 BREWHOME=/usr/local/Homebrew
 path=($BREWHOME/bin(N-/) $path)
+alias bb="brew update"
 
-# brew_cask
-#CASKROOM=/usr/local/Caskroom
-#path=($CASKROOM/*/bin(N-/) $path)
-
-# boot2docker
-DOCKER_HOST=tcp://192.168.59.103:2375
+# ruby
+alias rb=ruby
 
 # haskell
-path=($HOME/.cabal/bin(N-/) $path)
+STACKPATH=$HOME/.stack/programs/x86_64-osx/ghc-8.6.4
+path=($STACKPATH/bin $path)
+alias hs="stack runghc"
+
+# python
+#PYTHONPATH=/usr/local/lib/python3.7/site-packages/
+path=(/usr/local/anaconda3/bin $path)
+alias py=python
 
 # go
 GOPATH=$HOME/.go
 path=($GOPATH/bin(N-/) $path)
+
+# docker
+alias dl="docker ps -l -q"
 
 
 
@@ -28,8 +35,8 @@ path=($GOPATH/bin(N-/) $path)
 # Alias configuration
 # ==============================================================================
 
-# boot2docker
-alias bock=boot2docker
+# ls
+alias ls="ls -G -w"
 
 # clipboard
 alias pbc=pbcopy

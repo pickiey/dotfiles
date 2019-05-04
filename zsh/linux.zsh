@@ -17,6 +17,9 @@ LD_LIBRARY_PATH=($BREWHOME/lib(N-) $LD_LIBRARY_PATH)
 # Alias configuration
 # ==============================================================================
 
+# ls
+alias ls="ls --color"
+
 # clipboard
 alias pbcopy="xsel --clipboard --input"
 alias pbc=pbcopy

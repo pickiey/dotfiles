@@ -13,14 +13,13 @@ if !isdirectory(s:dein_repo_dir)
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
-call dein#begin(s:dein_dir)
-
+" deinのパス通し
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     " 管理するプラグインを記述したファイル
-    let s:toml = '~/.config/nvim/dein.toml'
-    let s:lazy_toml = '~/.config/nvim/dein_lazy.toml'
+    let s:toml = '~/.dotfiles/nvim/dein.toml'
+    let s:lazy_toml = '~/.dotfiles/nvim/dein_lazy.toml'
     call dein#load_toml(s:toml, {'lazy': 0})
     call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
@@ -37,9 +36,9 @@ endif
 
 
 " 基本設定
-source $HOME/.config/nvim/base.vim
+source $HOME/.dotfiles/nvim/base.vim
 
 
 
 " プラグインに依存する設定
-source $HOME/.config/nvim/plugins.vim
+source $HOME/.dotfiles/nvim/plugins.vim

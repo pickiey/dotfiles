@@ -9,6 +9,7 @@
   excludesfile = ~/.gitignore  # globalな.gitignoreの指定
   #autocrlf = input                 # CRLFを自動変換
   editor = vim
+  ignorecase = false
 [branch]
   autosetuprebase = always
 [pull]
