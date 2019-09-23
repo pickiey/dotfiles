@@ -242,7 +242,7 @@ set smartindent
 set cindent
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
-set tabstop=4 shiftwidth=4 softtabstop=4
+set tabstop=2 shiftwidth=2 softtabstop=2
 
 " インデント量を素早く変更
 command! Indent2 :setlocal tabstop=2 shiftwidth=2

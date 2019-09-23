@@ -5,7 +5,10 @@
 # homebrew
 BREWHOME=/usr/local/Homebrew
 path=($BREWHOME/bin(N-/) $path)
-alias bb="brew update"
+alias bb="brew upgrade"
+
+# docker
+alias dl="docker ps -l -q"
 
 # ruby
 alias rb=ruby
@@ -15,17 +18,14 @@ STACKPATH=$HOME/.stack/programs/x86_64-osx/ghc-8.6.4
 path=($STACKPATH/bin $path)
 alias hs="stack runghc"
 
-# python
-#PYTHONPATH=/usr/local/lib/python3.7/site-packages/
-path=(/usr/local/anaconda3/bin $path)
-alias py=python
-
 # go
 GOPATH=$HOME/.go
 path=($GOPATH/bin(N-/) $path)
 
-# docker
-alias dl="docker ps -l -q"
+# python
+alias python=python3
+alias py=python
+alias pip=pip3
 
 
 
