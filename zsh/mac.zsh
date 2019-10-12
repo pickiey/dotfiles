@@ -3,8 +3,9 @@
 # ==============================================================================
 
 # homebrew
-BREWHOME=/usr/local/Homebrew
+BREWHOME=/usr/local
 path=($BREWHOME/bin(N-/) $path)
+path=($BREWHOME/sbin(N-/) $path)
 alias bb="brew upgrade"
 
 # docker
