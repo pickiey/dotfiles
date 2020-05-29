@@ -38,10 +38,10 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     # ============================================================================
 
     echo ""
-    echo -n "Install git, neovim, tmux, zsh? (y/n) [y] : "
+    echo -n "Install git, neovim, tmux? (y/n) [y] : "
     read YN
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
-        brew install git neovim tmux zsh
+        brew install git neovim tmux
     fi
 
     # ============================================================================
@@ -55,7 +55,7 @@ if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
     if [ "$YN" == "y" ] || [ "$YN" == "" ]; then
         ln -sf $dir/zsh/init.zsh $HOME/.zshrc
         ln -sf $dir/nvim/init.vim $HOME/.vimrc
-        ln -sf $dir/tmux/tmux.conf $HOME/.tmux.conf
+        ln -sf $dir/tmux/init.conf $HOME/.tmux.conf
         ln -sf $dir/git/gitconfig $HOME/.gitconfig
         ln -sf $dir/git/gitignore $HOME/.gitignore
     fi
