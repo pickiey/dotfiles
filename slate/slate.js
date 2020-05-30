@@ -73,7 +73,7 @@ slate.bind('f:alt', launch_and_focus('Finder'));
 slate.bind('t:alt', launch_and_focus('iTerm'));
 slate.bind('r:alt', launch_and_focus('Reeder'));
 slate.bind('m:alt', launch_and_focus('Music'));
-slate.bind('s:alt', launch_and_focus('Safari'));
+slate.bind('e:alt', launch_and_focus('Safari'));
 //slate.bind('e:alt', launch_and_focus('Google Chrome'));
 //slate.bind('e:alt', launch_and_focus('Chromium'));
 
