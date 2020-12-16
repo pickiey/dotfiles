@@ -63,6 +63,7 @@ execute ":set titlestring:".fnameescape($TITLE." - %t")
 
 
 " キーマップリーダー
+" <Leader>を置き換える -> Qcuickrun用
 let mapleader = ","
 
 " ;でコマンド入力( ;と:を入れ替え)
