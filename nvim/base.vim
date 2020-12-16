@@ -89,139 +89,6 @@ set laststatus=2
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
 
-" lightline.vim
-let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \ 'mode_map': {'c': 'NORMAL'},
-    \ 'active': {
-    \   'left': [
-    \       ['mode', 'paste'],
-    \       ['fugitive', 'gitgutter', 'filename'],
-    \   ],
-    \   'right': [
-    \       ['lineinfo', 'syntastic'],
-    \       ['percent'],
-    \       ['charcode', 'fileformat', 'fileencoding', 'filetype'],
-    \   ]
-    \ },
-    \ 'component_function': {
-    \     'modified': 'MyModified',
-    \     'readonly': 'MyReadonly',
-    \     'fugitive': 'MyFugitive',
-    \     'filename': 'MyFilename',
-    \     'fileformat': 'MyFileformat',
-    \     'filetype': 'MyFiletype',
-    \     'fileencoding': 'MyFileencoding',
-    \     'mode': 'MyMode',
-    \     'syntastic': 'SyntasticStatuslineFlag',
-    \     'charcode': 'MyCharCode',
-    \     'gitgutter': 'MyGitGutter',
-    \ },
-    \ 'separator': {'left': '⮀', 'right': '⮂'},
-    \ 'subseparator': {'left': '⮁', 'right': '⮃'}
-    \ }
-
-function! MyModified()
-    return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! MyReadonly()
-    return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
-endfunction
-
-function! MyFilename()
-    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
-
-function! MyFugitive()
-    try
-        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-            let _ = fugitive#head()
-            return strlen(_) ? '⭠ '._ : ''
-        endif
-    catch
-    endtry
-    return ''
-endfunction
-
-function! MyFileformat()
-    return winwidth('.') > 70 ? &fileformat : ''
-endfunction
-
-function! MyFiletype()
-    return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! MyFileencoding()
-    return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! MyMode()
-    return winwidth('.') > 60 ? lightline#mode() : ''
-endfunction
-
-function! MyGitGutter()
-    if ! exists('*GitGutterGetHunkSummary')
-        \ || ! get(g:, 'gitgutter_enabled', 0)
-        \ || winwidth('.') <= 90
-        return ''
-    endif
-    let symbols = [
-        \ g:gitgutter_sign_added . ' ',
-        \ g:gitgutter_sign_modified . ' ',
-        \ g:gitgutter_sign_removed . ' '
-        \ ]
-    let hunks = GitGutterGetHunkSummary()
-    let ret = []
-    for i in [0, 1, 2]
-        if hunks[i] > 0
-            call add(ret, symbols[i] . hunks[i])
-        endif
-    endfor
-    return join(ret, ' ')
-endfunction
-
-" https://github.com/Lokaltog/vim-powerline/blob/develop/autoload/Powerline/Functions.vim
-function! MyCharCode()
-    if winwidth('.') <= 70
-        return ''
-    endif
-
-    " Get the output of :ascii
-    redir => ascii
-    silent! ascii
-    redir END
-
-    if match(ascii, 'NUL') != -1
-        return 'NUL'
-    endif
-
-    " Zero pad hex values
-    let nrformat = '0x%02x'
-
-    let encoding = (&fenc == '' ? &enc : &fenc)
-
-    if encoding == 'utf-8'
-        " Zero pad with 4 zeroes in unicode files
-        let nrformat = '0x%04x'
-    endif
-
-    " Get the character and the numeric value from the return value of :ascii
-    " This matches the two first pieces of the return value, e.g.
-    " "<F>  70" => char: 'F', nr: '70'
-    let [str, char, nr; rest] = matchlist(ascii, '\v\<(.{-1,})\>\s*([0-9]+)')
-
-    " Format the numeric value
-    let nr = printf(nrformat, nr)
-
-    return "'". char ."' ". nr
-endfunction
-
 
 
 
@@ -243,7 +110,7 @@ set smartindent
 set cindent
 
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
-set tabstop=2 shiftwidth=2 softtabstop=2
+set tabstop=4 shiftwidth=4 softtabstop=4
 
 " インデント量を素早く変更
 command! Indent2 :setlocal tabstop=2 shiftwidth=2
@@ -286,9 +153,9 @@ match ZenkakuSpace /　/
 
 " カーソル行をハイライト(カレントウィンドウにのみ罫線を引く
 augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
+    autocmd! cch
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter,BufRead * set cursorline
 augroup END
 
 " カーソル列をハイライト
@@ -347,7 +214,15 @@ if has("autochdir")
     set autochdir
     set tags=tags;
 else
-    set tags=./tags,./../tags,./*/tags,./../../tags,./../../../tags,./../../../../tags,./../../../../../tags
+    set tags = {
+    \   ./tags,
+    \   ./../tags,
+    \   ./*/tags,
+    \   ./../../tags,
+    \   ./../../../tags,
+    \   ./../../../../tags,
+    \   ./../../../../../tags
+    \}
 endif
 
 set notagbsearch
@@ -429,7 +304,7 @@ command! -nargs=1 Gr :Rgrep <args> *<Enter><CR>
 " カーソル下の単語をgrepする
 nnoremap <silent> <C-g><C-r> :<C-u>Rgrep<Space><C-r><C-w> *<Enter><CR>
 
-let Grep_Skip_Dirs = '.svn .git'
+let Grep_Skip_Dirs  = '.svn .git'
 let Grep_Skip_Files = '*.bak *~'
 
 
@@ -441,10 +316,10 @@ let Grep_Skip_Files = '*.bak *~'
 "-------------------------------------------------------------------------------
 
 " カーソルを表示行で移動する。論理行移動は<C-n>,<C-p>
-nnoremap h <Left>
-nnoremap j gj
-nnoremap k gk
-nnoremap l <Right>
+nnoremap h      <Left>
+nnoremap j      gj
+nnoremap k      gk
+nnoremap l      <Right>
 nnoremap <Down> gj
 nnoremap <Up>   gk
 
@@ -564,16 +439,6 @@ inoremap jj <Esc>
 
 set background=dark
 "set background=light
-
-" カラースキーマ（以下から選ぶ
-"colorscheme molokai
-"colorscheme Zenburn
-"colorscheme hybrid
-"colorscheme solarized
-"colorscheme jellybeans
-"colorscheme mopkai
-colorscheme iceberg
-"colorscheme pencil
 
 " ターミナルタイプによるカラー設定
 if &term =~ "xterm-256color" || "screen-256color"
@@ -715,24 +580,25 @@ set encoding=utf-8
 " 文字コード認識はbanyan/recognize_charcode.vimへ
 
 " cvsの時は文字コードをeuc-jpに設定
-autocmd FileType cvs :set fileencoding=euc-jp
+autocmd FileType cvs    :set fileencoding=euc-jp
 
 " 以下のファイルの時は文字コードをutf-8に設定
-autocmd FileType svn :set fileencoding=utf-8
-autocmd FileType js :set fileencoding=utf-8
-autocmd FileType css :set fileencoding=utf-8
-autocmd FileType html :set fileencoding=utf-8
-autocmd FileType xml :set fileencoding=utf-8
-autocmd FileType java :set fileencoding=utf-8
-autocmd FileType scala :set fileencoding=utf-8
+autocmd FileType svn    :set fileencoding=utf-8
+autocmd FileType js     :set fileencoding=utf-8
+autocmd FileType css    :set fileencoding=utf-8
+autocmd FileType html   :set fileencoding=utf-8
+autocmd FileType xml    :set fileencoding=utf-8
+autocmd FileType java   :set fileencoding=utf-8
+autocmd FileType scala  :set fileencoding=utf-8
 
 " ワイルドカードで表示するときに優先度を低くする拡張子
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
+
 " 指定文字コードで強制的にファイルを開く
-command! Cp932 edit ++enc=cp932
-command! Eucjp edit ++enc=euc-jp
-command! Iso2022jp edit ++enc=iso-2022-jp
-command! Utf8 edit ++enc=utf-8
-command! Jis Iso2022jp
-command! Sjis Cp932
+command! Cp932      edit ++enc=cp932
+command! Eucjp      edit ++enc=euc-jp
+command! Iso2022jp  edit ++enc=iso-2022-jp
+command! Utf8       edit ++enc=utf-8
+command! Jis        Iso2022jp
+command! Sjis       Cp932
