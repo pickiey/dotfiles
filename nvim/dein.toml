@@ -47,7 +47,7 @@ repo = 'itchyny/vim-autoft'
 
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
-on_ft = ['markdown', 'mkd']
+on_ft = 'markdown'
 
 [[plugins]]
 repo = 'kana/vim-filetype-haskell'
@@ -102,12 +102,11 @@ repo = 'itchyny/lightline.vim'
 
 
 # ------------------------------------------------
-# Deoplete.nvim
+# Completion
 # ------------------------------------------------
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-if = 'has("nvim")'
+repo = 'neoclide/coc.nvim'
 
 
 
