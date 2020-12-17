@@ -84,6 +84,9 @@
                                     },
                                     {
                                         "key_code": "escape"
+                                    },
+                                    {
+                                        "key_code": "escape"
                                     }
                                 ],
                                 "type": "basic"
@@ -108,6 +111,9 @@
                                 "to": [
                                     {
                                         "key_code": "japanese_eisuu"
+                                    },
+                                    {
+                                        "key_code": "escape"
                                     },
                                     {
                                         "key_code": "escape"
