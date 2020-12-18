@@ -502,10 +502,10 @@ inoremap <C-u>  <C-g>u<C-u>
 inoremap <C-w>  <C-g>u<C-w>
 
 " :Ptでインデントモード切替
-command! Pt :set paste!
+"command! Pt :set paste!
 
 " インサートモード中に<C-o>でyankした内容をputする
-inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
+"inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
 
 " y9 ydで行末までヤンク
 nmap y9 y$
