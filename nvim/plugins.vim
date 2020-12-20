@@ -120,6 +120,27 @@ let g:quickrun_config['markdown'] = {
 let g:user_emmet_settings = {
 \   'variables' : {
 \       'lang' : "ja"
+\   },
+\   'html' : {
+\       'snippets' : {
+\           'html:5': "<!DOCTYPE html>\n"
+\           ."<html lang=\"${lang}\">\n"
+\           ."\t<head>\n"
+\           ."\t\t<meta charset=\"${charset}\">\n"
+\           ."\t\t<title></title>\n"
+\           ."\t\t<meta name=\"description\" content=\"\">\n\n"
+\           ."\t\t<meta property=\"og:url\" content=\"\">\n"
+\           ."\t\t<meta property=\"og:title\" content=\"\">\n"
+\           ."\t\t<meta property=\"og:description\" content=\"\">\n"
+\           ."\t\t<meta property=\"og:image\" content=\"\">\n\n"
+\           ."\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+\           ."\t\t<link rel=\"stylesheet\" href=\"https://unpkg.com/ress/dist/ress.min.css\">\n"
+\           ."\t\t<link rel=\"stylesheet\" href=\"\">\n"
+\           ."\t\t<link rel=\"icon\" type=\"image/\" href=\"\">\n"
+\           ."\t</head>\n\n"
+\           ."\t<body>\n\t\t${child}|\n\t</body>\n"
+\           ."</html>",
+\       }
 \   }
 \}
 
