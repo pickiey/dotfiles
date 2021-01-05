@@ -15,7 +15,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Change left_option to left_option. (Post japanese_eisuu if pressed alone)",
+                        "description": "Change left_option to left_option. (Post japanese_kana if pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
@@ -33,7 +33,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "japanese_eisuu"
+                                        "key_code": "japanese_kana"
                                     }
                                 ],
                                 "type": "basic"
@@ -41,7 +41,7 @@
                         ]
                     },
                     {
-                        "description": "Change right_option to right_option. (Post japanese_kana if pressed alone)",
+                        "description": "Change right_option to right_option. (Post japanese_eisuu if pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
@@ -59,7 +59,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "japanese_kana"
+                                        "key_code": "japanese_eisuu"
                                     }
                                 ],
                                 "type": "basic"
