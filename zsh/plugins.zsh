@@ -39,7 +39,7 @@ PROMPT+='$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d 
 # vagrant
 # ------------------------------------------------
 
-alias vg=vagrant
+#alias vg=vagrant
 
 
 
