@@ -119,7 +119,8 @@ let g:quickrun_config['markdown'] = {
 " emmet.vimで言語属性をjaにする
 let g:user_emmet_settings = {
 \   'variables' : {
-\       'lang' : "ja"
+\       'lang'    : "ja",
+\       'charset' : "utf-8"
 \   },
 \   'html' : {
 \       'snippets' : {
@@ -127,19 +128,22 @@ let g:user_emmet_settings = {
 \           ."<html lang=\"${lang}\">\n"
 \           ."\t<head>\n"
 \           ."\t\t<meta charset=\"${charset}\">\n"
+\           ."\t\t<meta name=\"robots\" content=\"noindex, nofollow\">\n\n"
 \           ."\t\t<title></title>\n"
-\           ."\t\t<meta name=\"description\" content=\"\">\n\n"
+\           ."\t\t<meta name=\"description\" content=\"\">\n"
+\           ."\t\t<link rel=\"icon\" type=\"image/\" href=\"\">\n\n"
 \           ."\t\t<meta property=\"og:url\" content=\"\">\n"
 \           ."\t\t<meta property=\"og:title\" content=\"\">\n"
 \           ."\t\t<meta property=\"og:description\" content=\"\">\n"
 \           ."\t\t<meta property=\"og:image\" content=\"\">\n\n"
+\           ."\t\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+\           ."\t\t<meta name=\"format-detection\" content=\"telephone=no\">\n\n"
 \           ."\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
 \           ."\t\t<link rel=\"stylesheet\" href=\"https://unpkg.com/ress/dist/ress.min.css\">\n"
 \           ."\t\t<link rel=\"stylesheet\" href=\"\">\n"
-\           ."\t\t<link rel=\"icon\" type=\"image/\" href=\"\">\n"
 \           ."\t</head>\n\n"
-\           ."\t<body>\n\t\t${child}|\n\t</body>\n"
-\           ."</html>",
+\           ."\t<body>\n\t\t${child}${cursor}\n\t</body>\n"
+\           ."</html>"
 \       }
 \   }
 \}
@@ -158,12 +162,12 @@ let g:lightline = {
 \   'active': {
 \       'left': [
 \           ['mode', 'paste'],
-\           ['fugitive', 'gitgutter', 'filename'],
+\           ['fugitive', 'gitgutter', 'filename']
 \       ],
 \       'right': [
 \           ['lineinfo', 'syntastic'],
 \           ['percent'],
-\           ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+\           ['charcode', 'fileformat', 'fileencoding', 'filetype']
 \       ]
 \   },
 \   'component_function': {
@@ -177,7 +181,7 @@ let g:lightline = {
 \       'mode'          : 'MyMode',
 \       'syntastic'     : 'SyntasticStatuslineFlag',
 \       'charcode'      : 'MyCharCode',
-\       'gitgutter'     : 'MyGitGutter',
+\       'gitgutter'     : 'MyGitGutter'
 \   },
 \   'separator': {'left': '⮀', 'right': '⮂'},
 \   'subseparator': {'left': '⮁', 'right': '⮃'}
