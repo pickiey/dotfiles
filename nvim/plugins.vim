@@ -125,7 +125,7 @@ let g:user_emmet_settings = {
 \   'html' : {
 \       'snippets' : {
 \           'html:5': "<!DOCTYPE html>\n"
-\           ."<html lang=\"${lang}\">\n"
+\           ."<html>\n"
 \           ."\t<head>\n"
 \           ."\t\t<meta charset=\"${charset}\">\n"
 \           ."\t\t<meta name=\"robots\" content=\"noindex, nofollow\">\n"
@@ -142,7 +142,7 @@ let g:user_emmet_settings = {
 \           ."\t\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
 \           ."\t\t<meta name=\"format-detection\" content=\"telephone=no\">\n"
 \           ."\n"
-\           ."\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+\           ."\t\t<meta name=\"viewport\" content=\"width=device-width\">\n"
 \           ."\t\t<link rel=\"stylesheet\" href=\"https://unpkg.com/ress/dist/ress.min.css\">\n"
 \           ."\t\t<link rel=\"stylesheet\" href=\"\">\n"
 \           ."\t</head>\n"
