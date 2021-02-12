@@ -11,9 +11,9 @@ if [ -z $TMUX ]; then
         width_threshold=200
 
         if [ $terminal_width -gt $width_threshold ]; then
-            tmux new-session \; split-window -h \; split-window -v \; split-window -h -d \;  select-pane -L \; split-window -v  \; split-window -h -d \; select-pane -U
+            tmux new-session \; split-window -h \; split-window -v \; split-window -h -d \; split-window -v -d \; select-pane -U \; select-pane -L \; split-window -v  \; split-window -h -d \; split-window -v -d \; select-pane -U
         else
-            tmux new-session \; split-window -v \; split-window -h -d \; select-pane -U
+            tmux new-session \; split-window -v \; split-window -h -d \; split-window -v -d \; select-pane -U
         fi
     fi
 fi
