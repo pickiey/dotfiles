@@ -60,6 +60,14 @@ on_ft = 'haskell'
 repo = 'itchyny/vim-haskell-indent'
 on_ft = 'haskell'
 
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = 'pug'
+
+[[plugins]]
+repo = 'iloginow/vim-stylus.git'
+on_ft = 'stylus'
+
 
 
 # ------------------------------------------------

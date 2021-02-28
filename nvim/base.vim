@@ -534,8 +534,8 @@ autocmd BufWrite * :%s/\s\+$//ge
 autocmd BufWritePre * :%s/\s\+$//ge
 
 " 保存時にtabをスペースに変換する
-"autocmd BufWrite * :%s/\t/  /ge
-"autocmd BufWritePre * :%s/\t/  /ge
+autocmd BufWrite * :%s/\t/    /ge
+autocmd BufWritePre * :%s/\t/    /ge
 
 " 日時の自動入力
 inoremap <expr> ,df strftime('%Y/%m/%d %H:%M:%S')

@@ -6,14 +6,12 @@ if [ -z $TMUX ]; then
         tmux attach
     else
         terminal_width=`tput cols`
-        # Macbook
-        #   Font size == 10 -> 283
         width_threshold=200
 
         if [ $terminal_width -gt $width_threshold ]; then
-            tmux new-session \; split-window -h \; split-window -v \; split-window -h -d \; split-window -v -d \; select-pane -U \; select-pane -L \; split-window -v  \; split-window -h -d \; split-window -v -d \; select-pane -U
+            tmux new-session \; split-window -h \; split-window -v \; split-window -h \; split-window -v -d \; select-pane -L \; select-pane -U \; select-pane -L \; split-window -v  \; split-window -h \; split-window -v -d \; select-pane -L \; select-pane -U
         else
-            tmux new-session \; split-window -v \; split-window -h -d \; split-window -v -d \; select-pane -U
+            tmux new-session \; split-window -v \; split-window -h \; split-window -v -d \; select-pane -L \; select-pane -U
         fi
     fi
 fi
