@@ -12,6 +12,8 @@
 # autoprefixer
 # ------------------------------------------------
 
+alias stylus="stylus -u autoprefixer"
+
 function ap(){
     if [ $2 ]; then
         npx postcss $1 --use autoprefixer -d $2
@@ -29,6 +31,17 @@ function ap(){
 # ------------------------------------------------
 
 [ -x `which htop` ] && alias top=htop
+
+
+
+
+
+# ------------------------------------------------
+# nvm
+# ------------------------------------------------
+
+#export NVM_DIR=$HOME/.nvm
+#source $(brew --prefix nvm)/nvm.sh
 
 
 
