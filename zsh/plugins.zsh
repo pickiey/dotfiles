@@ -12,7 +12,7 @@
 # autoprefixer
 # ------------------------------------------------
 
-alias stylus="stylus -u autoprefixer"
+alias stylus="stylus -u autoprefixer-stylus"
 
 function ap(){
     if [ $2 ]; then
