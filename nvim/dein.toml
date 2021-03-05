@@ -17,6 +17,10 @@ build = 'make'
 
 [[plugins]]
 repo = 'yuroyoro/smooth_scroll.vim'
+hook_add = '''
+    map :call SmoothScroll("d",1, 1)<CR>
+    map :call SmoothScroll("u",1, 1)<CR>
+'''
 
 [[plugins]]
 repo = 'vim-scripts/smartword'
@@ -32,12 +36,78 @@ repo = 'vim-scripts/matchit.zip'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+    let g:indent_guides_enable_on_vim_startup = 1
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    let g:gitgutter_sign_added    = '✚'
+    let g:gitgutter_sign_modified = '➜'
+    let g:gitgutter_sign_removed  = '✘'
+'''
+
+
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+hook_add = '''
+    nmap <Leader>b <Plug>(openbrowser-smart-search)
+    vmap <Leader>b <Plug>(openbrowser-smart-search)
+'''
+
+
+
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    let NERDTreeShowHidden=1
+    nnoremap <silent><C-a> :NERDTreeFind<CR>:vertical res 30<CR>
+
+    let NERDTreeQuitOnOpen=1
+
+    " 引数なしでvimを開いたらNERDTreeを起動、
+    " 引数ありならNERDTreeは起動せず、引数で渡されたファイルを開く。
+    autocmd vimenter * if !argc() | NERDTree | endif
+
+    " 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+    " ファイル拡張子により色を変更
+    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+        exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+        exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+    endfunction
+
+    call NERDTreeHighlightFile('jade',      'green', 'none', 'green', '#151515')
+
+    call NERDTreeHighlightFile('md',        'blue', 'none', '#3366FF', '#151515')
+
+    call NERDTreeHighlightFile('ini',       'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('yml',       'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('config',    'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('conf',      'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('json',      'yellow', 'none', 'yellow', '#151515')
+    call NERDTreeHighlightFile('html',      'yellow', 'none', 'yellow', '#151515')
+
+    call NERDTreeHighlightFile('styl',      'cyan', 'none', 'cyan', '#151515')
+    call NERDTreeHighlightFile('css',       'cyan', 'none', 'cyan', '#151515')
+
+    call NERDTreeHighlightFile('coffee',    'Red', 'none', 'red', '#151515')
+    call NERDTreeHighlightFile('js',        'Red', 'none', '#ffa500', '#151515')
+    call NERDTreeHighlightFile('jsx',       'Red', 'none', '#ffa500', '#151515')
+
+    call NERDTreeHighlightFile('php',       'Magenta', 'none', '#ff00ff', '#151515')
+
+'''
+
+
+#[[plugins]]
+#repo = 'ryanoasis/vim-devicons'
+#パッチ当てるのめんどいからまた今度!
+
 
 
 
@@ -47,10 +117,68 @@ repo = 'tyru/open-browser.vim'
 
 [[plugins]]
 repo = 'itchyny/vim-autoft'
+hook_add = '''
+    let g:autoft_config = [{
+    \       'filetype'  : 'html',
+    \       'pattern'   : '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5\s*$'
+    \   }, {
+    \       'filetype'  : 'c',
+    \       'pattern'   : '^\s*#\s*\%(include\|define\)\>'
+    \   }, {
+    \       'filetype'  : 'diff',
+    \       'pattern'   : '^diff -'
+    \   }, {
+    \       'filetype'  : 'sh',
+    \       'pattern'   : '^#!.*\%(\<sh\>\|\<bash\>\)\s*$'
+    \   }
+    \]
+'''
+
+[[plugins]]
+repo = 'luochen1990/rainbow'
+hook_add = '''
+    let g:rainbow_active = 1
+
+    let g:rainbow_conf = {
+    \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \    'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+    \    'guis': [''],
+    \    'cterms': [''],
+    \    'operators': '_,_',
+    \    'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \    'separately': {
+    \        '*': {},
+    \        'markdown': {
+    \            'parentheses_options': 'containedin=markdownCode contained',
+    \        },
+    \        'lisp': {
+    \            'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+    \        },
+    \        'haskell': {
+    \            'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
+    \        },
+    \        'vim': {
+    \            'parentheses_options': 'containedin=vimFuncBody',
+    \        },
+    \        'perl': {
+    \            'syn_name_prefix': 'perlBlockFoldRainbow',
+    \        },
+    \        'stylus': {
+    \            'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
+    \        },
+    \        'css': 0,
+    \    }
+    \}
+'''
+
 
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
 on_ft = 'markdown'
+hook_add = '''
+    let g:vim_markdown_folding_disabled = 1
+'''
+
 
 [[plugins]]
 repo = 'kana/vim-filetype-haskell'
@@ -69,6 +197,15 @@ repo = 'iloginow/vim-stylus.git'
 on_ft = 'stylus'
 
 
+[[plugins]]
+repo = 'alvan/vim-closetag'
+hook_add = '''
+    let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
+    let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+'''
+
+
+
 
 # ------------------------------------------------
 # Completion
@@ -85,9 +222,76 @@ repo = 'neoclide/coc.nvim'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+hook_add = '''
+    let g:quickrun_config = {
+    \   '_' : {
+    \       'runner'                          : 'vimproc',
+    \       'runner/vimproc/updatetime'       : 60,
+    \       'outputter/buffer/split'          : ':botright 8sp',
+    \       'outputter/buffer/close_on_empty' : 1
+    \   }
+    \}
+
+    set splitbelow
+    set splitright
+
+    let g:quickrun_config['html'] = {
+    \   'command'   : 'open',
+    \   'cmdopt'    : '-g'
+    \}
+    let g:quickrun_config['markdown'] = {
+    \   'outputter' : 'browser'
+    \}
+'''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
+hook_add = '''
+    let g:user_emmet_settings = {
+    \   'variables' : {
+    \       'lang'    : "ja",
+    \       'charset' : "utf-8"
+    \   },
+    \   'html' : {
+    \       'snippets' : {
+    \           'html:5': "<!DOCTYPE html>\n"
+    \           ."<html>\n"
+    \           ."<head>\n"
+    \           ."\t<meta charset=\"${charset}\">\n"
+    \           ."\t<meta name=\"robots\" content=\"noindex, nofollow\">\n"
+    \           ."\n"
+    \           ."\t<title></title>\n"
+    \           ."\t<meta name=\"description\" content=\"\">\n"
+    \           ."\t<link rel=\"icon\" type=\"image/\" href=\"\">\n"
+    \           ."\n"
+    \           ."\t<meta property=\"og:url\" content=\"\">\n"
+    \           ."\t<meta property=\"og:title\" content=\"\">\n"
+    \           ."\t<meta property=\"og:description\" content=\"\">\n"
+    \           ."\t<meta property=\"og:image\" content=\"\">\n"
+    \           ."\n"
+    \           ."\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+    \           ."\t<meta name=\"format-detection\" content=\"telephone=no\">\n"
+    \           ."\n"
+    \           ."\t<meta name=\"viewport\" content=\"width=device-width\">\n"
+    \           ."\t<link rel=\"stylesheet\" href=\"https://unpkg.com/ress/dist/ress.min.css\">\n"
+    \           ."\t<link rel=\"stylesheet\" href=\"\">\n"
+    \           ."</head>\n"
+    \           ."\n"
+    \           ."<body>\n"
+    \           ."\t${child}${cursor}\n"
+    \           ."</body>\n"
+    \           ."</html>"
+    \       }
+    \   }
+    \}
+'''
+
+
+[[plugins]]
+repo = 'instant-markdown/vim-instant-markdown'
+#hook_add = '''
+#    let g:instant_markdown_autostart = 0
+#'''
 
 
 
@@ -97,6 +301,140 @@ repo = 'mattn/emmet-vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+    let g:lightline = {
+    \   'colorscheme' : 'solarized',
+    \   'mode_map'    : {'c': 'NORMAL'},
+    \   'active': {
+    \       'left': [
+    \           ['mode', 'paste'],
+    \           ['fugitive', 'gitgutter', 'filename']
+    \       ],
+    \       'right': [
+    \           ['lineinfo', 'syntastic'],
+    \           ['percent'],
+    \           ['charcode', 'fileformat', 'fileencoding', 'filetype']
+    \       ]
+    \   },
+    \   'component_function': {
+    \       'modified'      : 'MyModified',
+    \       'readonly'      : 'MyReadonly',
+    \       'fugitive'      : 'MyFugitive',
+    \       'filename'      : 'MyFilename',
+    \       'fileformat'    : 'MyFileformat',
+    \       'filetype'      : 'MyFiletype',
+    \       'fileencoding'  : 'MyFileencoding',
+    \       'mode'          : 'MyMode',
+    \       'syntastic'     : 'SyntasticStatuslineFlag',
+    \       'charcode'      : 'MyCharCode',
+    \       'gitgutter'     : 'MyGitGutter'
+    \   },
+    \   'separator': {'left': '⮀', 'right': '⮂'},
+    \   'subseparator': {'left': '⮁', 'right': '⮃'}
+    \}
+
+    function! MyModified()
+        return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    endfunction
+
+    function! MyReadonly()
+        return &ft !~? 'help\|vimfiler\|gundo' && &ro ? '⭤' : ''
+    endfunction
+
+    function! MyFilename()
+        return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+            \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+            \  &ft == 'unite' ? unite#get_status_string() :
+            \  &ft == 'vimshell' ? substitute(b:vimshell.current_dir,expand('~'),'~','') :
+            \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+            \ ('' != MyModified() ? ' ' . MyModified() : '')
+    endfunction
+
+    function! MyFugitive()
+        try
+            if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+                let _ = fugitive#head()
+                return strlen(_) ? '⭠ '._ : ''
+            endif
+        catch
+        endtry
+        return ''
+    endfunction
+
+    function! MyFileformat()
+        return winwidth('.') > 70 ? &fileformat : ''
+    endfunction
+
+    function! MyFiletype()
+        return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    endfunction
+
+    function! MyFileencoding()
+        return winwidth('.') > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    endfunction
+
+    function! MyMode()
+        return winwidth('.') > 60 ? lightline#mode() : ''
+    endfunction
+
+    function! MyGitGutter()
+        if ! exists('*GitGutterGetHunkSummary')
+            \ || ! get(g:, 'gitgutter_enabled', 0)
+            \ || winwidth('.') <= 90
+            return ''
+        endif
+        let symbols = [
+            \ g:gitgutter_sign_added . ' ',
+            \ g:gitgutter_sign_modified . ' ',
+            \ g:gitgutter_sign_removed . ' '
+            \ ]
+        let hunks = GitGutterGetHunkSummary()
+        let ret = []
+        for i in [0, 1, 2]
+            if hunks[i] > 0
+                call add(ret, symbols[i] . hunks[i])
+            endif
+        endfor
+        return join(ret, ' ')
+    endfunction
+
+    " https://github.com/Lokaltog/vim-powerline/blob/develop/autoload/Powerline/Functions.vim
+    function! MyCharCode()
+        if winwidth('.') <= 70
+            return ''
+        endif
+
+        " Get the output of :ascii
+        redir => ascii
+        silent! ascii
+        redir END
+
+        if match(ascii, 'NUL') != -1
+            return 'NUL'
+        endif
+
+        " Zero pad hex values
+        let nrformat = '0x%02x'
+
+        let encoding = (&fenc == '' ? &enc : &fenc)
+
+        if encoding == 'utf-8'
+            " Zero pad with 4 zeroes in unicode files
+            let nrformat = '0x%04x'
+        endif
+
+        " Get the character and the numeric value from the return value of :ascii
+        " This matches the two first pieces of the return value, e.g.
+        " "<F>  70" => char: 'F', nr: '70'
+        let [str, char, nr; rest] = matchlist(ascii, '\v\<(.{-1,})\>\s*([0-9]+)')
+
+        " Format the numeric value
+        let nr = printf(nrformat, nr)
+
+        return "'". char ."' ". nr
+    endfunction
+
+'''
 
 
 
@@ -104,29 +442,32 @@ repo = 'itchyny/lightline.vim'
 # Colorscheme
 # ------------------------------------------------
 
-[[plugins]]
-repo = 'tomasr/molokai'
+#[[plugins]]
+#repo = 'tomasr/molokai'
 
-[[plugins]]
-repo = 'vim-scripts/Zenburn'
+#[[plugins]]
+#repo = 'vim-scripts/Zenburn'
 
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
+#[[plugins]]
+#Jrepo = 'w0ng/vim-hybrid'
 
-[[plugins]]
-repo = 'altercation/vim-colors-solarized'
+#[[plugins]]
+#repo = 'altercation/vim-colors-solarized'
 
-[[plugins]]
-repo = 'nanotech/jellybeans.vim'
+#[[plugins]]
+#repo = 'nanotech/jellybeans.vim'
 
-[[plugins]]
-repo = 'mopp/mopkai.vim'
+#[[plugins]]
+#repo = 'mopp/mopkai.vim'
 
-[[plugins]]
-repo = 'w0ng/vim-hybrid'
+#[[plugins]]
+#repo = 'w0ng/vim-hybrid'
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
+hook_add = '''
+    colorscheme iceberg
+'''
 
-[[plugins]]
-repo = 'reedes/vim-colors-pencil'
+#[[plugins]]
+#repo = 'reedes/vim-colors-pencil'

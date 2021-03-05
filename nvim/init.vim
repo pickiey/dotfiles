@@ -31,6 +31,7 @@ endif
 if dein#check_install()
     call dein#install()
 endif
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 " }}}
 
 
@@ -41,4 +42,6 @@ source $HOME/.dotfiles/nvim/base.vim
 
 
 " プラグインに依存する設定
-source $HOME/.dotfiles/nvim/plugins.vim
+"source $HOME/.dotfiles/nvim/plugins.vim
+"dein.toml に直書きした
+
