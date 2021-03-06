@@ -21,13 +21,15 @@ alias hs="stack runghc"
 
 # go
 GOPATH=$HOME/.go
-path=($GOPATH/bin(N-/) $path)
+path=($GOPATH/bin $path)
 
 # python
 alias python=python3
 alias py=python
 alias pip=pip3
-
+PIPPATH=$HOME/Library/Python/3.8
+path=($PIPPATH/bin $path)
+LC_ALL=ja_JP.UTF-8
 
 
 
