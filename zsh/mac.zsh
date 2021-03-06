@@ -27,6 +27,7 @@ path=($GOPATH/bin $path)
 # python
 # python3 本体はOS付随
 # パッケージ管理は pip3
+# パッケージの保存先は $PIPPATH/bin
 PIPPATH=$HOME/Library/Python/3.8
 path=($PIPPATH/bin $path)
 LC_ALL=ja_JP.UTF-8
