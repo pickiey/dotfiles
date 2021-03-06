@@ -12,24 +12,27 @@ alias bb="brew upgrade"
 alias dl="docker ps -l -q"
 
 # ruby
+# ruby 本体はOS付随
 alias rb=ruby
 
 # haskell
-STACKPATH=$HOME/.stack/programs/x86_64-osx/ghc-8.6.4
-path=($STACKPATH/bin $path)
-alias hs="stack runghc"
+#STACKPATH=$HOME/.stack/programs/x86_64-osx/ghc-8.6.4
+#path=($STACKPATH/bin $path)
+#alias hs="stack runghc"
 
 # go
 GOPATH=$HOME/.go
 path=($GOPATH/bin $path)
 
 # python
-alias python=python3
-alias py=python
-alias pip=pip3
+# python3 本体はOS付随
+# パッケージ管理は pip3
 PIPPATH=$HOME/Library/Python/3.8
 path=($PIPPATH/bin $path)
 LC_ALL=ja_JP.UTF-8
+alias python=python3
+alias py=python3
+alias pip=pip3
 
 
 
