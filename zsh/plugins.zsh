@@ -62,9 +62,7 @@ PROMPT+='$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d 
 
 # tmux-resurrect
 # 初回シェル時のみ tmux実行
-if [ $SHLVL = 1 ]; then
-  tm
-fi
+#if [ $SHLVL = 1 ]; then tm fi
 
 
 
