@@ -104,9 +104,11 @@ hook_add = '''
 '''
 
 
-#[[plugins]]
-#repo = 'ryanoasis/vim-devicons'
-#パッチ当てるのめんどいからまた今度!
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add =  '''
+    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+'''
 
 
 
@@ -299,6 +301,29 @@ repo = 'instant-markdown/vim-instant-markdown'
 # Statusline
 # ------------------------------------------------
 
+#[[plugins]]
+#repo = 'vim-airline/vim-airline'
+#hook_add = '''
+#    " タブを有効にする
+#    let g:airline#extensions#tabline#buffer_idx_mode = 1
+#
+#    " タブを切り替える
+#    nmap <C-p> <Plug>AirlineSelectPrevTab
+#    nmap <C-n> <Plug>AirlineSelectNextTab
+#
+#    " タブに番号を表示する
+#    let g:airline#extensions#tabline#enabled = 1
+#'''
+#[[plugins]]
+#repo = 'vim-airline/vim-airline-themes'
+#hook_add = '''
+#    let g:airline_theme='minimalist'
+#    "let g:airline_powerline_fonts = 1
+#'''
+
+
+
+
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -329,9 +354,13 @@ hook_add = '''
     \       'charcode'      : 'MyCharCode',
     \       'gitgutter'     : 'MyGitGutter'
     \   },
-    \   'separator': {'left': '⮀', 'right': '⮂'},
-    \   'subseparator': {'left': '⮁', 'right': '⮃'}
     \}
+
+    " セパレータはフォントにパッチ当て必要
+    "\   'separator': {'left': '⮀', 'right': '⮂'},
+    "\   'subseparator': {'left': '⮁', 'right': '⮃'}
+    "\   'separator': { 'left': "\ue0bc", 'right': "\ue0be" },
+    "\   'subseparator': { 'left': "\ue0bd", 'right': "\ue0bf" }
 
     function! MyModified()
         return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -435,7 +464,6 @@ hook_add = '''
     endfunction
 
 '''
-
 
 
 # ------------------------------------------------
