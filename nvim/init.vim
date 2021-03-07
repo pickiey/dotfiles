@@ -1,7 +1,10 @@
-" dein settings {{{
-if &compatible
-    set nocompatible
-endif
+if &compatible | set nocompatible | endif
+if has('nvim') | let $NVIM_TUI_ENABLE_TRUE_COLOR=1 | endif
+
+
+
+" dein settings
+" {{{
 
 " dein.vimのディレクトリ
 let s:dein_dir      = expand('~/.cache/dein')
@@ -18,9 +21,9 @@ if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
 
     " 管理するプラグインを記述したファイル
-    let s:toml = '~/.dotfiles/nvim/dein.toml'
+    let s:toml      = '~/.dotfiles/nvim/dein.toml'
     let s:lazy_toml = '~/.dotfiles/nvim/dein_lazy.toml'
-    call dein#load_toml(s:toml, {'lazy': 0})
+    call dein#load_toml(s:toml,      {'lazy': 0})
     call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
     call dein#end()
@@ -32,6 +35,7 @@ if dein#check_install()
     call dein#install()
 endif
 call map(dein#check_clean(), "delete(v:val, 'rf')")
+
 " }}}
 
 
@@ -39,9 +43,6 @@ call map(dein#check_clean(), "delete(v:val, 'rf')")
 " 基本設定
 source $HOME/.dotfiles/nvim/base.vim
 
-
-
-" プラグインに依存する設定
-"source $HOME/.dotfiles/nvim/plugins.vim
-"dein.toml に直書きした
-
+"if filereadable(expand($HOME.'/.dotfiles/nvim/local.vim'))
+"    source $HOME/.dotfiles/nvim/local.vim
+"endif

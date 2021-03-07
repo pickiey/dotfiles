@@ -32,8 +32,8 @@ set whichwrap=b,s,h,l,<,>,[,]
 
 " コマンドをステータス行に表示
 set showcmd
-" 現在のモードを表示
-set showmode
+" 現在のモードを表示 -> lightlineで表示するため無効化
+"set showmode
 " モードラインは無効
 set modelines=0
 
@@ -275,7 +275,7 @@ set incsearch
 set hlsearch
 
 " Escの2回押しでハイライト消去
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
+nmap <silent> <ESC><ESC> :nohlsearch<CR><ESC>
 
 " 選択した文字列を検索
 vnoremap <silent> // y/<C-R>=escape(@", '\\/.*$^~[]')<CR><CR>
@@ -367,9 +367,12 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 nnoremap gb '[
 nnoremap gp ']
 
+" HTMLタグでも対応する閉じタグに動くようにする
+source $VIMRUNTIME/macros/matchit.vim
+
 " 対応する括弧に移動
-nnoremap ( %
-nnoremap ) %
+nnoremap <silent> ( :<C-U>call matchit#Match_wrapper('',1,'n')<CR>
+nnoremap <silent> ) :<C-U>call matchit#Match_wrapper('',1,'n')<CR>
 
 " 最後に変更されたテキストを選択する
 nnoremap gc  `[v`]
@@ -530,11 +533,11 @@ nnoremap <silent> <C-d> d0
 "inoremap <silent> <C-y>0 <Esc>ly$<Insert>
 
 " 保存時に行末の空白を除去する
-autocmd BufWrite * :%s/\s\+$//ge
+autocmd BufWrite    * :%s/\s\+$//ge
 autocmd BufWritePre * :%s/\s\+$//ge
 
 " 保存時にtabをスペースに変換する
-autocmd BufWrite * :%s/\t/    /ge
+autocmd BufWrite    * :%s/\t/    /ge
 autocmd BufWritePre * :%s/\t/    /ge
 
 " 日時の自動入力

@@ -3,11 +3,11 @@
 #-------------------------------------------------------------------------------
 
 [[plugins]]
-repo = 'Shougo/dein.vim'
+repo        = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
+repo        = 'Shougo/vimproc.vim'
+build       = 'make'
 
 
 
@@ -15,35 +15,9 @@ build = 'make'
 # Colorscheme
 # ------------------------------------------------
 
-#[[plugins]]
-#repo = 'tomasr/molokai'
-
-#[[plugins]]
-#repo = 'vim-scripts/Zenburn'
-
-#[[plugins]]
-#Jrepo = 'w0ng/vim-hybrid'
-
-#[[plugins]]
-#repo = 'altercation/vim-colors-solarized'
-
-#[[plugins]]
-#repo = 'nanotech/jellybeans.vim'
-
-#[[plugins]]
-#repo = 'mopp/mopkai.vim'
-
-#[[plugins]]
-#repo = 'w0ng/vim-hybrid'
-
 [[plugins]]
-repo = 'cocopon/iceberg.vim'
-hook_add = '''
-    colorscheme iceberg
-'''
-
-#[[plugins]]
-#repo = 'reedes/vim-colors-pencil'
+repo        = 'cocopon/iceberg.vim'
+hook_add    = 'colorscheme iceberg'
 
 
 
@@ -55,60 +29,59 @@ hook_add = '''
 # ------------------------------------------------
 
 [[plugins]]
-repo = 'antoinemadec/FixCursorHold.nvim'
-hook_add = '''
-    " in millisecond, used for both CursorHold and CursorHoldI,
-    " use updatetime instead if not defined
-    let g:cursorhold_updatetime = 100
+repo        = 'antoinemadec/FixCursorHold.nvim'
+hook_add    = 'let g:cursorhold_updatetime = 100'
+
+[[plugins]]
+repo        = 'yuroyoro/smooth_scroll.vim'
+
+[[plugins]] # w での移動を賢くする
+repo        = 'vim-scripts/smartword'
+hook_add    = '''
+    map w   <Plug>(smartword-w)
+    map b   <Plug>(smartword-b)
+    map e   <Plug>(smartword-e)
+    map ge  <Plug>(smartword-ge)
 '''
 
-[[plugins]]
-repo = 'yuroyoro/smooth_scroll.vim'
-hook_add = '''
-    map :call SmoothScroll("d",1, 1)<CR>
-    map :call SmoothScroll("u",1, 1)<CR>
-'''
 
-[[plugins]]
-repo = 'vim-scripts/smartword'
+[[plugins]] # 対となる括弧を追加/削除
+repo        = 'jiangmiao/auto-pairs'
 
-[[plugins]]
-repo = 'jiangmiao/auto-pairs'
+[[plugins]] # イコールの位置で揃えたりが可能な整形
+repo        = 'junegunn/vim-easy-align'
 
-[[plugins]]
-repo = 'junegunn/vim-easy-align'
-
-[[plugins]]
-repo = 'vim-scripts/matchit.zip'
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
+[[plugins]] # インデントを可視化
+repo        = 'nathanaelkane/vim-indent-guides'
+hook_add    = '''
     let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_start_level           = 2
+    let g:indent_guides_guide_size            = 1
+
+    let g:indent_guides_auto_colors           = 0
+    "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#333344 ctermbg=darkgray
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
+
 '''
 
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
+[[plugins]] # Gitの追加/削除/変更された行を行番号の左に表示
+repo        = 'airblade/vim-gitgutter'
+hook_add    = '''
     let g:gitgutter_sign_added    = '✚'
     let g:gitgutter_sign_modified = '➜'
     let g:gitgutter_sign_removed  = '✘'
 '''
 
-
-
-[[plugins]]
-repo = 'tyru/open-browser.vim'
-hook_add = '''
+[[plugins]] # カーソル位置の単語をブラウザ開いて検索
+repo        = 'tyru/open-browser.vim'
+hook_add    = '''
     nmap <Leader>b <Plug>(openbrowser-smart-search)
     vmap <Leader>b <Plug>(openbrowser-smart-search)
 '''
 
-
-
-
 [[plugins]]
-repo = 'tpope/vim-obsession'
+repo        = 'tpope/vim-obsession'
 
 
 
@@ -116,83 +89,32 @@ repo = 'tpope/vim-obsession'
 # Filer
 # ------------------------------------------------
 
-
-####[[plugins]]
-####repo = 'scrooloose/nerdtree'
-####hook_add = '''
-####    let NERDTreeShowHidden=1
-####    nnoremap <silent><C-a> :NERDTreeFind<CR>:vertical res 30<CR>
-####
-####    let NERDTreeQuitOnOpen=1
-####
-####    " 引数なしでvimを開いたらNERDTreeを起動、
-####    " 引数ありならNERDTreeは起動せず、引数で渡されたファイルを開く。
-####    autocmd vimenter * if !argc() | NERDTree | endif
-####
-####    " 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
-####    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-####
-####    " ファイル拡張子により色を変更
-####    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-####        exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-####        exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-####    endfunction
-####
-####    call NERDTreeHighlightFile('jade',      'green', 'none', 'green', '#151515')
-####
-####    call NERDTreeHighlightFile('md',        'blue', 'none', '#3366FF', '#151515')
-####
-####    call NERDTreeHighlightFile('ini',       'yellow', 'none', 'yellow', '#151515')
-####    call NERDTreeHighlightFile('yml',       'yellow', 'none', 'yellow', '#151515')
-####    call NERDTreeHighlightFile('config',    'yellow', 'none', 'yellow', '#151515')
-####    call NERDTreeHighlightFile('conf',      'yellow', 'none', 'yellow', '#151515')
-####    call NERDTreeHighlightFile('json',      'yellow', 'none', 'yellow', '#151515')
-####    call NERDTreeHighlightFile('html',      'yellow', 'none', 'yellow', '#151515')
-####
-####    call NERDTreeHighlightFile('styl',      'cyan', 'none', 'cyan', '#151515')
-####    call NERDTreeHighlightFile('css',       'cyan', 'none', 'cyan', '#151515')
-####
-####    call NERDTreeHighlightFile('coffee',    'Red', 'none', 'red', '#151515')
-####    call NERDTreeHighlightFile('js',        'Red', 'none', '#ffa500', '#151515')
-####    call NERDTreeHighlightFile('jsx',       'Red', 'none', '#ffa500', '#151515')
-####
-####    call NERDTreeHighlightFile('php',       'Magenta', 'none', '#ff00ff', '#151515')
-####
-####'''
-####
-####
-####[[plugins]]
-####repo = 'ryanoasis/vim-devicons'
-####hook_add =  '''
-####    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-####'''
-
-
 [[plugins]]
-repo = 'lambdalisue/fern.vim'
-hook_add = '''
-    nnoremap <silent><C-a> :Fern . -reveal=% -drawer -toggle -width=30<CR>
+repo        = 'lambdalisue/fern.vim'
+hook_add    = '''
+    let g:fern#default_hidden = 1
+    let g:fern#drawer_width   = 30
+
+    nnoremap <silent> <C-a> :Fern . -reveal=% -drawer -toggle<CR>
 '''
 
 [[plugins]] # ファイルツリーにgitの差分を表示
-repo = 'lambdalisue/fern-git-status.vim'
+repo        = 'lambdalisue/fern-git-status.vim'
 
 [[plugins]]
-repo = 'lambdalisue/nerdfont.vim'
+repo        = 'lambdalisue/nerdfont.vim'
 
 [[plugins]] # アイコン表示
-repo = 'lambdalisue/fern-renderer-nerdfont.vim'
-hook_add = '''
-    let g:fern#renderer = 'nerdfont'
-'''
+repo        = 'lambdalisue/fern-renderer-nerdfont.vim'
+hook_add    = ''' let g:fern#renderer = 'nerdfont' '''
 
 [[plugins]] # アイコンに色をつける
 repo = 'lambdalisue/glyph-palette.vim'
 hook_add = '''
     augroup my-glyph-palette
         autocmd! *
-        autocmd FileType fern call glyph_palette#apply()
-        autocmd FileType nerdtree,startify call glyph_palette#apply()
+        autocmd FileType fern               call glyph_palette#apply()
+        autocmd FileType nerdtree,startify  call glyph_palette#apply()
     augroup END
 '''
 
@@ -204,8 +126,8 @@ hook_add = '''
 # ------------------------------------------------
 
 [[plugins]]
-repo = 'itchyny/vim-autoft'
-hook_add = '''
+repo        = 'itchyny/vim-autoft'
+hook_add    = '''
     let g:autoft_config = [{
     \       'filetype'  : 'html',
     \       'pattern'   : '<\%(!DOCTYPE\|html\|head\|script\)\|^html:5\s*$'
@@ -223,72 +145,57 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'luochen1990/rainbow'
-hook_add = '''
+repo        = 'luochen1990/rainbow'
+hook_add    = '''
     let g:rainbow_active = 1
 
     let g:rainbow_conf = {
-    \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-    \    'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-    \    'guis': [''],
-    \    'cterms': [''],
-    \    'operators': '_,_',
-    \    'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-    \    'separately': {
-    \        '*': {},
-    \        'markdown': {
-    \            'parentheses_options': 'containedin=markdownCode contained',
-    \        },
-    \        'lisp': {
-    \            'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-    \        },
-    \        'haskell': {
-    \            'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
-    \        },
-    \        'vim': {
-    \            'parentheses_options': 'containedin=vimFuncBody',
-    \        },
-    \        'perl': {
-    \            'syn_name_prefix': 'perlBlockFoldRainbow',
-    \        },
-    \        'stylus': {
-    \            'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
-    \        },
-    \        'css': 0,
-    \    }
+    \   'guifgs'        : ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'ctermfgs'      : ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+    \   'guis'          : [''],
+    \   'cterms'        : [''],
+    \   'operators'     : '_,_',
+    \   'parentheses'   : ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \   'separately'    : { '*'         : {},
+    \                       'markdown'  : {'parentheses_options'    : 'containedin=markdownCode contained'},
+    \                       'lisp'      : {'guifgs'                 : ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3']},
+    \                       'haskell'   : {'parentheses'            : ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold']},
+    \                       'vim'       : {'parentheses_options'    : 'containedin=vimFuncBody'},
+    \                       'perl'      : {'syn_name_prefix'        : 'perlBlockFoldRainbow'},
+    \                       'stylus'    : {'parentheses'            : ['start=/{/ end=/}/ fold contains=@colorableGroup']},
+    \                       'css'       : 0
+    \                     }
     \}
 '''
 
 
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
-on_ft = 'markdown'
-hook_add = '''
-    let g:vim_markdown_folding_disabled = 1
-'''
+repo        = 'rcmdnk/vim-markdown'
+on_ft       = 'markdown'
+hook_add    = 'let g:vim_markdown_folding_disabled = 1'
 
 
 [[plugins]]
-repo = 'kana/vim-filetype-haskell'
-on_ft = 'haskell'
+repo        = 'kana/vim-filetype-haskell'
+on_ft       = 'haskell'
 
 [[plugins]]
-repo = 'itchyny/vim-haskell-indent'
-on_ft = 'haskell'
+repo        = 'itchyny/vim-haskell-indent'
+on_ft       = 'haskell'
 
 [[plugins]]
-repo = 'digitaltoad/vim-pug'
-on_ft = 'pug'
+repo        = 'digitaltoad/vim-pug'
+on_ft       = 'pug'
 
 [[plugins]]
-repo = 'iloginow/vim-stylus.git'
-on_ft = 'stylus'
+repo        = 'iloginow/vim-stylus.git'
+on_ft       = 'stylus'
 
 
-[[plugins]]
-repo = 'alvan/vim-closetag'
-hook_add = '''
-    let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
+[[plugins]] # HTMLで自動で閉じタグを入力
+repo        = 'alvan/vim-closetag'
+hook_add    = '''
+    let g:closetag_filenames       = '*.html,*.xhtml,*.phtml,*.vue'
     let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 '''
 
@@ -300,7 +207,7 @@ hook_add = '''
 # ------------------------------------------------
 
 [[plugins]]
-repo = 'neoclide/coc.nvim'
+repo        = 'neoclide/coc.nvim'
 
 
 
@@ -309,8 +216,8 @@ repo = 'neoclide/coc.nvim'
 # ------------------------------------------------
 
 [[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
+repo        = 'thinca/vim-quickrun'
+hook_add    = '''
     let g:quickrun_config = {
     \   '_' : {
     \       'runner'                          : 'vimproc',
@@ -333,8 +240,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'mattn/emmet-vim'
-hook_add = '''
+repo        = 'mattn/emmet-vim'
+hook_add    = '''
     let g:user_emmet_settings = {
     \   'variables' : {
     \       'lang'    : "ja",
@@ -376,10 +283,9 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'instant-markdown/vim-instant-markdown'
-#hook_add = '''
-#    let g:instant_markdown_autostart = 0
-#'''
+repo        = 'instant-markdown/vim-instant-markdown'
+on_ft       = 'markdown'
+#hook_add    = 'let g:instant_markdown_autostart = 0'
 
 
 
@@ -387,32 +293,12 @@ repo = 'instant-markdown/vim-instant-markdown'
 # Statusline
 # ------------------------------------------------
 
-#[[plugins]]
-#repo = 'vim-airline/vim-airline'
-#hook_add = '''
-#    " タブを有効にする
-#    let g:airline#extensions#tabline#buffer_idx_mode = 1
-#
-#    " タブを切り替える
-#    nmap <C-p> <Plug>AirlineSelectPrevTab
-#    nmap <C-n> <Plug>AirlineSelectNextTab
-#
-#    " タブに番号を表示する
-#    let g:airline#extensions#tabline#enabled = 1
-#'''
-#[[plugins]]
-#repo = 'vim-airline/vim-airline-themes'
-#hook_add = '''
-#    let g:airline_theme='minimalist'
-#    "let g:airline_powerline_fonts = 1
-#'''
-
-
-
-
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = '''
+repo        = 'itchyny/lightline.vim'
+hook_add    = '''
+    set laststatus=2
+    set noshowmode
+
     let g:lightline = {
     \   'colorscheme' : 'solarized',
     \   'mode_map'    : {'c': 'NORMAL'},
@@ -548,5 +434,4 @@ hook_add = '''
 
         return "'". char ."' ". nr
     endfunction
-
 '''
