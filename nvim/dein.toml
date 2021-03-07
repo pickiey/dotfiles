@@ -12,8 +12,55 @@ build = 'make'
 
 
 # ------------------------------------------------
+# Colorscheme
+# ------------------------------------------------
+
+#[[plugins]]
+#repo = 'tomasr/molokai'
+
+#[[plugins]]
+#repo = 'vim-scripts/Zenburn'
+
+#[[plugins]]
+#Jrepo = 'w0ng/vim-hybrid'
+
+#[[plugins]]
+#repo = 'altercation/vim-colors-solarized'
+
+#[[plugins]]
+#repo = 'nanotech/jellybeans.vim'
+
+#[[plugins]]
+#repo = 'mopp/mopkai.vim'
+
+#[[plugins]]
+#repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+    colorscheme iceberg
+'''
+
+#[[plugins]]
+#repo = 'reedes/vim-colors-pencil'
+
+
+
+
+
+
+# ------------------------------------------------
 # Utility
 # ------------------------------------------------
+
+[[plugins]]
+repo = 'antoinemadec/FixCursorHold.nvim'
+hook_add = '''
+    " in millisecond, used for both CursorHold and CursorHoldI,
+    " use updatetime instead if not defined
+    let g:cursorhold_updatetime = 100
+'''
 
 [[plugins]]
 repo = 'yuroyoro/smooth_scroll.vim'
@@ -61,58 +108,93 @@ hook_add = '''
 
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-    let NERDTreeShowHidden=1
-    nnoremap <silent><C-a> :NERDTreeFind<CR>:vertical res 30<CR>
-
-    let NERDTreeQuitOnOpen=1
-
-    " 引数なしでvimを開いたらNERDTreeを起動、
-    " 引数ありならNERDTreeは起動せず、引数で渡されたファイルを開く。
-    autocmd vimenter * if !argc() | NERDTree | endif
-
-    " 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-    " ファイル拡張子により色を変更
-    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-        exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-        exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-    endfunction
-
-    call NERDTreeHighlightFile('jade',      'green', 'none', 'green', '#151515')
-
-    call NERDTreeHighlightFile('md',        'blue', 'none', '#3366FF', '#151515')
-
-    call NERDTreeHighlightFile('ini',       'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('yml',       'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('config',    'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('conf',      'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('json',      'yellow', 'none', 'yellow', '#151515')
-    call NERDTreeHighlightFile('html',      'yellow', 'none', 'yellow', '#151515')
-
-    call NERDTreeHighlightFile('styl',      'cyan', 'none', 'cyan', '#151515')
-    call NERDTreeHighlightFile('css',       'cyan', 'none', 'cyan', '#151515')
-
-    call NERDTreeHighlightFile('coffee',    'Red', 'none', 'red', '#151515')
-    call NERDTreeHighlightFile('js',        'Red', 'none', '#ffa500', '#151515')
-    call NERDTreeHighlightFile('jsx',       'Red', 'none', '#ffa500', '#151515')
-
-    call NERDTreeHighlightFile('php',       'Magenta', 'none', '#ff00ff', '#151515')
-
-'''
-
-
-[[plugins]]
-repo = 'ryanoasis/vim-devicons'
-hook_add =  '''
-    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-'''
-
-
-[[plugins]]
 repo = 'tpope/vim-obsession'
+
+
+
+# ------------------------------------------------
+# Filer
+# ------------------------------------------------
+
+
+####[[plugins]]
+####repo = 'scrooloose/nerdtree'
+####hook_add = '''
+####    let NERDTreeShowHidden=1
+####    nnoremap <silent><C-a> :NERDTreeFind<CR>:vertical res 30<CR>
+####
+####    let NERDTreeQuitOnOpen=1
+####
+####    " 引数なしでvimを開いたらNERDTreeを起動、
+####    " 引数ありならNERDTreeは起動せず、引数で渡されたファイルを開く。
+####    autocmd vimenter * if !argc() | NERDTree | endif
+####
+####    " 他のバッファをすべて閉じた時にNERDTreeが開いていたらNERDTreeも一緒に閉じる。
+####    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+####
+####    " ファイル拡張子により色を変更
+####    function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+####        exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+####        exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+####    endfunction
+####
+####    call NERDTreeHighlightFile('jade',      'green', 'none', 'green', '#151515')
+####
+####    call NERDTreeHighlightFile('md',        'blue', 'none', '#3366FF', '#151515')
+####
+####    call NERDTreeHighlightFile('ini',       'yellow', 'none', 'yellow', '#151515')
+####    call NERDTreeHighlightFile('yml',       'yellow', 'none', 'yellow', '#151515')
+####    call NERDTreeHighlightFile('config',    'yellow', 'none', 'yellow', '#151515')
+####    call NERDTreeHighlightFile('conf',      'yellow', 'none', 'yellow', '#151515')
+####    call NERDTreeHighlightFile('json',      'yellow', 'none', 'yellow', '#151515')
+####    call NERDTreeHighlightFile('html',      'yellow', 'none', 'yellow', '#151515')
+####
+####    call NERDTreeHighlightFile('styl',      'cyan', 'none', 'cyan', '#151515')
+####    call NERDTreeHighlightFile('css',       'cyan', 'none', 'cyan', '#151515')
+####
+####    call NERDTreeHighlightFile('coffee',    'Red', 'none', 'red', '#151515')
+####    call NERDTreeHighlightFile('js',        'Red', 'none', '#ffa500', '#151515')
+####    call NERDTreeHighlightFile('jsx',       'Red', 'none', '#ffa500', '#151515')
+####
+####    call NERDTreeHighlightFile('php',       'Magenta', 'none', '#ff00ff', '#151515')
+####
+####'''
+####
+####
+####[[plugins]]
+####repo = 'ryanoasis/vim-devicons'
+####hook_add =  '''
+####    let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+####'''
+
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+    nnoremap <silent><C-a> :Fern . -reveal=% -drawer -toggle -width=30<CR>
+'''
+
+[[plugins]] # ファイルツリーにgitの差分を表示
+repo = 'lambdalisue/fern-git-status.vim'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]] # アイコン表示
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+hook_add = '''
+    let g:fern#renderer = 'nerdfont'
+'''
+
+[[plugins]] # アイコンに色をつける
+repo = 'lambdalisue/glyph-palette.vim'
+hook_add = '''
+    augroup my-glyph-palette
+        autocmd! *
+        autocmd FileType fern call glyph_palette#apply()
+        autocmd FileType nerdtree,startify call glyph_palette#apply()
+    augroup END
+'''
 
 
 
@@ -468,38 +550,3 @@ hook_add = '''
     endfunction
 
 '''
-
-
-# ------------------------------------------------
-# Colorscheme
-# ------------------------------------------------
-
-#[[plugins]]
-#repo = 'tomasr/molokai'
-
-#[[plugins]]
-#repo = 'vim-scripts/Zenburn'
-
-#[[plugins]]
-#Jrepo = 'w0ng/vim-hybrid'
-
-#[[plugins]]
-#repo = 'altercation/vim-colors-solarized'
-
-#[[plugins]]
-#repo = 'nanotech/jellybeans.vim'
-
-#[[plugins]]
-#repo = 'mopp/mopkai.vim'
-
-#[[plugins]]
-#repo = 'w0ng/vim-hybrid'
-
-[[plugins]]
-repo = 'cocopon/iceberg.vim'
-hook_add = '''
-    colorscheme iceberg
-'''
-
-#[[plugins]]
-#repo = 'reedes/vim-colors-pencil'
