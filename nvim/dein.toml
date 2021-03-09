@@ -19,6 +19,9 @@ build       = 'make'
 repo        = 'cocopon/iceberg.vim'
 hook_add    = 'colorscheme iceberg'
 
+[[plugins]]
+repo        = 'aloussase/cyberpunk'
+#hook_add    = 'set termguicolors | colorscheme cyberpunk'
 
 
 
