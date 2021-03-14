@@ -18,12 +18,12 @@ set noundofile
 set scrolloff=5
 " 一行に長い文章を書いていても自動折り返しをしない
 set textwidth=0
-" 折り返ししてかつインデントする
-set wrap
-if (v:version == 704 && has("patch338")) || v:version >= 705
-    set breakindent    " indent even for wrapped lines
-    set breakindentopt=min:0,shift:0
-endif
+" 折り返し
+set nowrap
+"if (v:version == 704 && has("patch338")) || v:version >= 705
+"    set breakindent    " indent even for wrapped lines
+"    set breakindentopt=min:0,shift:0
+"endif
 
 " バックスペースでなんでも消せるように
 set backspace=indent,eol,start

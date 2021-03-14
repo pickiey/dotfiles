@@ -54,19 +54,19 @@ repo        = 'jiangmiao/auto-pairs'
 [[plugins]] # イコールの位置で揃えたりが可能な整形
 repo        = 'junegunn/vim-easy-align'
 
-[[plugins]] # インデントを可視化
-repo        = 'nathanaelkane/vim-indent-guides'
-hook_add    = '''
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_start_level           = 2
-    let g:indent_guides_guide_size            = 1
-
-    let g:indent_guides_auto_colors           = 0
-    "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#333344 ctermbg=darkgray
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
-
-'''
+#[[plugins]] # インデントを可視化
+#repo        = 'nathanaelkane/vim-indent-guides'
+#hook_add    = '''
+#    let g:indent_guides_enable_on_vim_startup = 1
+#    let g:indent_guides_start_level           = 2
+#    let g:indent_guides_guide_size            = 1
+#
+#    let g:indent_guides_auto_colors           = 0
+#    "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#444433 ctermbg=black
+#    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#333344 ctermbg=darkgray
+#    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#333344 ctermbg=darkgray
+#
+#'''
 
 [[plugins]] # Gitの追加/削除/変更された行を行番号の左に表示
 repo        = 'airblade/vim-gitgutter'
