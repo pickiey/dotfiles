@@ -12,7 +12,7 @@ if [ -z $TMUX ]; then
             tmux new-session \; split-window -h \; \
                                 split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -L \; \
                                 split-window -v \; split-window -h -d \; split-window -v    \; clock-mode     \; select-pane -U \; \
-                                select-pane  -U \; split-window -h    \; select-pane  -R
+                                select-pane  -U \; select-pane  -R
         else
             tmux new-session \; split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -U
         fi
