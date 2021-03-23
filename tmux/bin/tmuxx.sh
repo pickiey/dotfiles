@@ -9,9 +9,12 @@ if [ -z $TMUX ]; then
         width_threshold=200
 
         if [ $terminal_width -gt $width_threshold ]; then
-            tmux new-session \; split-window -h \; split-window -v \; split-window -h \; split-window -v -d \; select-pane -L \; select-pane -U \; select-pane -L \; split-window -v  \; split-window -h \; split-window -v -d \; select-pane -L \; select-pane -U
+            tmux new-session \; split-window -h \; \
+                                split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -L \; \
+                                split-window -v \; split-window -h -d \; split-window -v    \; clock-mode     \; select-pane -U \; \
+                                select-pane  -U \; split-window -h    \; select-pane  -R
         else
-            tmux new-session \; split-window -v \; split-window -h \; split-window -v -d \; select-pane -L \; select-pane -U
+            tmux new-session \; split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -U
         fi
     fi
 fi
