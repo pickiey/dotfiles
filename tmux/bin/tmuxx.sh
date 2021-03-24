@@ -23,7 +23,7 @@ if [ -z $TMUX ]; then
                 split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -L \; \
                 split-window -v \; select-pane  -L    \; \
                 split-window -v \; select-pane  -L    \; \
-                split-window -v \; split-window -h -d \; split-window -v    \; clock-mode     \; select-pane -U \; select-pane -R \; select-pane -U \; select-pane  -L
+                split-window -v \; split-window -h -d \; split-window -v    \; clock-mode     \; select-pane -U \; select-pane -R \; select-pane -U \; select-pane  -R
         fi
     fi
 fi
