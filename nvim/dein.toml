@@ -212,8 +212,23 @@ hook_add    = '''
 # Completion
 # ------------------------------------------------
 
-[[plugins]]
+[[plugins]] # :CocList extensions で インストール済みを確認
 repo        = 'neoclide/coc.nvim'
+hook_add    = '''
+    "スペース2回でCocList
+    nmap <silent> <space><space> :<C-u>CocList<cr>
+
+    "スペースhでHover
+    "nmap <silent> <space>h :<C-u>call CocAction('doHover')<cr>
+    "スペースdfでDefinition
+    "nmap <silent> <space>df <Plug>(coc-definition)
+    "スペースrfでReferences
+    "nmap <silent> <space>rf <Plug>(coc-references)
+    "スペースrnでRename
+    "nmap <silent> <space>rn <Plug>(coc-rename)
+    "スペースfmtでFormat
+    "nmap <silent> <space>fmt <Plug>(coc-format):<C-u>CocList<cr>
+'''
 
 
 
