@@ -11,19 +11,25 @@ if [ -z $TMUX ]; then
 
         if   [ $terminal_width -lt $width_threshold_macbook ]; then
             tmux new-session    \; \
-                split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -U
+                split-window -v \; split-window -h \; split-window -v \; select-pane  -U \; select-pane  -L \; select-pane  -U
         elif [ $terminal_width -lt $width_threshold_imac ]; then
+            # ヨコに2分割
+            # 右半分を タテに2分割 -> ヨコに2分割 -> タテに2分割
+            # 左半分を タテに2分割 -> ヨコに2分割 -> タテに2分割
             tmux new-session    \; \
                 split-window -h \; \
-                split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -L \; \
-                split-window -v \; split-window -h -d \; split-window -v    \; clock-mode     \; select-pane -U \; select-pane -R \; select-pane -U \; select-pane  -R
+                split-window -v \; split-window -h \; split-window -v \; select-pane  -U \; select-pane  -L \; select-pane  -L \; \
+                split-window -v \; split-window -h \; select-pane  -L \; split-window -v \; clock-mode      \; select-pane  -U \; select-pane  -R \; select-pane  -U \; select-pane  -R
         else
+            # ヨコに4分割 -> 幅を揃える
+            # 1番右を       タテに2分割 -> ヨコに2分割 -> タテに2分割
+            # 右から2番目を タテに2分割 -> ヨコに2分割 -> タテに2分割
             tmux new-session    \; \
-                split-window -h \; split-window -h    \; split-window -h    \; select-layout even-horizontal    \; \
-                split-window -v \; split-window -h    \; split-window -v -d \; select-pane -L \; select-pane -L \; \
-                split-window -v \; select-pane  -L    \; \
-                split-window -v \; select-pane  -L    \; \
-                split-window -v \; split-window -h -d \; split-window -v    \; clock-mode     \; select-pane -U \; select-pane -R \; select-pane -U \; select-pane  -R \; select-pane -R
+                split-window -h \; split-window -h \; split-window -h \; select-layout even-horizontal      \; \
+                split-window -v \; split-window -h \; split-window -v \; select-pane  -U \; select-pane  -L \; select-pane  -L \; \
+                split-window -v \; select-pane  -L \; \
+                split-window -v \; select-pane  -L \; \
+                split-window -v \; split-window -h \; select-pane  -L \; split-window -v \; clock-mode      \; select-pane  -U \; select-pane  -R \; select-pane  -U \; select-pane  -R \; select-pane  -R
         fi
     fi
 fi
