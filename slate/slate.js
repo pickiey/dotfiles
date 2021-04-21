@@ -1,56 +1,3 @@
-// http://yohasebe.com/wp/archives/3513
-// for tiling windows of focused app onto desktop
-// (3 x 2, clockwise)
-
-var topLeft = slate.operation("corner", {
-  "direction" : "top-left",
-  "width"  : "screenSizeX/3",
-  "height" : "screenSizeY/2"
-});
-
-var topRight = slate.operation("corner", {
-  "direction" : "top-right",
-  "width"  : "screenSizeX/3",
-  "height" : "screenSizeY/2"
-});
-
-var bottomRight = slate.operation("corner", {
-  "direction" : "bottom-right",
-  "width"  : "screenSizeX/3",
-  "height" : "screenSizeY/2"
-});
-
-var bottomLeft = slate.operation("corner", {
-  "direction" : "bottom-left",
-  "width"  : "screenSizeX/3",
-  "height" : "screenSizeY/2"
-});
-
-
-
-
-
-// alt+tabでアプリのウィンドウをタイル状に並べる
-var tileKey = "tab:alt";
-
-slate.bind(tileKey, function(win){
-  var appName = win.app().name();
-  var tiled = {};
-  tiled[appName] = {
-    "operations" : [topLeft, topRight, bottomRight, bottomLeft],
-    "main-first" : true,
-    "repeat"     : true
-  };
-  var tiledLayout = slate.layout("tiledLayout", tiled);
-  slate.operation("layout", {"name" : tiledLayout }).run();
-  slate.operation("show", {"app" : appName}).run();
-});
-
-
-
-
-
-
 // http://d.hatena.ne.jp/sugyan/20130301/1362129310
 // アプリ立ち上げる関数
 var launch_and_focus = function (target) {
@@ -71,8 +18,8 @@ var launch_and_focus = function (target) {
 
 //slate.bind('f:alt', launch_and_focus('Finder'));
 slate.bind('r:alt', launch_and_focus('Reeder'));
-slate.bind('s:alt', launch_and_focus('Safari'));
-slate.bind('i:alt', launch_and_focus('iTerm'));
+slate.bind('b:alt', launch_and_focus('Safari'));
+slate.bind('t:alt', launch_and_focus('iTerm'));
 slate.bind('m:alt', launch_and_focus('Music'));
 //slate.bind('e:alt', launch_and_focus('Google Chrome'));
 //slate.bind('e:alt', launch_and_focus('Chromium'));
@@ -116,15 +63,16 @@ var util = {
 // ----------- 以下 alt+
 
 // hjkl       .. その方向へフォーカス移動
-slate.bind(util.key('h'), slate.operation('focus', { direction: 'left' }));
-slate.bind(util.key('j'), slate.operation('focus', { direction: 'down' }));
-slate.bind(util.key('k'), slate.operation('focus', { direction: 'up' }));
+slate.bind(util.key('h'), slate.operation('focus', { direction: 'left'  }));
+slate.bind(util.key('j'), slate.operation('focus', { direction: 'down'  }));
+slate.bind(util.key('k'), slate.operation('focus', { direction: 'up'    }));
 slate.bind(util.key('l'), slate.operation('focus', { direction: 'right' }));
 
-// n          .. 下に隠れているウィンドウをフォーカス
-//slate.bind(util.key('n'), slate.operation('focus', { direction: 'behind' }));
+/*
+// n    .. 下に隠れているウィンドウをフォーカス
+slate.bind(util.key('n'), slate.operation('focus', { direction: 'behind' }));
 
-// p          .. スクリーン間でフォーカスを移動
+// p    .. スクリーン間でフォーカスを移動
 slate.bind(util.key('p'), function(win) {
   var next = util.nextScreen(slate.screen());
 
@@ -132,25 +80,37 @@ slate.bind(util.key('p'), function(win) {
     return win.screen().id() == next.id();
   });
 });
+*/
 
-// p+shift    .. 次のスクリーンへ飛ばす
-slate.bind(util.key('p', 'shift'), function(win) {
-  if (!win) return;
-  var next = util.nextScreen(win.screen());
-
-  win.move(next.visibleRect());
+// u    .. 同じアプリケーションで別のウィンドウにフォーカスする (Chrome対応版)
+slate.bind(util.key('u'), function() {
+  function get_next_win(windows) {
+    truth_values_of_is_main = _.map(windows, function(w){ return w.isMain(); })
+    next_idx = _.indexOf(truth_values_of_is_main, 1) + 1;
+    if (next_idx >= _.size(windows)) { return windows[0]; }
+    return windows[next_idx];
+  }
+  windows = [];
+  slate.app().eachWindow(function(win){
+    if (win.title() !== '') { windows.push(win); } // タイトルが無いウィンドウは無視
+  });
+  if (_.size(windows) === 1){ return; }
+  sorted = _.sortBy(windows, function(win){ return win.title(); });
+  get_next_win(sorted).focus();
 });
 
-// o+shift    .. 4隅に飛ばす
-var corners = slate.bind(util.key('o', 'shift'), slate.operation('chain', {
-  operations: _.map(['top-left', 'top-right', 'bottom-right', 'bottom-left'], function(d) {
-    return slate.operation('corner', {
-      direction: d,
-      width: 'screenSizeX/2',
-      height: 'screenSizeY/2'
-    });
-  })
-}));
+
+
+
+
+// ----------- 以下 alt+shift+
+
+// b+shift    .. 次のスクリーンへ飛ばす
+slate.bind(util.key('b', 'shift'), function(win) {
+  if (!win) return;
+  var next = util.nextScreen(win.screen());
+  win.move(next.visibleRect());
+});
 
 // m+shift    .. 最大化
 slate.bind(util.key('m', 'shift'), function(win) {
@@ -159,17 +119,17 @@ slate.bind(util.key('m', 'shift'), function(win) {
   win.doOperation('move', bounds);
 });
 
-// n+shift    .. 左右に1/2のサイズにして飛ばす
-slate.bind(util.key('n', 'shift'), slate.operation('chain', {
-  operations: _.map(['left', 'right'], function(d) {
-    return slate.operation('push', {
-      direction: d,
-      style: 'bar-resize:screenSizeX/2'
-    });
-  })
-}));
+// n+shift    .. タテ分割1/2サイズにする
+//slate.bind(util.key('n', 'shift'), slate.operation('chain', {
+//  operations: _.map(['left', 'right'], function(d) {
+//    return slate.operation('push', {
+//      direction: d,
+//      style: 'bar-resize:screenSizeX/2'
+//    });
+//  })
+//}));
 
-// b+shift    .. 左右に1/3のサイズにして飛ばす
+// b+shift    .. タテ分割1/3サイズにする
 //slate.bind(util.key('b', 'shift'), slate.operation('chain', {
 //  operations: _.map(['left', 'right'], function(d) {
 //    return slate.operation('push', {
@@ -179,7 +139,7 @@ slate.bind(util.key('n', 'shift'), slate.operation('chain', {
 //  })
 //}));
 
-// b+shift    .. 上下に1/2のサイズにして飛ばす
+// b+shift    .. ヨコ分割1/2のサイズにする
 slate.bind(util.key('b', 'shift'), slate.operation('chain', {
   operations: _.map(['top', 'bottom'], function(d) {
     return slate.operation('push', {
@@ -188,6 +148,18 @@ slate.bind(util.key('b', 'shift'), slate.operation('chain', {
     });
   })
 }));
+
+// o+shift    .. 1/4サイズにする
+slate.bind(util.key('o', 'shift'), slate.operation('chain', {
+  operations: _.map(['top-left', 'top-right', 'bottom-right', 'bottom-left'], function(d) {
+    return slate.operation('corner', {
+      direction: d,
+      width: 'screenSizeX/2',
+      height: 'screenSizeY/2'
+    });
+  })
+}));
+
 
 /*
 // h+shift   .. ウィンドウが左にあるなら縮小, 右にあるなら拡大
@@ -247,27 +219,7 @@ slate.bind(util.key('j', 'shift'), function(win) {
   }
   win.doOperation('move', rect);
 });
-*/
 
-// http://mint.hateblo.jp/category/Slate
-// 同じアプリケーションで別のウィンドウにフォーカスする (Chrome対応版)
-slate.bind(util.key('u'), function() {
-  function get_next_win(windows) {
-    truth_values_of_is_main = _.map(windows, function(w){ return w.isMain(); })
-    next_idx = _.indexOf(truth_values_of_is_main, 1) + 1;
-    if (next_idx >= _.size(windows)) { return windows[0]; }
-    return windows[next_idx];
-  }
-  windows = [];
-  slate.app().eachWindow(function(win){
-    if (win.title() !== '') { windows.push(win); } // タイトルが無いウィンドウは無視
-  });
-  if (_.size(windows) === 1){ return; }
-  sorted = _.sortBy(windows, function(win){ return win.title(); });
-  get_next_win(sorted).focus();
-});
-
-/*
 // a+shift   .. ウィンドウを左に移動
 slate.bind(util.key('a', 'shift'), function(win) {
     if (!win) return;
@@ -302,5 +254,45 @@ slate.bind(util.key('s', 'shift'), function(win) {
     var bounds = win.screen().visibleRect();
     rect.y += bounds.height * 0.05;
     win.doOperation('move', rect);
+});
+
+// alt+tabでアプリのウィンドウをタイル状に並べる
+// http://yohasebe.com/wp/archives/3513
+// for tiling windows of focused app onto desktop
+// (3 x 2, clockwise)
+var topLeft = slate.operation("corner", {
+    "direction" : "top-left",
+    "width"     : "screenSizeX/3",
+    "height"    : "screenSizeY/2"
+});
+var topRight = slate.operation("corner", {
+    "direction" : "top-right",
+    "width"     : "screenSizeX/3",
+    "height"    : "screenSizeY/2"
+});
+
+var bottomRight = slate.operation("corner", {
+    "direction" : "bottom-right",
+    "width"     : "screenSizeX/3",
+    "height"    : "screenSizeY/2"
+});
+
+var bottomLeft = slate.operation("corner", {
+    "direction" : "bottom-left",
+    "width"     : "screenSizeX/3",
+    "height"    : "screenSizeY/2"
+});
+var tileKey = "tab:alt";
+slate.bind(tileKey, function(win){
+    var appName = win.app().name();
+    var tiled = {};
+    tiled[appName] = {
+      "operations" : [topLeft, topRight, bottomRight, bottomLeft],
+      "main-first" : true,
+      "repeat"     : true
+    };
+    var tiledLayout = slate.layout("tiledLayout", tiled);
+    slate.operation("layout", {"name" : tiledLayout }).run();
+    slate.operation("show", {"app" : appName}).run();
 });
 */
