@@ -120,14 +120,14 @@ slate.bind(util.key('m', 'shift'), function(win) {
 });
 
 // n+shift    .. タテ分割1/2サイズにする
-//slate.bind(util.key('n', 'shift'), slate.operation('chain', {
-//  operations: _.map(['left', 'right'], function(d) {
-//    return slate.operation('push', {
-//      direction: d,
-//      style: 'bar-resize:screenSizeX/2'
-//    });
-//  })
-//}));
+slate.bind(util.key('n', 'shift'), slate.operation('chain', {
+  operations: _.map(['left', 'right'], function(d) {
+    return slate.operation('push', {
+      direction: d,
+      style: 'bar-resize:screenSizeX/2'
+    });
+  })
+}));
 
 // b+shift    .. タテ分割1/3サイズにする
 //slate.bind(util.key('b', 'shift'), slate.operation('chain', {
