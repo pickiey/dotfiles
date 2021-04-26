@@ -1,0 +1,9 @@
+{
+    "title": "IME関連",
+    "rules": [
+        {
+            "description": "descriptionだけ記述",
+            "manipulators": [{}]
+        }
+    ]
+}

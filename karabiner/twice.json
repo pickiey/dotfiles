@@ -1,0 +1,208 @@
+                        {
+                            "description"   : "左option 2渡押し ---> 英数かな トグル",
+                            "manipulators"  : [
+                                {
+                                    "type": "basic",
+                                    "from": {
+                                        "key_code": "left_option"
+                                    },
+                                    "to": [
+                                        {
+                                            "key_code": "japanese_kana"
+                                        }
+                                    ],
+                                    "conditions": [
+                                        {
+                                            "type": "variable_if",
+                                            "name": "flag_left_option",
+                                            "value": 1
+                                        },
+                                        {
+                                            "type": "input_source_if",
+                                            "input_sources": [
+                                                {
+                                                    "language": "en"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basic",
+                                    "from": {
+                                        "key_code": "left_option"
+                                    },
+                                    "to": [
+                                        {
+                                            "key_code": "japanese_eisuu"
+                                        }
+                                    ],
+                                    "conditions": [
+                                        {
+                                            "type": "variable_if",
+                                            "name": "flag_left_option",
+                                            "value": 1
+                                        },
+                                        {
+                                            "type": "input_source_if",
+                                            "input_sources": [
+                                                {
+                                                    "language": "ja"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basic",
+                                    "from": {
+                                        "key_code": "left_option",
+                                        "modifiers": {
+                                            "optional": [
+                                                "any"
+                                            ]
+                                        }
+                                    },
+                                    "to": [
+                                        {
+                                            "set_variable": {
+                                                "name": "flag_left_option",
+                                                "value": 1
+                                            }
+                                        },
+                                        {
+                                            "key_code": "left_option"
+                                        }
+                                    ],
+                                    "to_delayed_action": {
+                                        "to_if_invoked": [
+                                            {
+                                                "set_variable": {
+                                                    "name": "flag_left_option",
+                                                    "value": 0
+                                                }
+                                            }
+                                        ],
+                                        "to_if_canceled": [
+                                            {
+                                                "set_variable": {
+                                                    "name": "flag_left_option",
+                                                    "value": 0
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "conditions": [
+                                        {
+                                            "type": "variable_if",
+                                            "name": "flag_left_option",
+                                            "value": 0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "description"   : "右option 2渡押し ---> 英数かな トグル",
+                            "manipulators"  : [
+                                {
+                                    "type": "basic",
+                                    "from": {
+                                        "key_code": "right_option"
+                                    },
+                                    "to": [
+                                        {
+                                            "key_code": "japanese_kana"
+                                        }
+                                    ],
+                                    "conditions": [
+                                        {
+                                            "type": "variable_if",
+                                            "name": "flag_right_option",
+                                            "value": 1
+                                        },
+                                        {
+                                            "type": "input_source_if",
+                                            "input_sources": [
+                                                {
+                                                    "language": "en"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basic",
+                                    "from": {
+                                        "key_code": "right_option"
+                                    },
+                                    "to": [
+                                        {
+                                            "key_code": "japanese_eisuu"
+                                        }
+                                    ],
+                                    "conditions": [
+                                        {
+                                            "type": "variable_if",
+                                            "name": "flag_right_option",
+                                            "value": 1
+                                        },
+                                        {
+                                            "type": "input_source_if",
+                                            "input_sources": [
+                                                {
+                                                    "language": "ja"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "basic",
+                                    "from": {
+                                        "key_code": "right_option",
+                                        "modifiers": {
+                                            "optional": [
+                                                "any"
+                                            ]
+                                        }
+                                    },
+                                    "to": [
+                                        {
+                                            "set_variable": {
+                                                "name": "flag_right_option",
+                                                "value": 1
+                                            }
+                                        },
+                                        {
+                                            "key_code": "right_option"
+                                        }
+                                    ],
+                                    "to_delayed_action": {
+                                        "to_if_invoked": [
+                                            {
+                                                "set_variable": {
+                                                    "name": "flag_right_option",
+                                                    "value": 0
+                                                }
+                                            }
+                                        ],
+                                        "to_if_canceled": [
+                                            {
+                                                "set_variable": {
+                                                    "name": "flag_right_option",
+                                                    "value": 0
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "conditions": [
+                                        {
+                                            "type": "variable_if",
+                                            "name": "flag_right_option",
+                                            "value": 0
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
