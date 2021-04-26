@@ -16,7 +16,59 @@
                 },
                 "rules": [
                     {
-                        "description": "左option 2渡押し ---> 英数かな トグル",
+                        "description": "左option 単押し ---> 英数",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_option",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_option"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "右option 単押し ---> 英数",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_option",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_option"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "左option 2渡押し ---> かな",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -24,14 +76,6 @@
                                         "name": "flag_left_option",
                                         "type": "variable_if",
                                         "value": 1
-                                    },
-                                    {
-                                        "input_sources": [
-                                            {
-                                                "language": "en"
-                                            }
-                                        ],
-                                        "type": "input_source_if"
                                     }
                                 ],
                                 "from": {
@@ -40,32 +84,6 @@
                                 "to": [
                                     {
                                         "key_code": "japanese_kana"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "flag_left_option",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "input_sources": [
-                                            {
-                                                "language": "ja"
-                                            }
-                                        ],
-                                        "type": "input_source_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "left_option"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "japanese_eisuu"
                                     }
                                 ],
                                 "type": "basic"
@@ -120,7 +138,7 @@
                         ]
                     },
                     {
-                        "description": "右option 2渡押し ---> 英数かな トグル",
+                        "description": "右option 2渡押し ---> かな",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -128,14 +146,6 @@
                                         "name": "flag_right_option",
                                         "type": "variable_if",
                                         "value": 1
-                                    },
-                                    {
-                                        "input_sources": [
-                                            {
-                                                "language": "en"
-                                            }
-                                        ],
-                                        "type": "input_source_if"
                                     }
                                 ],
                                 "from": {
@@ -144,32 +154,6 @@
                                 "to": [
                                     {
                                         "key_code": "japanese_kana"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "flag_right_option",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    },
-                                    {
-                                        "input_sources": [
-                                            {
-                                                "language": "ja"
-                                            }
-                                        ],
-                                        "type": "input_source_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "right_option"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "japanese_eisuu"
                                     }
                                 ],
                                 "type": "basic"
