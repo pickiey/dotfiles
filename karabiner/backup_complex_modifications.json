@@ -2,7 +2,111 @@
     "title": "IME関連",
     "rules": [
         {
-            "description": "左option 単押し ---> 英数, 左option 2渡押し ---> かな",
+            "description": "左option 単押し ---> 英数",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_option",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_option"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "japanese_eisuu"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "左option 単押し ---> かな",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_option",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_option"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "japanese_kana"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "右option 単押し ---> 英数",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_option",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_option"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "japanese_eisuu"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "右option 単押し ---> かな",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_option",
+                        "modifiers": {
+                            "optional": [
+                                "any"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_option"
+                        }
+                    ],
+                    "to_if_alone": [
+                        {
+                            "key_code": "japanese_kana"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "左option 2渡押し ---> かな",
             "manipulators": [
                 {
                     "conditions": [
@@ -49,11 +153,6 @@
                             "key_code": "left_option"
                         }
                     ],
-                    "to_if_alone": [
-                        {
-                            "key_code": "japanese_eisuu"
-                        }
-                    ],
                     "to_delayed_action": {
                         "to_if_canceled": [
                             {
@@ -76,8 +175,11 @@
                 }
             ]
         },
+
+
+
         {
-            "description": "右option 単押し ---> 英数, 右option 2渡押し ---> かな",
+            "description": "右option 2渡押し ---> かな",
             "manipulators": [
                 {
                     "conditions": [
@@ -122,11 +224,6 @@
                         },
                         {
                             "key_code": "right_option"
-                        }
-                    ],
-                    "to_if_alone": [
-                        {
-                            "key_code": "japanese_eisuu"
                         }
                     ],
                     "to_delayed_action": {
