@@ -2,7 +2,7 @@
 # ag
 # ------------------------------------------------
 
-[ -x `which rg` ] && alias grep="rg -uu"
+alias grep="rg -uu"
 
 
 
@@ -12,7 +12,7 @@
 # autoprefixer
 # ------------------------------------------------
 
-alias stylus="stylus -u autoprefixer-stylus"
+alias sl="stylus --use autoprefixer-stylus"
 
 function ap(){
     if [ $2 ]; then
@@ -30,7 +30,7 @@ function ap(){
 # htop
 # ------------------------------------------------
 
-[ -x `which htop` ] && alias top=htop
+alias top=htop
 
 
 
@@ -73,6 +73,16 @@ PROMPT+='$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d 
 # ------------------------------------------------
 
 alias ws=http-server
+
+
+
+
+
+# ------------------------------------------------
+# pug
+# ------------------------------------------------
+
+alias pg="pug --pretty"
 
 
 
