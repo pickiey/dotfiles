@@ -315,7 +315,9 @@ hook_add    = '''
     \                       "<body>"                                                                            ."\n".
     \               "\t".       "${child}${cursor}"                                                             ."\n".
     \                       "</body>"                                                                           ."\n".
-    \                       "</html>"
+    \                       "</html>",
+    \
+    \           'ph': "<img src=\"http://placehold.it/300${cursor}x200/ff0080/fff\" alt=\"\">"
     \       }
     \   },
     \   'pug' : {
@@ -323,37 +325,40 @@ hook_add    = '''
     \           'html:5': "".
     \                       "doctype html"                                                                      ."\n".
     \                       "html(lang='${lang}', class='no-js')"                                               ."\n".
-    \                       "head"                                                                              ."\n".
-    \               "\t".       "meta(charset='${charset}')"                                                    ."\n".
-    \               "\t".       "meta(name='viewport', content='width=device-width')"                           ."\n".
+    \               "\t".       "head"                                                                          ."\n".
+    \               "\t\t".         "meta(charset='${charset}')"                                                ."\n".
+    \               "\t\t".         "meta(name='viewport', content='width=device-width')"                       ."\n".
     \                                                                                                            "\n".
-    \               "\t".       "title"                                                                         ."\n".
+    \               "\t\t".         "title"                                                                     ."\n".
     \                                                                                                            "\n".
-    \               "\t".       "script(type='module')."                                                        ."\n".
-    \               "\t\t".         "document.documentElement.classList.remove('no-js');"                       ."\n".
-    \               "\t\t".         "document.documentElement.classList.add('js');"                             ."\n".
+    \               "\t\t".         "script(type='module')."                                                    ."\n".
+    \               "\t\t\t".           "document.documentElement.classList.remove('no-js');"                   ."\n".
+    \               "\t\t\t".           "document.documentElement.classList.add('js');"                         ."\n".
     \                                                                                                            "\n".
-    \               "\t".       "link(rel='stylesheet', href='https://unpkg.com/ress/dist/ress.min.css')"       ."\n".
-    \               "\t".       "link(rel='stylesheet', href='')"                                               ."\n".
+    \               "\t\t".         "link(rel='stylesheet', href='https://unpkg.com/ress/dist/ress.min.css')"   ."\n".
+    \               "\t\t".         "link(rel='stylesheet', href='')"                                           ."\n".
     \                                                                                                            "\n".
-    \               "\t".       "meta(name='description',        content='')"                                   ."\n".
-    \               "\t".       "meta(property='og:title',       content='')"                                   ."\n".
-    \               "\t".       "meta(property='og:description', content='')"                                   ."\n".
-    \               "\t".       "meta(property='og:image',       content='')"                                   ."\n".
-    \               "\t".       "meta(property='og:image:alt',   content='')"                                   ."\n".
-    \               "\t".       "meta(property='og:locale',      content='${locale}')"                          ."\n".
-    \               "\t".       "meta(property='og:type',        content='website')"                            ."\n".
-    \               "\t".       "meta(name='twitter:card',       content='')"                                   ."\n".
-    \               "\t".       "meta(property='og:url',         content='')"                                   ."\n".
-    \               "\t".       "link(rel='canonical',           href='')"                                      ."\n".
+    \               "\t\t".         "meta(name='description',        content='')"                               ."\n".
+    \               "\t\t".         "meta(property='og:title',       content='')"                               ."\n".
+    \               "\t\t".         "meta(property='og:description', content='')"                               ."\n".
+    \               "\t\t".         "meta(property='og:image',       content='')"                               ."\n".
+    \               "\t\t".         "meta(property='og:image:alt',   content='')"                               ."\n".
+    \               "\t\t".         "meta(property='og:locale',      content='${locale}')"                      ."\n".
+    \               "\t\t".         "meta(property='og:type',        content='website')"                        ."\n".
+    \               "\t\t".         "meta(name='twitter:card',       content='')"                               ."\n".
+    \               "\t\t".         "meta(property='og:url',         content='')"                               ."\n".
+    \               "\t\t".         "link(rel='canonical',           href='')"                                  ."\n".
     \                                                                                                            "\n".
-    \               "\t".       "link(rel='icon',                href='')"                                      ."\n".
-    \               "\t".       "link(rel='icon',                href='', type='image/svg+xml')"                ."\n".
-    \               "\t".       "link(rel='apple-touch-icon',    href='')"                                      ."\n".
-    \               "\t".       "link(rel='manifest',            href='')"                                      ."\n".
-    \               "\t".       "meta(name='theme-color',        content='')"                                   ."\n".
-    \                       "body"                                                                              ."\n".
-    \               "\t".       "${child}${cursor}"
+    \               "\t\t".         "link(rel='icon',                href='')"                                  ."\n".
+    \               "\t\t".         "link(rel='icon',                href='', type='image/svg+xml')"            ."\n".
+    \               "\t\t".         "link(rel='apple-touch-icon',    href='')"                                  ."\n".
+    \               "\t\t".         "link(rel='manifest',            href='')"                                  ."\n".
+    \               "\t\t".         "meta(name='theme-color',        content='')"                               ."\n".
+    \                                                                                                            "\n".
+    \               "\t".       "body"                                                                          ."\n".
+    \               "\t\t".         "${child}${cursor}",
+    \
+    \           'ph': "img(src='http://placehold.it/300${cursor}x200/ff0080/fff', alt='')"
     \       }
     \   }
     \}
