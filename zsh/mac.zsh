@@ -43,6 +43,9 @@ alias pip=pip3
 # Alias configuration
 # ==============================================================================
 
+# cd
+alias cdic="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
+
 # ls
 alias ls="ls -G -w"
 
