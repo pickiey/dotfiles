@@ -369,8 +369,7 @@ repo        = 'instant-markdown/vim-instant-markdown'
 on_ft       = 'markdown'
 hook_add    = '''
     let g:instant_markdown_slow      = 0
-    let g:instant_markdown_autostart = 1
-
+    let g:instant_markdown_autostart = 0
 '''
 
 
