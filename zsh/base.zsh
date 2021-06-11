@@ -141,47 +141,48 @@ alias su="su -l"
 
 alias cdt="cd $HOME/.dotfiles"
 alias cdd="cd $HOME/Downloads"
-alias cdcd="cd $HOME/Code"
+alias cdoc="cd $HOME/Documents"
+alias cdcd="cd $HOME/Documents/code"
 
-function cdm(){
-    local p
-    local y
-    local m
-    local d
-    p="$HOME/Dropbox/paper"
-    y="`date +%Y`"
-    m="`date +%m`"
-    d="`date +%d_%a`"
-    if [ ! -f $p/$y/$m/$d ];then
-        mkdir -p $p/$y/$m/$d
-    fi
-    cd $p/$y/$m/$d
-}
-
-function mm(){
-    local p
-    local y
-    local m
-    local d
-    p="$HOME/Dropbox/paper"
-    y="`date +%Y`"
-    m="`date +%m`"
-    d="`date +%d_%a`"
-    if [ ! -d $p/$y/$m/$d ];then
-        mkdir -p $p/$y/$m/$d
-    fi
-    $EDITOR $p/$y/$m/$d/memo.md
-}
+#function cdm(){
+#    local p
+#    local y
+#    local m
+#    local d
+#    p="$HOME/Dropbox/paper"
+#    y="`date +%Y`"
+#    m="`date +%m`"
+#    d="`date +%d_%a`"
+#    if [ ! -f $p/$y/$m/$d ];then
+#        mkdir -p $p/$y/$m/$d
+#    fi
+#    cd $p/$y/$m/$d
+#}
+#
+#function mm(){
+#    local p
+#    local y
+#    local m
+#    local d
+#    p="$HOME/Dropbox/paper"
+#    y="`date +%Y`"
+#    m="`date +%m`"
+#    d="`date +%d_%a`"
+#    if [ ! -d $p/$y/$m/$d ];then
+#        mkdir -p $p/$y/$m/$d
+#    fi
+#    $EDITOR $p/$y/$m/$d/memo.md
+#}
 
 alias aa=exit
 alias ZZ=exit
 alias ZQ=exit
 
 # 右プロンプトでメモ
-function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
+#function memo(){ RPROMPT="%{$fg[red]%}$1%{$reset_color%}" }
 
 # Weblioで単語の用例検索
-function dic(){ w3m "https://ejje.weblio.jp/content/$1" | grep "用例" }
+#function dic(){ w3m "https://ejje.weblio.jp/content/$1" | grep "用例" }
 
 # カレントパス以下のディレクトリでGrepマッチしたディレクトリに移動
 function jj(){
